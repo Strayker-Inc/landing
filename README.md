@@ -1,2 +1,2 @@
-# timugo-labs
-Timugo accelerator Landing Page
+# Strayker Web Page
+
