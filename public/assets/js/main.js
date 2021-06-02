@@ -4,6 +4,7 @@ var navcontent = document.getElementById("nav-content");
 var navaction = document.getElementById("navAction");
 var brandname = document.getElementById("brandname");
 var toToggle = document.querySelectorAll(".toggleColour");
+var slinqerLogo = document.getElementById("logo");
 
 document.addEventListener('scroll', function () {
 
@@ -16,15 +17,18 @@ document.addEventListener('scroll', function () {
     navaction.classList.add("gradient");
     navaction.classList.remove("text-gray-800");
     navaction.classList.add("text-white");
+		slinqerLogo.src = './assets/images/logo.svg'
     //Use to switch toggleColour colours
     for (var i = 0; i < toToggle.length; i++) {
-      toToggle[i].classList.add("text-gray-800");
+      toToggle[i].classList.add("text-black");
+			toToggle[i].classList.remove("font-bold");
       toToggle[i].classList.remove("text-white");
     }
     header.classList.add("shadow");
     navcontent.classList.remove("bg-gray-100");
     navcontent.classList.add("bg-white");
   } else {
+		slinqerLogo.src = './assets/images/logo_symbolic.svg'
     header.classList.remove("bg-white");
     navaction.classList.remove("gradient");
     navaction.classList.add("bg-white");
@@ -33,8 +37,11 @@ document.addEventListener('scroll', function () {
     //Use to switch toggleColour colours
     for (var i = 0; i < toToggle.length; i++) {
       toToggle[i].classList.add("text-white");
-      toToggle[i].classList.remove("text-gray-800");
+			toToggle[i].classList.add("font-bold");
+			toToggle[i].classList.remove("font-semi-bold");
+      toToggle[i].classList.remove("text-white-800");
     }
+
 
     header.classList.remove("shadow");
     navcontent.classList.remove("bg-white");
