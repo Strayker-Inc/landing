@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import { RouteComponentProps, withRouter  } from "react-router-dom";
 // Interfaces
 import IPage from "../../interfaces/page";
@@ -15,7 +15,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 				<div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
 
 					<div className="pl-4 flex items-center">
-						<a className=" text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+						<a className=" text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="!">
 							<img id="logo" className="h-16 fill-current inline" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
 						</a>
 					</div>
@@ -34,7 +34,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 					<div className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
 						<ul className="list-reset lg:flex justify-end flex-1 items-center">
 							<li className="mr-3">
-								<a className="toggleColour text-white font-bold inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">
+								<a className="toggleColour text-white font-bold inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="!">
 									Blog (Proximamente)
 								</a>
 							</li>
@@ -67,7 +67,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 
 					{/* <!--Right Col--> */}
 					<div className="w-full md:w-3/5 py-6 text-center floating-transition">
-						<img className="w-full md:w-4/5 z-50" src="assets/images/main.svg" />
+						<img className="w-full md:w-4/5 z-50" src="assets/images/main.svg" alt="ima" />
 					</div>
 
 				</div>
@@ -300,7 +300,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 
 					<div className="flex flex-wrap flex-col-reverse sm:flex-row">
 						<div className="w-full sm:w-1/2 p-6">
-							<img className="w-full md:w-4/5 z-50 floating-transition" src="assets/images/mentors.svg" />
+							<img className="w-full md:w-4/5 z-50 floating-transition" src="assets/images/mentors.svg" alt="" />
 						</div>
 						<div className="w-full sm:w-1/2 p-6 mt-6">
 							<div className="align-middle">
@@ -324,7 +324,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 							</p>
 						</div>
 						<div className="w-full sm:w-1/2 p-6">
-							<img className="w-full md:w-4/5 z-50 floating-transition" src="assets/images/technology.svg" />
+							<img className="w-full md:w-4/5 z-50 floating-transition" src="assets/images/technology.svg" alt="" />
 						</div>
 					</div>
 				</div>
@@ -598,21 +598,21 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 										<li>
 											<a
 												className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-												href="#"
+												href="!"
 												>Acerca de Nosotros</a
 											>
 										</li>
 										<li>
 											<a
 												className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-												href="#"
+												href="!"
 												>Blog</a
 											>
 										</li>
 										<li>
 											<a
 												className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-												href="#"
+												href="!"
 												>Casos de Exito</a
 											>
 										</li>
@@ -625,17 +625,17 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 									>
 									<ul className="list-unstyled">
 										<li>
-											<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="#" >
+											<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="!" >
 												Terminos &amp; Condiciones
 											</a>
 										</li>
 										<li>
-											<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="#">
+											<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="!">
 												Politica de Privacidad
 											</a>
 										</li>
 										<li>
-											<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="#">
+											<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="!">
 												Contactanos
 											</a>
 										</li>
