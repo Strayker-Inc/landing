@@ -1,2 +1,2 @@
-# Strayker Web Page
+# Slinqer Web Page
 
