@@ -47,40 +47,110 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 		<hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
 	</nav>
 
-	{/* <!--Hero--> */}
-	<div className="pt-24">
+  {/* <!-- HERO --> */}
+  <div className="relative bg-white overflow-hidden">
+    <div className="max-w-7xl mx-auto">
+      <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+        <svg className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+          fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="50,0 100,0 50,100 0,100" />
+        </svg>
+        <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+          <div className="sm:text-center lg:text-left">
+            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              <span className="block xl:inline">Make your IT problems,</span>
+              <span className="block text-indigo-600 xl:inline">Our problems.</span>
+            </h1>
+            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+              With our IT outsourcing model by TOP teams from Latam. Focus on your business while we focus on your technology.
+            </p>
+            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+              <div className="rounded-md shadow">
+                <a href="!"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                  Contact
+                </a>
+              </div>
+              <div className="mt-3 sm:mt-0 sm:ml-3">
+                <a href="!"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                  About us
+                </a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+      <img className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+        alt="" />
+    </div>
+  </div>
 
-		<div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-			{/* <!--Left Col--> */}
-			<div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-				<h1 className="my-4 text-5xl font-bold leading-tight">
-					Llevamos tu STARTUP tecnológica al siguiente nivel
-				</h1>
-				<p className="leading-normal text-2xl mb-8">
-					Asesorías Especializadas, Desarrollo tecnológico, Equipos de Innovación y más..
-				</p>
-				<button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">
-					Contactanos
-				</button>
-			</div>
+  {/* <!-- OUR PARTNERS --> */}
+  <section className="bg-white border-b py-12 ">
+    <h2 className="bg-indigo-600 text-center text-white text-3xl pt-8 pb-8">
+      Our developers and consultants are making software htmlFor<br /><b>TOP companies in USA and Latam</b>
+    </h2>
+    <div className="container mx-auto flex flex-wrap items-center justify-between pb-12 pt-8">
+      <div className="flex flex-1 flex-wrap max-w-4xl mx-auto items-center justify-between text-xl text-gray-500 font-bold">
 
-			{/* <!--Right Col--> */}
-			<div className="w-full md:w-3/5 py-6 text-center floating-transition">
-				<img className="w-full md:w-4/5 z-50" src="assets/images/main.svg" alt="ima" />
-			</div>
+        <span className="w-1/2 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/paypal.png"
+            className="h-20 w-40 mr-4 object-scale-down fill-current"
+            alt=""
+          />
+        </span>
+        <span className="w-1/2 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/launch-mobility.png"
+            className="h-20 w-40 mr-4 object-scale-down fill-current text-gray-500"
+            alt=""
+          />
+        </span>
+        <span className="w-1/2 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/genius.png"
+            className="h-20 w-40 mr-4 object-scale-down fill-current text-gray-500"
+            alt=""
+          />
+        </span>
+        <span className="w-1/2 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/mercado-libre.png"
+            className="h-20 w-40 mr-4 object-scale-down fill-current text-gray-500"
+            alt=""
+          />
+        </span>
+        <span className="w-1/2 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/avianca.png"
+            className="h-20 w-40 mr-4 object-scale-down fill-current text-gray-500"
+            alt=""
+          />
+        </span>
+        <span className="w-1/2 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/skylab.png"
+            className="h-20 w-40 mr-4 object-scale-down fill-current text-gray-500"
+            alt=""
+          />
+        </span>
+        <span className="w-1/3 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/agrosty.png"
+            className="h-20 w-40 mr-4 object-contain fill-current text-gray-500"
+            alt=""
+          />
+        </span>
+        <span className="w-1/2 p-4 md:w-auto flex items-center">
+          <img src="./assets/images/logos/menuty.png"
+            className="h-20 w-40 mr-4 object-scale-down fill-current text-gray-500"
+            alt=""
+          />
+        </span>
+      </div>
+    </div>
+  </section>
 
-		</div>
-
-	</div>
-
-	{/* <!-- Begin Section Waves --> */}
-	<div className="relative -mt-12 lg:-mt-24">
-		<img src="assets/images/waves-inverted.svg" alt=""/>
-	</div>
-	{/* <!-- End Section waves --> */}
-
+  {/* <!-- ABOUT US--> */}
 	<section className=" pt-20 py-20  bg-white">
-
 		<div className="container mx-auto px-4">
 			<div className="items-center flex flex-wrap">
 				<div className="w-full md:w-4/12 ml-auto mr-auto px-4">
@@ -157,139 +227,96 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 		</div>
 	</section>
 
+  {/* <!-- OUR SERVICES --> */}
+  <section className="bg-gray-100 border-b py-8">
+    <div className="container mx-auto flex flex-wrap pb-12">
+      <h2 className="w-full my-2 text-5xl font-black leading-tight text-center text-gray-800">
+        Outsourcing services
+      </h2>
+      <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+          <a href="!" className="flex flex-wrap no-underline hover:no-underline">
+            <img className="pt-4 pb-2 px-auto lg:px-20 xl:px-40 2xl:px-40 sm:px-10 md:px-10 align-center"
+              src="./assets/images/staff-augmentation.png"
+              alt=""
+            />
+            <div className="w-full font-bold text-xl text-center text-gray-800 px-6 pb-6">
+              Staff Augmentation
+            </div>
+            <p className="text-black-600 text-center px-6 mb-5">
+              Expert software engineers work together with your internal team on your projects. These engineers join your existing
+              staff, often working remote until project completion.
+            </p>
+          </a>
+        </div>
+        <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div className="flex items-center justify-start">
+            <button
+              className="mx-auto lg:mx-0 hover:underline gradient2 text-gray-800 font-extrabold rounded my-6 py-4 px-8 shadow-lg">
+              Get info
+            </button>
+          </div>
+        </div>
+      </div>
 
-	<section className="pb-20 pt-20 bg-gray-200 ">
-		<div className="container mx-auto px-4">
-			<div className="flex flex-wrap">
-				<h1 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">En nuestro programa de 3 meses denominado DLS, <br /> potenciamos el crecimiento de tu negocio digital</h1>
-				<div className="w-full mb-10">
-					<div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-				</div>
-				<div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-					<div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-						<div className="px-4 py-5 flex-auto">
-							<div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-								<i className="fas fa-users"></i>
-							</div>
-							<h6 className="text-xl  font-semibold text-gray-800">Centrarse en el usuario</h6>
-							<p className="mt-2 mb-4 text-gray-600">
-								Sabemos que el éxito de todo producto digital está en entender al usuario, es por eso que <u><b>Design Thinking</b></u>
-								es nuestra mejor aliada.
-							</p>
-						</div>
-					</div>
-				</div>
-				<div className="w-full md:w-4/12 px-4 text-center">
-					<div
-						className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-					>
-						<div className="px-4 py-5 flex-auto">
-							<div
-								className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
-							>
-								<i className="fas fa-retweet"></i>
-							</div>
-							<h6 className="text-xl font-semibold text-gray-800">Refinar el Modelo de Negocio</h6>
-							<p className="mt-2 mb-4 text-gray-600">
-								El <b>60%</b> de las empresas fracasan antes de los 5 años de vida, esto se evita al aplicar <u><b>Lean Startup</b></u>
-								para conocer, iterar y mejorar tu modelo de negocio.
-							</p>
-						</div>
-					</div>
-				</div>
-				<div className="pt-6 w-full md:w-4/12 px-4 text-center">
-					<div
-						className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-					>
-						<div className="px-4 py-5 flex-auto">
-							<div
-								className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
-							>
-								<i className="fas fa-fingerprint"></i>
-							</div>
-							<h6 className="text-xl font-semibold text-gray-800">Construir el Producto</h6>
-							<p className="mt-2 mb-4 text-gray-600">
-								Construimos un producto de Software ajustado unicamente a las necesidades del tus usuarios, <u><b>Scrum</b></u>
-								es la clave para tener un negocio que crece <b>10X</b>.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			{/* <!-- <div className="flex flex-wrap items-center mt-32">
-				<div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
-					<div
-						className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
-					>
-						<i className="fas fa-user-friends text-xl"></i>
-					</div>
-					<h3 className="text-3xl mb-2 font-semibold leading-normal">
-						Working with us is a pleasure
-					</h3>
-					<p
-						className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
-					>
-						Don't let your uses guess by attaching tooltips and popoves to
-						any element. Just make sure you enable them first via
-						JavaScript.
-					</p>
-					<p
-						className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
-					>
-						The kit comes with three pre-built pages to help you get started
-						faster. You can change the text and images and you're good to
-						go. Just make sure you enable them first via JavaScript.
-					</p>
-					<a
-						href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
-						className="font-bold text-gray-800 mt-8"
-						>Check Tailwind Starter Kit!</a
-					>
-				</div>
-				<div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
-					<div
-						className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600"
-					>
-						<img
-							alt="..."
-							src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80"
-							className="w-full align-middle rounded-t-lg"
-						/>
-						<blockquote className="relative p-8 mb-4">
-							<svg
-								preserveAspectRatio="none"
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 583 95"
-								className="absolute left-0 w-full block"
-								// style="height: 95px; top: -94px;"
-							>
-								<polygon
-									points="-30,95 583,95 583,65"
-									className="text-pink-600 fill-current"
-								></polygon>
-							</svg>
-							<h4 className="text-xl font-bold text-white">
-								Top Notch Services
-							</h4>
-							<p className="text-md font-light mt-2 text-white">
-								The Arctic Ocean freezes every winter and much of the
-								sea-ice then thaws every summer, and that process will
-								continue whatever happens.
-							</p>
-						</blockquote>
-					</div>
-				</div>
-			</div> --> */}
-		</div>
-	</section>
+      <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+          <a href="!" className="flex flex-wrap no-underline hover:no-underline">
+            <img className="pt-4 pb-2 px-auto lg:px-20 xl:px-40 2xl:px-40 sm:px-10 md:px-10 align-center"
+              src="./assets/images/dedicated-team.png"
+              alt=""
+            />
+            <div className="w-full font-bold text-xl text-center text-gray-800 px-6 pb-6">
+              Dedicated Teams
+            </div>
+            <p className="text-black-600 text-center px-6 mb-5">
+              Presents talent which directly oversees the whole development project. This option provides a management structure with
+              hands-on supervision of the workflow and tasks.
+            </p>
+          </a>
+        </div>
+        <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div className="flex items-center justify-center">
+            <button
+              className="mx-auto lg:mx-0 hover:underline gradient2 text-gray-800 font-extrabold rounded my-6 py-4 px-8 shadow-lg">
+              Get info
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+        <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <a href="!" className="flex flex-wrap no-underline hover:no-underline">
+            <img className="pt-4 px-auto lg:px-20 xl:px-40 2xl:px-40 sm:px-10 md:px-10 align-center"
+              src="./assets/images/project-based.png"
+              alt=""
+            />
+            <div className="w-full font-bold text-xl text-center text-gray-800 px-6 pb-6">
+              Project-Based Model
+            </div>
+            <p className=" text-black-600 text-center px-6 mb-5">
+              Your partner company oversees the entire development process: from establishing the specs, to allocating workflow,
+              setting timescales and quality testing.
+            </p>
+          </a>
+        </div>
+        <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+          <div className="flex items-center justify-end">
+            <button
+              className="mx-auto lg:mx-0 hover:underline gradient2 text-gray-800 font-extrabold rounded my-6 py-4 px-8 shadow-lg">
+              Get info
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
-
-	{/* <!-- Begin What we offer Section --> */}
-	<section className="bg-white border-b py-8">
+	{/* <section className="bg-white border-b py-8">
 
 		<div className="container max-w-5xl mx-auto m-8">
-			{/* <!-- Section Title --> */}
 			<h1 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
 				Invertimos hasta $20.000 USD en infraestructura tecnológica y asesorías especializadas
 			</h1>
@@ -327,221 +354,120 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 				</div>
 			</div>
 		</div>
-	</section>
-	{/* <!-- End What we offer Section --> */}
+	</section> */}
 
-	<section className="bg-white pt-20 pb-48">
-		<div className="container mx-auto px-4">
-			<div className="flex flex-wrap justify-center text-center mb-24">
-				<div className="w-full lg:w-6/12 px-4">
-					<h2 className="text-4xl font-semibold text-gray-800">El equipo Slinqer</h2>
-					<p className="text-lg leading-relaxed m-4 text-gray-600">
-						Somos un grupo de emprendedores e innovadores apasionados por la tecnología y las Startups.
-					</p>
-				</div>
-			</div>
-			<div className="flex flex-wrap">
-				<div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
-					<div className="px-6">
-						<img
-							alt="..."
-							src="./assets/images/anderson.jpg"
-							className="shadow-lg rounded-full max-w-full mx-auto"
-							// style="max-width: 120px;"
-						/>
-						<div className="pt-6 text-center">
-							<h5 className="text-xl font-bold text-gray-800">Anderson Laverde</h5>
-							<p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-								CEO & Experto en Tecnología e innovación para Startups
-							</p>
-							<div className="mt-6">
-								{/* <button onclick="location.href='https://twitter.com/andirsunn'"  className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-									<i className="fab fa-twitter"></i>
-								</button>
-								<button onclick=`${location.href='https://linkedin.com/in/andirsunn'}` className="bg-blue-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-									<i className="fab fa-linkedin"></i>
-								</button> */}
-							</div>
-						</div>
-					</div>
-				</div>
+  {/* <!-- CONTACT US --> */}
+  <section className="relative flex items-top justify-center min-h-screen bg-indigo-600 dark:bg-gray-900 sm:items-center sm:pt-0">
+    <div className="pt-2 max-w-6xl mx-auto sm:px-6 lg:px-8">
+      <div className="mt-0 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="p-6 mt-10 mb-24 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+            <h1 className="text-normal text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
+              Let's talk!
+            </h1>
+            <br />
+            <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+              Jump-start your business with <b>expert software engineering teams.</b>
+            </p>
+            <br />
+            <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+              Latam
+            </p>
+            <div className="w-full mb-4">
+              <div className="h-1 gradient w-64 opacity-25 my-2 py-0 rounded-t"></div>
+            </div>
+            <div className="flex items-center mt-2 text-gray-600 dark:text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                Colombia
+              </div>
+            </div>
 
-				<div className="w-full md:w-6/12 lg:w-4/12 lg:mb-0 mb-12 px-4">
-					<div className="px-6">
-						<img
-							alt="..."
-							src="./assets/images/david.jpg"
-							className="shadow-lg rounded-full max-w-full mx-auto"
-							// style="max-width: 120px;"
-						/>
-						<div className="pt-6 text-center">
-							<h5 className="text-xl font-bold text-gray-800">David Beltran</h5>
-							<p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-								CTO & Desarrollador especialista en Inteligencia de negocio
-							</p>
-							<div className="mt-6">
-								{/* <button onclick="location.href='https://www.facebook.com/david.ospina.beltran/'" className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-									<i className="fab fa-facebook-f"></i>
-								</button>
-								<button onclick="location.href='https://www.linkedin.com/in/davidrb04/'" className="bg-blue-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-									<i className="fab fa-linkedin"></i>
-								</button> */}
-							</div>
-						</div>
-					</div>
-				</div>
 
-			</div>
-		</div>
-	</section>
+            <div className="flex items-center mt-2 mb-6 text-gray-600 dark:text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                latam@slinqer.com
+              </div>
+            </div>
+            <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+              Europe
+            </p>
+            <div className="w-full mb-4">
+              <div className="h-1 gradient w-64 opacity-25 my-2 py-0 rounded-t"></div>
+            </div>
+            <div className="flex items-center mt-2 text-gray-600 dark:text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                Lithuania
+              </div>
+            </div>
 
-	{/* <!-- Change the colour #f8fafc to match the previous section colour --> */}
-	{/* <!-- <img src="assets/images/waves-normal.svg" alt=""> --> */}
-	<section className="pb-20 relative block bg-gray-900">
-		<div
-			className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-			// style="height: 80px; transform: translateZ(0px);"
-		>
-			<svg
-				className="absolute bottom-0 overflow-hidden"
-				xmlns="http://www.w3.org/2000/svg"
-				preserveAspectRatio="none"
-				version="1.1"
-				viewBox="0 0 2560 100"
-				x="0"
-				y="0">
-				<polygon className="text-gray-900 fill-current" points="2560 0 2560 100 0 100"></polygon>
-			</svg>
-		</div>
-		<div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
-			<div className="flex flex-wrap text-center justify-center">
-				<div className="w-full lg:w-6/12 px-4">
-					<h2 className="text-4xl font-semibold text-white">
-						Con Slinqer
-					</h2>
-					<p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-						Tienes la mejor forma de escalar tu modelo de negocio digital
-					</p>
-				</div>
-			</div>
-			{/* <!-- <div className="flex flex-wrap mt-12 justify-center">
-				<div className="w-full lg:w-3/12 px-4 text-center">
-					<div
-						className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-					>
-						<i className="fas fa-medal text-xl"></i>
-					</div>
-					<h6 className="text-xl mt-5 font-semibold text-white">
-						Excelent Services
-					</h6>
-					<p className="mt-2 mb-4 text-gray-500">
-						Some quick example text to build on the card title and make up
-						the bulk of the card's content.
-					</p>
-				</div>
-				<div className="w-full lg:w-3/12 px-4 text-center">
-					<div
-						className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-					>
-						<i className="fas fa-poll text-xl"></i>
-					</div>
-					<h5 className="text-xl mt-5 font-semibold text-white">
-						Grow your market
-					</h5>
-					<p className="mt-2 mb-4 text-gray-500">
-						Some quick example text to build on the card title and make up
-						the bulk of the card's content.
-					</p>
-				</div>
-				<div className="w-full lg:w-3/12 px-4 text-center">
-					<div
-						className="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
-					>
-						<i className="fas fa-lightbulb text-xl"></i>
-					</div>
-					<h5 className="text-xl mt-5 font-semibold text-white">Launch time</h5>
-					<p className="mt-2 mb-4 text-gray-500">
-						Some quick example text to build on the card title and make up
-						the bulk of the card's content.
-					</p>
-				</div>
-			</div> --> */}
-		</div>
-	</section>
+            <div className="flex items-center mt-2 mb-6 text-gray-600 dark:text-gray-400">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                europe@slinqer.com
+              </div>
+            </div>
 
-	<section className="relative block py-24 lg:pt-0 bg-gray-900">
-		<div className="container mx-auto px-4">
-			<div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-				<div className="w-full lg:w-6/12 px-4">
-					<div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
-						<div className="flex-auto p-5 lg:p-10">
-							<h4 className="text-2xl font-semibold text-gray-800">¿Estas Interesad@?</h4>
-							<p className="leading-relaxed mt-1 mb-4 text-gray-600">
-								Completa el formulario y te contactaremos en menos de 24 horas.
-							</p>
-							<div className="relative w-full mb-3 mt-8">
-								<label className="block uppercase text-gray-700 text-xs font-bold mb-2">
-									Nombre del Lider del equipo
-								</label>
-								<input
-									type="text"
-									className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-									placeholder="Tu Nombre"
-									// style="transition: all 0.15s ease 0s;"
-								/>
-							</div>
-							<div className="relative w-full mb-3">
-								<label className="block uppercase text-gray-700 text-xs font-bold mb-2">
-									Correo de Contacto
-								</label>
-								<input
-									type="email"
-									className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-									placeholder="hola@hola.com"
-									// style="transition: all 0.15s ease 0s;"
-								/>
-							</div>
-							<div className="relative w-full mb-3">
-								<label
-									className="block uppercase text-gray-700 text-xs font-bold mb-2"
-									>Nombre del Emprendimiento</label
-								><input
-									type="text"
-									className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-									placeholder="mi emprendimiento"
-									// style="transition: all 0.15s ease 0s;"
-								/>
-							</div>
-							<div className="relative w-full mb-3">
-								<label
-									className="block uppercase text-gray-700 text-xs font-bold mb-2"
-									>Resume en que consiste tu negocio</label
-								><textarea
-									rows={4}
-									cols={80}
-									className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
-									placeholder="Maximo 400 caracteres"
-								></textarea>
-							</div>
-							<div className="text-center mt-6">
-								<button
-									className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-									type="button"
-									// style="transition: all 0.15s ease 0s;"
-								>
-									Inscribirme
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	{/* <!-- Begin Contact Section --> */}
+          </div>
 
-	{/* <!-- End Contact Section --> */}
+          <form className="p-6 flex flex-col justify-center">
+            <div className="flex flex-col">
+              <label htmlFor="name" className="hidden">Name</label>
+              <input type="name" name="name" id="name" placeholder="Your name*"
+                className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none" />
+            </div>
 
+            <div className="flex flex-col mt-2">
+              <label htmlFor="email" className="hidden">Email</label>
+              <input type="email" name="email" id="email" placeholder="Work email*"
+                className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div className="flex flex-col mt-2">
+              <label htmlFor="email" className="hidden">Company</label>
+              <input type="text" name="company" id="company" placeholder="Company Name*"
+                className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div className="flex flex-col mt-2">
+              <label htmlFor="message" className="hidden">Message</label>
+              <input type="text" name="message" id="message" placeholder="Who can help you?*"
+                className="w-100 mt-2 py-8 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <button type="submit"
+              className="md:w-32 bg-white hover:bg-blue-dark text-gray-800 font-bold mt-2 py-4 px-6 rounded-lg mt-3 hover:bg-indigo-300 transition ease-in-out duration-300">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
 	{/* <!-- Begin Footer Section--> */}
 	<footer className="relative bg-gray-300 pt-8 pb-6">
