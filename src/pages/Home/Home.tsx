@@ -59,21 +59,21 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
           <div className="sm:text-center lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
               <span className="block xl:inline">Make your IT problems,</span>
-              <span className="block text-indigo-600 xl:inline">Our problems.</span>
+              <span className="block text-green xl:inline">Our problems.</span>
             </h1>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            <p className="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
               With our IT outsourcing model by TOP teams from Latam. Focus on your business while we focus on your technology.
             </p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md shadow">
                 <a href="!"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green hover:bg-green-hover md:py-4 md:text-lg md:px-10">
                   Contact
                 </a>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <a href="!"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-300 hover:bg-green-hover md:py-4 md:text-lg md:px-10">
                   About us
                 </a>
               </div>
@@ -89,10 +89,10 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
     </div>
   </div>
 
-  {/* <!-- OUR PARTNERS --> */}
-  <section className="bg-white border-b py-12 ">
-    <h2 className="bg-indigo-600 text-center text-white text-3xl pt-8 pb-8">
-      Our developers and consultants are making software htmlFor<br /><b>TOP companies in USA and Latam</b>
+  {/* <!-- OUR DEVS --> */}
+  <section id="devs"className="bg-white border-b py-12 ">
+    <h2 className="bg-green text-center text-gray-900 text-3xl pt-8 pb-8">
+      Our developers and consultants are making software for<br /><b>TOP companies in USA and Latam</b>
     </h2>
     <div className="container mx-auto flex flex-wrap items-center justify-between pb-12 pt-8">
       <div className="flex flex-1 flex-wrap max-w-4xl mx-auto items-center justify-between text-xl text-gray-500 font-bold">
@@ -150,7 +150,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
   </section>
 
   {/* <!-- ABOUT US--> */}
-	<section className=" pt-20 py-20  bg-white">
+	<section id="about-us" className=" pt-20 py-20  bg-white">
 		<div className="container mx-auto px-4">
 			<div className="items-center flex flex-wrap">
 				<div className="w-full md:w-4/12 ml-auto mr-auto px-4">
@@ -228,9 +228,9 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 	</section>
 
   {/* <!-- OUR SERVICES --> */}
-  <section className="bg-gray-100 border-b py-8">
+  <section id="services" className="bg-gray-100 border-b py-8">
     <div className="container mx-auto flex flex-wrap pb-12">
-      <h2 className="w-full my-2 text-5xl font-black leading-tight text-center text-gray-800">
+      <h2 className="w-full my-2 text-5xl font-black leading-tight text-center text-gray-900">
         Outsourcing services
       </h2>
       <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
@@ -357,26 +357,26 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 	</section> */}
 
   {/* <!-- CONTACT US --> */}
-  <section className="relative flex items-top justify-center min-h-screen bg-indigo-600 dark:bg-gray-900 sm:items-center sm:pt-0">
+  <section id="contact"className="relative flex items-top justify-center min-h-screen bg-green dark:bg-gray-900 sm:items-center sm:pt-0">
     <div className="pt-2 max-w-6xl mx-auto sm:px-6 lg:px-8">
       <div className="mt-0 overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="p-6 mt-10 mb-24 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
-            <h1 className="text-normal text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
+            <h1 className="text-normal text-4xl sm:text-5xl text-gray-900 dark:text-white font-extrabold tracking-tight">
               Let's talk!
             </h1>
             <br />
-            <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+            <p className="text-normal text-lg sm:text-2xl font-medium text-gray-700 dark:text-gray-400 mt-2">
               Jump-start your business with <b>expert software engineering teams.</b>
             </p>
             <br />
-            <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+            <p className="text-normal text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-400 mt-2">
               Latam
             </p>
             <div className="w-full mb-4">
               <div className="h-1 gradient w-64 opacity-25 my-2 py-0 rounded-t"></div>
             </div>
-            <div className="flex items-center mt-2 text-gray-600 dark:text-gray-400">
+            <div className="flex items-center mt-2 text-gray-700 dark:text-gray-400">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                 viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -390,7 +390,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
             </div>
 
 
-            <div className="flex items-center mt-2 mb-6 text-gray-600 dark:text-gray-400">
+            <div className="flex items-center mt-2 mb-6 text-gray-700 dark:text-gray-400">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                 viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -400,13 +400,13 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
                 latam@slinqer.com
               </div>
             </div>
-            <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+            <p className="text-normal text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-400 mt-2">
               Europe
             </p>
             <div className="w-full mb-4">
               <div className="h-1 gradient w-64 opacity-25 my-2 py-0 rounded-t"></div>
             </div>
-            <div className="flex items-center mt-2 text-gray-600 dark:text-gray-400">
+            <div className="flex items-center mt-2 text-gray-700 dark:text-gray-400">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                 viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -418,7 +418,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
               </div>
             </div>
 
-            <div className="flex items-center mt-2 mb-6 text-gray-600 dark:text-gray-400">
+            <div className="flex items-center mt-2 mb-6 text-gray-700 dark:text-gray-400">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                 viewBox="0 0 24 24" className="w-8 h-8 text-gray-500">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -470,120 +470,38 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
   </section>
 
 	{/* <!-- Begin Footer Section--> */}
-	<footer className="relative bg-gray-300 pt-8 pb-6">
-		<div
-			className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-			// style="height: 80px; transform: translateZ(0px);"
-		>
-			<svg
-				className="absolute bottom-0 overflow-hidden"
-				xmlns="http://www.w3.org/2000/svg"
-				preserveAspectRatio="none"
-				version="1.1"
-				viewBox="0 0 2560 100"
-				x="0"
-				y="0"
-			>
-				<polygon
-					className="text-gray-300 fill-current"
-					points="2560 0 2560 100 0 100"
-				></polygon>
-			</svg>
-		</div>
-		<div className="container mx-auto px-4">
-			<div className="flex flex-wrap">
-				<div className="w-full lg:w-6/12 px-4">
-					<h4 className="text-3xl font-semibold text-gray-800">Sigamos en Contacto!</h4>
-					<h5 className="text-lg mt-0 mb-2 text-gray-700">
-						Encuentranos en nuestras Redes Sociales
-					</h5>
-					<div className="mt-6">
-						<button className="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3" type="button">
-							<i className="flex fab fa-twitter"></i>
-						</button>
-						<button className="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"type="button">
-							<i className="flex fab fa-facebook-square"></i>
-						</button>
-						<button className="bg-white text-blue-700 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3" type="button">
-							<i className="flex fab fa-linkedin"></i>
-						</button>
-						{/* <button onclick="location.href='https://github.com/slinqer'" className="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3" type="button">
-							<i className="flex fab fa-github"></i>
-						</button> */}
-					</div>
-				</div>
-				<div className="w-full lg:w-6/12 px-4">
-					<div className="flex flex-wrap items-top mb-6">
-						<div className="w-full lg:w-4/12 px-4 ml-auto">
-							<span
-								className="block uppercase text-gray-600 text-sm font-semibold mb-2"
-								>Links Utiles</span
-							>
-							<ul className="list-unstyled">
-								<li>
-									<a
-										className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-										href="!"
-										>Acerca de Nosotros</a
-									>
-								</li>
-								<li>
-									<a
-										className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-										href="!"
-										>Blog</a
-									>
-								</li>
-								<li>
-									<a
-										className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-										href="!"
-										>Casos de Exito</a
-									>
-								</li>
-							</ul>
-						</div>
-						<div className="w-full lg:w-4/12 px-4">
-							<span
-								className="block uppercase text-gray-600 text-sm font-semibold mb-2"
-								>Otros Recursos</span
-							>
-							<ul className="list-unstyled">
-								<li>
-									<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="!" >
-										Terminos &amp; Condiciones
-									</a>
-								</li>
-								<li>
-									<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="!">
-										Politica de Privacidad
-									</a>
-								</li>
-								<li>
-									<a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm" href="!">
-										Contactanos
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr className="my-6 border-gray-400" />
-			<div className="flex flex-wrap items-center md:justify-between justify-center">
-				<div className="w-full md:w-4/12 px-4 mx-auto text-center">
-					<div className="text-sm text-gray-600 font-semibold py-1">
-						Copyright © 2021 - Slinqer
-						<br/>
-						<a href="https://www.creative-tim.com" className="text-gray-600 hover:text-gray-900">
-							Hecho con <i className="fas text-red-700 fa-heart"></i>
-							en Colombia
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <div className="bg-gray-800 dark:bg-gray-800">
+      <div className="container flex flex-col items-center px-4 py-6 mx-auto space-y-6 lg:space-y-0 lg:flex-row lg:justify-between">
+        <div className="w-48 text-white dark:text-gray-200">
+          <div className="flex items-center">
+            <svg className="h-7 w-7 -mt-2 flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 27"><path d="M22.487.658s5.03 13.072-1.822 22.171C16.476 28.39 9.84 27.26 5.484 25.68c1.513-3.391 3.441-6.067 5.784-8.03 1.176.623 3.186.792 6.03.51-2.535-.221-4.284-.654-5.246-1.3l.125.08c2.122-1.546 4.556-2.556 7.303-3.029-3.16-.285-6.026.315-8.598 1.804-.577-.742-1.157-1.748-1.74-3.018.07 1.534.339 2.734.809 3.6-2.64 1.797-4.953 4.58-6.94 8.351a7.583 7.583 0 01-.188-.088c-.802-.358-1.328-1.037-1.755-2.036C-1.9 13.366 4.645 8.273 11.123 7.989 23.046 7.465 22.487.658 22.487.658z" fill="#0ED3CF" /></svg>
+             <p className="text-xl ml-2">Slinqer<strong> Software</strong></p>
+          </div>
+        </div>
+        <p className="text-sm text-center text-white dark:text-gray-300">
+          Copyright &copy; 2021 Slinqer S.A.S
+        </p>
+        <div className="flex items-center space-x-6">
+          <a href="#about-us" className="text-sm text-white dark:text-gray-300 hover:underline">About us</a>
+          <a href="#services" className="text-sm text-white dark:text-gray-300 hover:underline">Services</a>
+          <a href="#contact" className="text-sm text-white dark:text-gray-300 hover:underline">Contact</a>
+          <a href="#devs" className="text-sm text-white dark:text-gray-300 hover:underline">Our Devs</a>
+
+          <a href="https://twitter.com/TwComponents" target="_blink" className="text-white dark:text-gray-300">
+              <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.995 6.68799C20.8914 6.15208 21.5622 5.30823 21.882 4.31399C21.0397 4.81379 20.118 5.16587 19.157 5.35499C17.8246 3.94552 15.7135 3.60251 14.0034 4.51764C12.2933 5.43277 11.4075 7.37948 11.841 9.26999C8.39062 9.09676 5.17598 7.4669 2.99702 4.78599C1.85986 6.74741 2.44097 9.25477 4.32502 10.516C3.64373 10.4941 2.97754 10.3096 2.38202 9.97799C2.38202 9.99599 2.38202 10.014 2.38202 10.032C2.38241 12.0751 3.82239 13.8351 5.82502 14.24C5.19308 14.4119 4.53022 14.4372 3.88702 14.314C4.45022 16.0613 6.06057 17.2583 7.89602 17.294C6.37585 18.4871 4.49849 19.1342 2.56602 19.131C2.22349 19.1315 1.88123 19.1118 1.54102 19.072C3.50341 20.333 5.78739 21.0023 8.12002 21C11.3653 21.0223 14.484 19.7429 16.7787 17.448C19.0734 15.1531 20.3526 12.0342 20.33 8.78899C20.33 8.60299 20.3257 8.41799 20.317 8.23399C21.1575 7.62659 21.8828 6.87414 22.459 6.01199C21.676 6.35905 20.8455 6.58691 19.995 6.68799Z"></path>
+              </svg>
+          </a>
+            
+          <a href="https://github.com/tailwindcomponents" target="_blink" className="text-white dark:text-gray-300">
+              <svg viewBox="0 0 30 30" className="w-6 h-6 fill-current">
+                  <path d="M15 1.875C7.75195 1.875 1.875 7.9043 1.875 15.334C1.875 21.2812 5.63672 26.3203 10.8516 28.1016C10.9247 28.1175 10.9994 28.1253 11.0742 28.125C11.5605 28.125 11.748 27.7676 11.748 27.457C11.748 27.1348 11.7363 26.291 11.7305 25.166C11.2963 25.2678 10.8522 25.3209 10.4062 25.3242C7.88086 25.3242 7.30664 23.3613 7.30664 23.3613C6.70898 21.8086 5.84766 21.3926 5.84766 21.3926C4.70508 20.5898 5.8418 20.5664 5.92969 20.5664H5.93555C7.25391 20.6836 7.94531 21.9609 7.94531 21.9609C8.60156 23.1094 9.48047 23.4316 10.2656 23.4316C10.7848 23.4213 11.2959 23.3015 11.7656 23.0801C11.8828 22.2129 12.2227 21.6211 12.5977 21.2812C9.68555 20.9414 6.62109 19.7871 6.62109 14.6309C6.62109 13.1602 7.13086 11.959 7.96875 11.0215C7.83398 10.6816 7.38281 9.31055 8.09766 7.45898C8.19354 7.43604 8.29209 7.42619 8.39062 7.42969C8.86523 7.42969 9.9375 7.61133 11.707 8.8418C13.8572 8.24022 16.1311 8.24022 18.2812 8.8418C20.0508 7.61133 21.123 7.42969 21.5977 7.42969C21.6962 7.42619 21.7947 7.43604 21.8906 7.45898C22.6055 9.31055 22.1543 10.6816 22.0195 11.0215C22.8574 11.9648 23.3672 13.166 23.3672 14.6309C23.3672 19.7988 20.2969 20.9355 17.373 21.2695C17.8418 21.6855 18.2637 22.5059 18.2637 23.7598C18.2637 25.5586 18.2461 27.0117 18.2461 27.4512C18.2461 27.7676 18.4277 28.125 18.9141 28.125C18.9928 28.1253 19.0713 28.1175 19.1484 28.1016C24.3691 26.3203 28.125 21.2754 28.125 15.334C28.125 7.9043 22.248 1.875 15 1.875Z"></path>
+              </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
 </div>
 
 export default withRouter(HomePage);
