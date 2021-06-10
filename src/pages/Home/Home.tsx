@@ -66,7 +66,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
   return (
     <div id="home" className="tracking-normal ">
       {/* <!--Nav--> */}
-      <nav id="header" className="fixed w-full z-30 top-0 text-white bg-white">
+      <nav id="header" className="fixed w-full z-30 top-0 text-white gradient">
 
         <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
