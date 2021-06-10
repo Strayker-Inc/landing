@@ -12,7 +12,14 @@ module.exports = {
         DEFAULT: "#2B2F34"
       }
     },
-    extend: {},
+    extend: {
+      colors: {
+        green: {
+          DEFAULT: '#36d28e',
+          hover : '#059669'
+        }
+      }
+    },
   },
   variants: {
     extend: {},
