@@ -151,7 +151,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
       {/* <!-- OUR PARTNERS --> */}
       <section className="bg-white border-b py-12 ">
         <h2 className="bg-indigo-600 text-center text-white text-3xl pt-8 pb-8">
-          Our developers and consultants are making software htmlFor<br /><b>TOP companies in USA and Latam</b>
+          Our developers and consultants are making software for<br /><b>TOP companies in USA and Latam</b>
         </h2>
         <div className="container mx-auto flex flex-wrap items-center justify-between pb-12 pt-8">
           <div className="flex flex-1 flex-wrap max-w-4xl mx-auto items-center justify-between text-xl text-gray-500 font-bold">
@@ -344,6 +344,32 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
               </div>
             </div>
           </div>
+
+          <div className="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+              <a href="!" className="flex flex-wrap no-underline hover:no-underline">
+                <img className="pt-4 px-auto lg:px-20 xl:px-40 2xl:px-40 sm:px-10 md:px-10 align-center"
+                  src="./assets/images/project-based.png"
+                  alt=""
+                />
+                <div className="w-full font-bold text-xl text-center text-gray-800 px-6 pb-6">
+                  Project-Based Model
+                </div>
+                <p className=" text-black-600 text-center px-6 mb-5">
+                  Your partner company oversees the entire development process: from establishing the specs, to allocating workflow,
+                  setting timescales and quality testing.
+                </p>
+              </a>
+            </div>
+            <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+              <div className="flex items-center justify-end">
+                <button
+                  className="mx-auto lg:mx-0 hover:underline gradient2 text-gray-800 font-extrabold rounded my-6 py-4 px-8 shadow-lg">
+                  Get info
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -352,6 +378,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
         <div className="pt-2 max-w-6xl mx-auto sm:px-6 lg:px-8">
           <div className="mt-0 overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2">
+
               <div className="p-6 mt-10 mb-24 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
                 <h1 className="text-normal text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
                   Let's talk!
@@ -379,7 +406,6 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
                     Colombia
                   </div>
                 </div>
-
 
                 <div className="flex items-center mt-2 mb-6 text-gray-600 dark:text-gray-400">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
