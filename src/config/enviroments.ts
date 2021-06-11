@@ -12,7 +12,7 @@ export class Enviroment {
       return 'https://api.slinqer.com/slinqer'
     } else {
       // local and test url
-      return 'https://ad6abf9806a1.ngrok.io'
+      return 'http://localhost:3001/slinqer'
       // return 'https://api.slinqer.com/slinqer'
     }
   }

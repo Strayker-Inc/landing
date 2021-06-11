@@ -1,10 +1,35 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useState }  from "react";
 import { RouteComponentProps, withRouter  } from "react-router-dom";
 // Interfaces
 import IPage from "../../interfaces/page";
+import IContact from "../../interfaces/contact";
 import './Home.css'
+//Services
+import { HomeService } from "./services/homeService";
 
+const contact : IContact = {
+  name : "",
+  email : "",
+  message : "",
+  company : "",
+}
 const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
+  const [contactInfo] = useState <IContact> (contact);
+  
+  const submitNewContactRequest = () => {
+    const newContactInfo: IContact = {
+      name  : contactInfo.name,
+      email  : contactInfo.email,
+      message  : contactInfo.message,
+      company  : contactInfo.company
+    };
+    console.log('entré -->', newContactInfo);
+    // HomeService.requestNewContact (newContactInfo)
+    // .then (res => {
+    //   console.log (res.data) 
+    // }).catch (console.log);
+  }
+  
 
   const navBarStyles = () => {
     const header = document.getElementById("header");
@@ -456,32 +481,56 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
               >
                 <div className="flex flex-col">
                   <label htmlFor="name" className="hidden">Name</label>
-                  <input type="name" name="name" id="name" placeholder="Your name*"
-                    className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none" />
+                  <input
+                    value={contactInfo.name} 
+                    placeholder="Your Name*"
+                    type="text"
+                    onChange = {e => contactInfo.name = e.target.value}
+                    name="name"
+                    id="name"
+                    className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
+                  />
                 </div>
 
                 <div className="flex flex-col mt-2">
                   <label htmlFor="email" className="hidden">Email</label>
-                  <input type="email" name="email" id="email" placeholder="Work email*"
+                  <input
+                    value={""}
+                    placeholder="example@company.com"
+                    type="email"
+                    onChange= {e => contactInfo.email = e.target.value}
+                    name="email"
+                    id="email"
                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   />
                 </div>
 
                 <div className="flex flex-col mt-2">
                   <label htmlFor="email" className="hidden">Company</label>
-                  <input type="text" name="company" id="company" placeholder="Company Name*"
+                  <input value={""}
+                    placeholder="Company Name*"
+                    type="text"
+                    onChange= {e => contactInfo.company = e.target.value}
+                    name="company"
+                    id="company"
                     className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   />
                 </div>
 
                 <div className="flex flex-col mt-2">
                   <label htmlFor="message" className="hidden">Message</label>
-                  <input type="text" name="message" id="message" placeholder="Who can help you?*"
+                  <input
+                    type="text"
+                    onChange= {e => contactInfo.company = e.target.value}
+                    name="message"
+                    id="message"
+                    placeholder="Who can help you?*"
                     className="w-100 mt-2 py-8 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                   />
                 </div>
 
                 <button type="submit"
+                  onClick={() => submitNewContactRequest ()}
                   className="md:w-32 bg-white hover:bg-blue-dark text-gray-800 font-bold mt-2 py-4 px-6 rounded-lg mt-3 hover:bg-indigo-300 transition ease-in-out duration-300">
                   Submit
                 </button>
