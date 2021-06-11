@@ -9,11 +9,11 @@ export class Enviroment {
     /*read de node Env variable https://create-react-app.dev/docs/adding-custom-environment-variables/#expanding-environment-variables-in-env */
     if (process.env.NODE_ENV==='production') {
       //Production mode
-      return 'https://api.slinqer.com/slinqer/landing/contact'
+      return 'https://api.slinqer.com/slinqer'
     } else {
       // local and test url
       return 'https://ad6abf9806a1.ngrok.io'
-      // return 'https://api.slinqer.com/pets'
+      // return 'https://api.slinqer.com/slinqer'
     }
   }
 }
