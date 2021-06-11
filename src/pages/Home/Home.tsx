@@ -435,7 +435,7 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
                   <div className="ml-4 text-md tracking-wide font-semibold w-40">
                     Lithuania
                   </div>
-                </div>lo.svg
+                </div>
 
                 <div className="flex items-center mt-2 mb-6 text-gray-600 dark:text-gray-400">
                   <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -450,7 +450,10 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
 
               </div>
 
-              <form className="p-6 flex flex-col justify-center">
+              <form className="p-6 flex flex-col justify-center"
+                action="https://ad6abf9806a1.ngrok.io/slinqer/landing/contact"
+                method="post"
+              >
                 <div className="flex flex-col">
                   <label htmlFor="name" className="hidden">Name</label>
                   <input type="name" name="name" id="name" placeholder="Your name*"
