@@ -14,8 +14,8 @@ const Navbar = () => {
 
     if (header && navButton && slinqerLogo && navcontent) {
       if (scrollpos > 10 ) {
+        header.classList.remove("gradient");
         header.classList.add("bg-white");
-        // header.classList.remove("gradient");
         // Nav Button
         navButton.classList.remove("bg-white");
         navButton.classList.add("gradient");
@@ -34,7 +34,7 @@ const Navbar = () => {
       } else {
         slinqerLogo.src = './assets/images/logo_symbolic.svg'
         header.classList.remove("bg-white");
-        // header.classList.add("gradient");
+        header.classList.add("gradient");
         // BUtton
         navButton.classList.remove("gradient");
         navButton.classList.add("bg-white");
@@ -87,7 +87,7 @@ const Navbar = () => {
         >
           <ul className="list-reset lg:flex justify-end flex-1 items-center">
             <li className="mr-3">
-              <a className="toggleColour text-white font-bold inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="!">
+              <a className="toggleColour text-white font-bold inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">
                 Blog (Proximamente)
               </a>
             </li>
