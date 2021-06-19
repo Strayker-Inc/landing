@@ -6,7 +6,7 @@ const Footer = () =>
           <img className="h-12" src="./assets/images/logo.svg" alt="logo slinqer" />
         </div>
       </div>
-      <p className="text-sm text-center text-black dark:text-white-300">
+      <p className="text-sm text-center text-black dark:text-white-300 text-lg font-inter">
         Copyright &copy; 2021 Slinqer S.A.S
       </p>
       <div className="flex items-center space-x-6">

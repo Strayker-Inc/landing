@@ -54,7 +54,7 @@ const ContactSection = () => {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                <div className="ml-4 text-md tracking-wide  w-40">
                   Colombia
                 </div>
               </div>
@@ -65,11 +65,11 @@ const ContactSection = () => {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                <a href="mailto:latam@slinqer.com"className="ml-4 text-md tracking-wide font-semibold w-40 hover:underline">
                   latam@slinqer.com
-                </div>
+                </a>
               </div>
-              <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 dark:text-gray-400 mt-2">
+              <p className="text-normal text-lg sm:text-xl text-gray-600 dark:text-gray-400 mt-2">
                 Europe
               </p>
               <div className="w-full mb-4">
@@ -82,7 +82,7 @@ const ContactSection = () => {
                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                <div className="ml-4 text-md tracking-wide w-40">
                   Lithuania
                 </div>
               </div>
@@ -93,9 +93,9 @@ const ContactSection = () => {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <div className="ml-4 text-md tracking-wide font-semibold w-40">
+                <a href="mailto:europe@slinqer.com" className="ml-4 text-md tracking-wide font-semibold w-40 hover:underline">
                   europe@slinqer.com
-                </div>
+                </a>
               </div>
 
             </div>
@@ -137,6 +137,7 @@ const ContactSection = () => {
                 <label htmlFor="message" className="hidden">Message</label>
                 <textarea
                   {...register("message")}
+                  placeholder="Your message"
                   className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                 />
               </div>

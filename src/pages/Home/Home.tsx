@@ -15,7 +15,7 @@ import Navbar from "../../components/Navbar";
 const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
 
   return (
-    <div className="tracking-normal">
+    <div className="tracking-normal font-inter">
       {/* <!--Nav--> */}
       <Navbar />
 
