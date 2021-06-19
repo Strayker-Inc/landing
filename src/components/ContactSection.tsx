@@ -12,7 +12,7 @@ type Inputs  = {
   company: string
 }
 
-const ContactSection = () => {
+const ContactSection = (props: any) => {
   const [messageSended, setMessageSended] = useState(false)
   const { register, handleSubmit, reset } = useForm<Inputs>();
 

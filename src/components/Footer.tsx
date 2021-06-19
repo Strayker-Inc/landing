@@ -1,4 +1,4 @@
-const Footer = () =>
+const Footer = (props: any) =>
   <footer className="bg-white dark:bg-white-800">
     <div className="container flex flex-col items-center px-4 py-6 mx-auto space-y-6 lg:space-y-0 lg:flex-row lg:justify-between">
       <div className="w-48  dark:text-white-200">

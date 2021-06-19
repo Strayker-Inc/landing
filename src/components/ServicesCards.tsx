@@ -1,4 +1,4 @@
-const ServicesCards = () =>
+const ServicesCards = (props: any) =>
   <section className="border-b bg-gray-100 py-8">
     <h2 className="w-full my-2 text-5xl font-black leading-tight text-center text-gray-800">
       Our Services

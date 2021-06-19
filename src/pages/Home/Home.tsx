@@ -11,13 +11,15 @@ import ContactSection from '../../components/ContactSection';
 import Partners from "../../components/Partners";
 import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
+import {useTranslation} from "react-i18next";
 
 const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
+  const {t} = useTranslation('common');
 
   return (
     <div className="tracking-normal font-inter">
       {/* <!--Nav--> */}
-      <Navbar />
+      <Navbar t={t} />
 
       {/* <!-- HERO --> */}
       <Hero />

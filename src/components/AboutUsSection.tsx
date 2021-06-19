@@ -1,4 +1,4 @@
-const AboutUsSection = () =>
+const AboutUsSection = (props: any) =>
   <section className=" pt-20 py-20  bg-gray-100 ">
     <div className="container mx-auto px-4">
       <div className="items-center flex flex-wrap">

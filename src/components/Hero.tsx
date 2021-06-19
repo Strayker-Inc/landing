@@ -1,4 +1,4 @@
-const Hero = () =>
+const Hero = (props: any) =>
   <section className="relative overflow-hidden font-inter">
     <div className="max-w-7xl mx-auto">
       <div className="relative mt-28 z-10 pb-8  sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 lg:mt-48">
