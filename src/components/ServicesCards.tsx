@@ -4,7 +4,7 @@ const ServicesCards = () =>
       Our Services
     </h2>
 
-    <div className="grid grid-cols-1 gap-10 mx-8 2xl:grid-cols-3 my-10 2xl:mx-32">
+    <div className="grid grid-cols-1 gap-10 mx-8 2xl:grid-cols-3 my-10 2xl:mx-30">
 
       <div className="px-4 py-4 transform transition duration-500 hover:scale-110 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div className="md:flex">

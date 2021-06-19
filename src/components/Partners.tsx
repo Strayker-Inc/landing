@@ -1,5 +1,5 @@
 const Partners = () =>
-  <section className="bg-white border-b py-12 ">
+  <section className="bg-white border-b ">
     <h2 className="gradient text-center text-white text-3xl pt-8 pb-8">
       Our developers and consultants are making software for<br /><b>TOP companies in USA and Latam</b>
     </h2>
