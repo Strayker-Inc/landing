@@ -39,10 +39,10 @@ const Navbar = (props: any) => {
           toToggle[i].classList.remove("text-white");
         }
         //Use to switch toggleColour colours
-        for (var i = 0; i < toToggle.length; i++) {
-          toToggle[i].classList.add("text-black");
-          toToggle[i].classList.remove("font-bold");
-          toToggle[i].classList.remove("text-white");
+        for (var j = 0; j < toToggle.length; j++) {
+          toToggle[j].classList.add("text-black");
+          toToggle[j].classList.remove("font-bold");
+          toToggle[j].classList.remove("text-white");
         }
         header.classList.add("shadow");
         navcontent.classList.remove("bg-gray-100");
