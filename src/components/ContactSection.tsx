@@ -26,7 +26,7 @@ const ContactSection = (props: any) => {
     };
   }
   return (
-    <section className="relative flex items-top justify-center min-h-screen gradient dark:bg-green sm:items-center sm:pt-0">
+    <section id="contactForm" className="relative flex items-top justify-center min-h-screen gradient dark:bg-green sm:items-center sm:pt-0">
       <div className="pt-2 max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div className="mt-0 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">

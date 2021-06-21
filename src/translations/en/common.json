@@ -18,10 +18,11 @@
     "subTitle": "TOP companies in USA and Latam"
   },
   "aboutUs": {
-
+    "title": "About",
+    "text": "We are the global software development consultant who develops and deploy most complex and high-profile projects"
   },
   "servicesCards": {
-    "title": "Our Services",
+    "title": "Services",
     "firstCard": {
       "title": "Staff Augmentation",
       "text": "Expert software engineers work together with your internal team on your projects. These engineers join your existing staff, often working remote until project completion."

@@ -18,10 +18,11 @@
     "subTitle": "compañias TOP en Estados Unidos y LATAM"
   },
   "aboutUs": {
-
+    "title": "Quienes Somos",
+    "text": "Somos una consultora de desarrollo de software, que construye y despliega los proyectos más complejos y desafiantes para sus clientes."
   },
   "servicesCards": {
-    "title": "Nuestros Servicios",
+    "title": "Servicios",
     "firstCard": {
       "title": "Aumento de Personal",
       "text": "Nuestros ingenieros expertos trabajan junto a tu equipo interno de tecnologia. Ellos se unen a su equipo actual de manera remota hasta la finalización del proyecto."

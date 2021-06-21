@@ -1,10 +1,10 @@
 const ServicesCards = (props: any) =>
-  <section className="border-b bg-gray-100 py-8">
-    <h2 className="w-full my-2 text-5xl font-black leading-tight text-center text-gray-800">
+  <section className="border-b bg-gray-100 pt-8">
+    <h2 className="w-full mt-20 text-5xl font-black text-center text-gray-800">
       {props.t('servicesCards.title')}
     </h2>
 
-    <div className="grid grid-cols-1 gap-10 mx-8 2xl:grid-cols-3 my-10 2xl:mx-30">
+    <div className="grid grid-cols-1 gap-10 mx-8 mt-20 mb-40 sm:mx-24  2xl:grid-cols-3">
 
       <div className="px-4 py-4 transform transition duration-500 hover:scale-110 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div className="md:flex">

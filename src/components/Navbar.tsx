@@ -91,9 +91,9 @@ const Navbar = (props: any) => {
     <nav id="header" className="fixed w-full z-30 top-0 text-white gradient">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
-        <div className="pl-4 flex items-center">
+        <a href="#top" className="pl-4 flex items-center">
           <img id="logo" className="h-16 fill-current inline" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
-        </div>
+        </a>
 
         {/* <!-- Drop menu (responsive design) --> */}
         <div className="block lg:invisible pr-4">
@@ -126,11 +126,12 @@ const Navbar = (props: any) => {
               Blog (Proximamente)
             </li> */}
           </ul>
-          <button id="navButton"
+          <a id="navButton"
+            href="#contactForm"
             className="mx-auto lg:mx-0  bg-white text-gray-800 font-inter font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75"
           >
             {props.t('navbar.contact')}
-          </button>
+          </a>
         </div>
       </div>
 

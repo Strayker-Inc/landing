@@ -24,11 +24,11 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
       {/* <!-- HERO --> */}
       <Hero t={t} />
 
-      {/* <!-- OUR PARTNERS --> */}
-      <Partners t={t} />
-
       {/* <!-- ABOUT US--> */}
       <AboutUs t={t}/>
+
+      {/* <!-- OUR PARTNERS --> */}
+      <Partners t={t} />
 
       {/* <!-- OUR SERVICES --> */}
       <ServicesCards t={t}/>
