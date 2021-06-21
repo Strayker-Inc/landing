@@ -1,7 +1,7 @@
 const ServicesCards = (props: any) =>
   <section className="border-b bg-gray-100 py-8">
     <h2 className="w-full my-2 text-5xl font-black leading-tight text-center text-gray-800">
-      Our Services
+      {props.t('servicesCards.title')}
     </h2>
 
     <div className="grid grid-cols-1 gap-10 mx-8 2xl:grid-cols-3 my-10 2xl:mx-30">
@@ -12,10 +12,9 @@ const ServicesCards = (props: any) =>
             <img className="h-48 w-full object-fit md:h-full md:w-48" src="/assets/images/staff.svg" alt="Man looking at item at a store"/>
           </div>
           <div className="py-8 pl-8 pr-4">
-            <h2 className="block mt-1 text-3xl font-extrabold text-green">Staff Augmentation</h2>
+            <h2 className="block mt-1 text-3xl font-extrabold text-green">{props.t('servicesCards.firstCard.title')}</h2>
             <p className="mt-2 text-gray-500">
-              Expert software engineers work together with your internal team on your projects. These engineers join your existing
-              staff, often working remote until project completion.
+              {props.t('servicesCards.firstCard.text')}
             </p>
           </div>
         </div>
@@ -27,10 +26,9 @@ const ServicesCards = (props: any) =>
             <img className="h-48 w-full object-fit md:h-full md:w-48" src="/assets/images/team.svg" alt="Man looking at item at a store"/>
           </div>
           <div className="py-8 pl-8 pr-4">
-            <h2 className="block mt-1 text-3xl font-extrabold text-green">Dedicated Teams</h2>
+            <h2 className="block mt-1 text-3xl font-extrabold text-green">{props.t('servicesCards.secondCard.title')}</h2>
             <p className="mt-2 text-gray-500">
-              Presents talent which directly oversees the whole development project. This option provides a management structure with
-              hands-on supervision of the workflow and tasks.
+              {props.t('servicesCards.secondCard.text')}
             </p>
           </div>
         </div>
@@ -42,10 +40,9 @@ const ServicesCards = (props: any) =>
             <img className="h-48 w-full object-fit md:h-full md:w-48" src="/assets/images/product.svg" alt="Man looking at item at a store"/>
           </div>
           <div className="py-8 pl-8 pr-4">
-            <h2 className="block mt-1 text-3xl font-extrabold text-green">Project-Based Model</h2>
+            <h2 className="block mt-1 text-3xl font-extrabold text-green">{props.t('servicesCards.thirthCard.title')}</h2>
             <p className="mt-2 text-gray-500">
-              Your partner company oversees the entire development process: from establishing the specs, to allocating workflow,
-              setting timescales and quality testing.
+              {props.t('servicesCards.thirthCard.text')}
             </p>
           </div>
         </div>

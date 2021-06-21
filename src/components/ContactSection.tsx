@@ -33,11 +33,11 @@ const ContactSection = (props: any) => {
 
             <div className="p-6 mt-10 mb-24 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
               <h1 className="text-normal text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
-                Let's talk!
+                {props.t('contact.title')}
               </h1>
               <br />
               <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
-                Jump-start your business with <b>expert software engineering teams.</b>
+                {props.t('contact.text')}
               </p>
               <br />
               <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 dark:text-gray-400 mt-2">
@@ -108,7 +108,7 @@ const ContactSection = (props: any) => {
                 <input
                   {...register("name")}
                   type="text"
-                  placeholder="Your Name"
+                  placeholder={props.t('contact.form.name')}
                   className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                 />
               </div>
@@ -118,7 +118,7 @@ const ContactSection = (props: any) => {
                 <input
                   {...register("email")}
                   type="email"
-                  placeholder="your_email@example.com"
+                  placeholder={props.t('contact.form.email')}
                   className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                 />
               </div>
@@ -128,7 +128,7 @@ const ContactSection = (props: any) => {
                 <input
                   {...register("company")}
                   type="text"
-                  placeholder="Your Company (Optional)"
+                  placeholder={props.t('contact.form.company')}
                   className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                 />
               </div>
@@ -137,7 +137,7 @@ const ContactSection = (props: any) => {
                 <label htmlFor="message" className="hidden">Message</label>
                 <textarea
                   {...register("message")}
-                  placeholder="Your message"
+                  placeholder={props.t('contact.form.message')}
                   className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"
                 />
               </div>
@@ -147,7 +147,7 @@ const ContactSection = (props: any) => {
                   <div className="text-center py-4 lg:px-4">
                     <div className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
                       <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">👍</span>
-                      <span className="font-semibold mr-2 text-left flex-auto">Thanks!. We will reply to you as soon as possible</span>
+                      <span className="font-semibold mr-2 text-left flex-auto">{props.t('contact.form.confirmation')}</span>
                     </div>
                   </div>
               }
@@ -155,7 +155,7 @@ const ContactSection = (props: any) => {
               <button type="submit"
                 className="md:w-32 bg-white hover:bg-blue-dark text-gray-800 font-bold mt-2 py-4 px-6 rounded-lg mt-3 hover:bg-indigo-300 transition ease-in-out duration-300"
               >
-                Submit
+                {props.t('contact.form.button')}
               </button>
             </form>
 

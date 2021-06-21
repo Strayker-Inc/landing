@@ -9,23 +9,23 @@ const Hero = (props: any) =>
         <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div className="sm:text-center lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-800 sm:text-5xl md:text-6xl">
-              <span className="block xl:inline">Make your IT problems,</span>
-              <span className="block text-green xl:inline">Our problems.</span>
+              <span className="block xl:inline">{props.t('hero.title')}</span>
+              <span className="block text-green xl:inline">{props.t('hero.titleColored')}</span>
             </h1>
             <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-              With our IT outsourcing model by TOP teams from Latam. Focus on your business while we focus on your technology.
+              {props.t('hero.text')}
             </p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
               <div className="rounded-md ">
                 <a href="!"
                   className="w-full flex items-center justify-center mx-auto lg:mx-0 hover:underline gradient text-white font-inter font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
-                  Contact
+                  {props.t('hero.buttons.contact')}
                 </a>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <a href="!"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent font-medium  text-green  md:py-4 md:text-lg md:px-10">
-                  About us
+                  {props.t('hero.buttons.aboutUs')}
                 </a>
               </div>
             </div>

@@ -1,7 +1,9 @@
 const Partners = (props: any) =>
   <section className="bg-white border-b ">
     <h2 className="gradient text-center text-white text-3xl pt-8 pb-8">
-      Our developers and consultants are making software for<br /><b>TOP companies in USA and Latam</b>
+      {props.t('partners.title')}
+      <br />
+      <b>{props.t('partners.subTitle')}</b>
     </h2>
     <div className="container mx-auto flex flex-wrap items-center justify-between pb-12 pt-8">
       <div className="flex flex-1 flex-wrap max-w-4xl mx-auto items-center justify-between text-xl text-gray-500 font-bold">

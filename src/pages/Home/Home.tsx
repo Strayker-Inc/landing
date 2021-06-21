@@ -22,22 +22,22 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
       <Navbar t={t} />
 
       {/* <!-- HERO --> */}
-      <Hero />
+      <Hero t={t} />
 
       {/* <!-- OUR PARTNERS --> */}
-      <Partners />
+      <Partners t={t} />
 
       {/* <!-- ABOUT US--> */}
-      <AboutUs />
+      <AboutUs t={t}/>
 
       {/* <!-- OUR SERVICES --> */}
-      <ServicesCards />
+      <ServicesCards t={t}/>
 
       {/* <!-- CONTACT US --> */}
-      <ContactSection />
+      <ContactSection t={t}/>
 
       {/* <!-- Begin Footer Section--> */}
-      <Footer />
+      <Footer t={t}/>
 
     </div>
   );
