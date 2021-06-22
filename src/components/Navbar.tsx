@@ -3,6 +3,10 @@ import '../pages/Home/Home.css';
 import Switch from "react-switch";
 import {useTranslation} from "react-i18next";
 
+const styleNavbar: any = {
+  transition: "0.8s"
+};
+
 const Navbar = (props: any) => {
   const {i18n} = useTranslation('common');
   const [languageCheck, setLanguageCheck] = useState(false);
@@ -89,7 +93,7 @@ const Navbar = (props: any) => {
   }, []);
 
   return (
-    <nav id="header" className="fixed w-full z-30 top-0 text-white bg-transparent">
+    <nav id="header" className="fixed w-full z-30 top-0 text-white bg-transparent" style={styleNavbar} >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
         <a href="#top" className="pl-4 flex items-center">

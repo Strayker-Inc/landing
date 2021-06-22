@@ -3,9 +3,9 @@ const styleSection: any  = {
 };
 
 const Hero = (props: any) =>
-  <section className="flex h-screen bg-scroll font-inter opacity-95" style={styleSection}>
+  <section className="flex h-screen bg-fixed font-inter opacity-90" style={styleSection}>
     <div className="m-auto text-center">
-      <h1 className="text-5xl font-extrabold text-white  md:text-6xl shadow opacity-90">
+      <h1 className="text-5xl font-extrabold text-white  md:text-6xl shadow">
         <span>{props.t('hero.title')}</span>
         <br />
         <span className="text-green shadow">{props.t('hero.titleColored')}</span>
@@ -16,7 +16,7 @@ const Hero = (props: any) =>
       <div className="mt-5 sm:mt-8 flex justify-center">
         <div className="rounded-md ">
           <a href="#contactForm"
-            className="w-full bg-white flex items-center justify-center mx-auto  hover:underline text-gray-800 font-inter font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
+            className="w-full gradient flex items-center justify-center mx-auto  hover:underline text-white font-inter font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow ">
             {props.t('hero.buttons.contact')}
           </a>
         </div>
