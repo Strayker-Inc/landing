@@ -3,7 +3,7 @@ const styleSection: any  = {
 };
 
 const Hero = (props: any) =>
-  <section className="flex h-screen bg-fixed font-inter opacity-95" style={styleSection}>
+  <section className="flex h-screen bg-scroll font-inter opacity-95" style={styleSection}>
     <div className="m-auto text-center">
       <h1 className="text-5xl font-extrabold text-white  md:text-6xl shadow opacity-90">
         <span>{props.t('hero.title')}</span>
