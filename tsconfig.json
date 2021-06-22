@@ -1,5 +1,5 @@
 {
-  "compileOnSave": true,
+  // "compileOnSave": true,
 	"compilerOptions": {
     "target": "ES2020",
 		"module": "esnext",

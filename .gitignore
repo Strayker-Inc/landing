@@ -62,7 +62,7 @@ node_modules/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+# .env TODO: pass the .env variables to cloud functions privately https://stackoverflow.com/questions/34442739/how-does-one-set-private-environment-variables-on-firebase-hosting
 
 build
 package-lock.json
