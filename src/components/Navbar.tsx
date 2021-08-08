@@ -105,13 +105,13 @@ const Navbar = (props: any) => {
     <nav id="header" className="fixed w-full z-30 top-0 text-white bg-transparent" style={styleNavbar} >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
-        <a href="#top" className="pl-4 flex items-center">
+        <a href="#top" className="invisible pl-4 flex items-center lg:visible">
           <img id="logo" className="h-24 fill-current inline" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
         </a>
 
         <div className="block lg:invisible pr-4">
           <button id="nav-toggle" onClick={() => setShowDropMenu(!showDropMenu)} className="flex items-center p-1 text-orange-800 hover:text-gray-900">
-            <svg className="fill-current h-6 w-6" style={{color: "black"}} viewBox="0 0 20 20"
+            <svg className="fill-current h-6 w-6" style={{color: "white"}} viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
               <title>Menu</title>
               <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
