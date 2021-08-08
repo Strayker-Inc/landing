@@ -16,13 +16,20 @@ module.exports = {
           ligth: "#36D28F",
 
         }
-      }
+      },
+      dropShadow: {
+        'white': '0 35px 35px rgba(255, 255, 255, 0.1)',
+      },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
+      },
     },
   },
   variants: {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms'), // import tailwind forms
+    require('@tailwindcss/forms'),
  ],
 }

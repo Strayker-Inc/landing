@@ -4,12 +4,17 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta content="We are a software development company that develops software solutions for companies that want to make an impact through technology."
+    <meta name="theme-color" content="#215F78" />
+    <meta property="og:title" content="Slinqer: Creditos de Carbono">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://slinqer.com">
+    <meta property="og:image" content="https://res.cloudinary.com/slinqer/image/upload/v1628462309/slinqer-meta-landing.png">
+    <meta property="og:site_name" content="https://slinqer.com">
+    <meta content="Marketplace Verde para adquirir, certificar y trazabilizar creditos de carbono en proyectos ambientales en Colombia"
       name="description"
     >
-    <meta content="Software consulting, Custom Software Development, Web development firm, Mobile development firm" name="keywords">
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta content="Creditos de Carbono, Bonos verdes, Bonos de Carbono Colombia, Bonos verdes" name="keywords">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -26,7 +31,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Software Development Company: Slinqer</title>
+    <title>Slinqer: Creditos de Carbono</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -41,5 +46,29 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyBAP73mLmqHTYojhQcEYcSujsPni0fy7Xw",
+        authDomain: "slinqer-landing.firebaseapp.com",
+        databaseURL: "https://slinqer-landing.firebaseio.com",
+        projectId: "slinqer-landing",
+        storageBucket: "slinqer-landing.appspot.com",
+        messagingSenderId: "12233517365",
+        appId: "1:12233517365:web:c9e8c549fdf205fbc6c47c",
+        measurementId: "G-Y6QYZP8N0Q"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>
