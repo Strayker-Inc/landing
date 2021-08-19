@@ -6,12 +6,11 @@ const logosStyles: React.CSSProperties = {
   width: '40px',
 }
 
-const partnersLogosStyles: React.CSSProperties = {
-  width: '130px',
-}
 const Hero = (props: any) =>
   <section className="flex h-screen bg-fixed font-inter" style={heroStyles}>
-    <div className="sm:m-auto text-center bg-white shadow-lg rounded-3xl p-5 sm:p-6 bg-opacity-5" style={{backdropFilter: "blur(20px)"}}>
+    <div className="mx-5 my-20 p-5 sm:p-6 sm:m-auto text-center bg-white shadow-lg rounded-3xl bg-opacity-5"
+      style={{backdropFilter: "blur(20px)"}}
+    >
 
       <div className="visible flex justify-center lg:hidden">
         <img id="logo" className="h-24" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
@@ -45,15 +44,15 @@ const Hero = (props: any) =>
         </div> */}
       </div>
       <span className="text-white font-semibold  sm:text-lg sm:max-w-xl sm:mx-auto md:text-2xl">{props.t('hero.support')}</span>
-      <div className="my-3 sm:mt-8 flex justify-center">
-        <a href="https://www2.javerianacali.edu.co/vicerrectoria-academica/oficina-de-emprendimiento#gsc.tab=0" target="_blank" rel="noreferrer">
-          <img className="mx-8 transform transition duration-500 hover:scale-150" src="./assets/images/javeriana.png" alt="" style={partnersLogosStyles}/>
-        </a>
+      <div className="my-6 sm:my-10 flex justify-center">
         <a href="https://www.instagram.com/ecopoop.cali/" target="_blank" rel="noreferrer">
-          <img className="mx-8 transform transition duration-500 hover:scale-150" src="./assets/images/ecopoop2.png" alt="" />
+          <img className="w-20 transform transition duration-500 hover:scale-150" src="./assets/images/ecopoop2.png" alt="" />
+        </a>
+        <a href="https://www2.javerianacali.edu.co/vicerrectoria-academica/oficina-de-emprendimiento#gsc.tab=0" target="_blank" rel="noreferrer">
+          <img className="w-28 mx-5 sm:mx-20 transform transition duration-500 hover:scale-150" src="./assets/images/javeriana.png" alt=""/>
         </a>
         <a href="https://www2.javerianacali.edu.co/vicerrectoria-academica/oficina-de-emprendimiento/campus-novar-incubator#gsc.tab=0" target="_blank" rel="noreferrer">
-          <img className="mx-8 transform transition duration-500 hover:scale-150" src="./assets/images/campus.png" alt="" width="160"/>
+          <img className="w-28 transform transition duration-500 hover:scale-150" src="./assets/images/campus.png" alt="" />
         </a>
       </div>
     </div>
