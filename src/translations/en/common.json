@@ -7,7 +7,7 @@
   "hero": {
     "title": "Offset your carbon footprint",
     "titleColored": "It has never been easier.",
-    "text": "Slinqer is a platform that connects sustainable brands with people who want to offset their carbon footprint.",
+    "text": "We are the first platform that connects sustainable brands with people who want to offset their carbon footprint.",
     "support": "Backed by",
     "buttons": {
       "contact": "Contact",
@@ -41,12 +41,13 @@
     "title": "Let's talk!",
     "text": "Jump-start your business with expert software engineering teams.",
     "form": {
+      "phone_email": "Phone or email",
       "name": "Your name",
       "email": "Your email",
       "company": "Your Company",
       "message": "Your message",
-      "button": "Send",
-      "confirmation": "Thanks!. We will reply to you as soon as possible"
+      "button": "I want to join the sustainable revolution!",
+      "confirmation": "We will contact you so you can test the platform, follow us on our networks to learn more."
     }
   },
   "footer": {

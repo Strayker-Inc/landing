@@ -7,8 +7,8 @@
   "hero": {
     "title": "Compensar tu huella de Carbono",
     "titleColored": "Nunca fue tan fácil.",
-    "text": "Slinqer es una plataforma que conecta marcas sostenibles con personas que quieren compensar su huella de Carbono.",
-    "support": "Apoyan",
+    "text": "Somos la primera plataforma que conecta marcas sostenibles con personas que quieren compensar su huella de Carbono.",
+    "support": "Aliados",
     "buttons": {
       "contact": "Contacto",
       "aboutUs": "Acerca Nuestro"
@@ -42,11 +42,12 @@
     "text": "Potencia tu negocio con equipos expertos en desarrollo de software.",
     "form": {
       "name": "Tu nombre",
+      "phone_email": "Telefono o Correo",
       "email": "Tu correo",
       "company": "Tu empresa (Opcionál)",
       "message": "Dejanos tu mensaje",
-      "button": "Enviar",
-      "confirmation": "Genial!. Te contactaremos tan pronto nos sea posible"
+      "button": "¡Quiero unirme a la revolucion sostenible!",
+      "confirmation": "Te contactaremos para que puedas probar la plataforma, síguenos en nuestras redes para saber más."
     }
   },
   "footer": {

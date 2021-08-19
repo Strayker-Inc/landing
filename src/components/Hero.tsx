@@ -1,61 +1,112 @@
+import React, { useState }  from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+// Interfaces
+import IContact from "../interfaces/contact";
+// Services
+import LandingService from '../services/landing.service';
+
 const heroStyles: React.CSSProperties = {
   backgroundImage: `url('./assets/images/background.png')`,
 };
 
-const logosStyles: React.CSSProperties = {
-  width: '40px',
-}
+const Hero = (props: any) => {
+  const [messageSended, setMessageSended] = useState(false)
+  const [sendingRequest, setSendingRequest] = useState(false)
+  const { register, handleSubmit } = useForm<IContact>();
 
-const Hero = (props: any) =>
-  <section className="flex h-screen bg-fixed font-inter" style={heroStyles}>
-    <div className="mx-5 my-20 p-5 sm:p-6 sm:m-auto text-center bg-white shadow-lg rounded-3xl bg-opacity-5"
-      style={{backdropFilter: "blur(20px)"}}
-    >
+  const onSubmit: SubmitHandler<IContact> = async data => {
+    try {
+      setSendingRequest(true);
+      await LandingService.send(data);
+      setMessageSended(true);
+    } catch (e) {
+      console.error (e.message)
+    } finally {
+      setSendingRequest(false);
+    }
+  }
 
-      <div className="visible flex justify-center lg:hidden">
-        <img id="logo" className="h-24" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
-      </div>
-      <h1 className="text-3xl mt-3 font-extrabold text-white lg:text-5xl ">
-        <span>{props.t('hero.title')}</span>
-        <br />
-        <span className="text-green">{props.t('hero.titleColored')}</span>
-      </h1>
-      <p className="text-xl mt-8 text-white font-semibold  sm:max-w-xl sm:mx-auto ">
-        {props.t('hero.text')}
-      </p>
-      <div className="my-5 sm:mt-8 flex justify-center">
-        <a href="https://twitter.com/slinqer" target="_blank" rel="noreferrer">
-          <img className="mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-twitter.svg" alt="" style={logosStyles}/>
-        </a>
-        <a href="https://instagram.com/slinqerglobal" target="_blank" rel="noreferrer">
-          <img className="mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-instagram.svg" alt="" style={logosStyles}/>
-        </a>
-        <a href="https://slinqer.medium.com" target="_blank" rel="noreferrer">
-          <img className="mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-medium.svg" alt="" style={logosStyles}/>
-        </a>
-        <a href="https://github.com/slinqer" target="_blank" rel="noreferrer">
-          <img className="mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-github.svg" alt="" style={logosStyles}/>
-        </a>
-        {/* <div className="rounded-md ">
-          <a href="#contactForm"
-            className="w-full gradient flex items-center justify-center mx-auto  hover:underline text-white font-inter font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow ">
-            {props.t('hero.buttons.contact')}
+  return (
+    <section className="flex h-screen bg-fixed font-inter" style={heroStyles}>
+      <div className="mx-5 my-auto p-5 sm:p-6 sm:m-auto text-center backdrop-filter backdrop-blur-lg bg-white shadow-lg rounded-3xl bg-opacity-5">
+
+        <div className="visible flex justify-center lg:hidden">
+          <img id="logo" className="h-12" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
+        </div>
+        <h1 className="text-3xl mt-3 font-extrabold text-white leading-none tracking-tight lg:text-5xl ">
+          <span>{props.t('hero.title')}</span>
+          <br />
+          <span className="text-green">{props.t('hero.titleColored')}</span>
+        </h1>
+        <p className="text-xl my-4 text-white font-semibold leading-tight tracking-tight sm:max-w-lg sm:mx-auto ">
+          {props.t('hero.text')}
+        </p>
+        <div className="my-3 sm:mt-8 flex justify-center">
+          <a href="https://twitter.com/slinqer" target="_blank" rel="noreferrer">
+            <img className="w-10 mx-2 sm:mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-twitter.svg" alt=""/>
           </a>
-        </div> */}
+          <a href="https://instagram.com/slinqerglobal" target="_blank" rel="noreferrer">
+            <img className="w-10 mx-2 sm:mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-instagram.svg" alt=""/>
+          </a>
+          <a href="https://slinqer.medium.com" target="_blank" rel="noreferrer">
+            <img className="w-10 mx-2 sm:mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-medium.svg" alt=""/>
+          </a>
+          <a href="https://github.com/slinqer" target="_blank" rel="noreferrer">
+            <img className="w-10 mx-2 sm:mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-github.svg" alt=""/>
+          </a>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {
+            !messageSended ?
+              <>
+                <div className="p-2 flex justify-center">
+                  <label htmlFor="name" className="hidden">Name</label>
+                  <input
+                    {...register("phone_mail")}
+                    type="text"
+                    placeholder={props.t('contact.form.phone_email')}
+                    className="mt-2 py-3 px-3 rounded-full border border-gray-400 text-gray-800 font-semibold focus:border-green-500 focus:outline-none"
+                  />
+                </div>
+                {
+                  !sendingRequest ?
+                    <button type="submit"
+                      className="flex justify-center w-auto my-4 py-4 mx-auto sm:p-4 gradient hover:underline text-white font-inter font-bold text-xl leading-none rounded-full"
+                    >
+                      {props.t('contact.form.button')}
+                    </button>
+                  :
+                    <div className="flex justify-center items-center">
+                      <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white"></div>
+                    </div>
+                }
+              </>
+            :
+              <div className="text-center py-4 lg:px-4 ">
+                <div className="p-2 gradient items-center text-indigo-100 sm:max-w-lg leading-none rounded-full flex lg:inline-flex" role="alert">
+                  <span className="p-1 text-2xl">👍</span>
+                  <span className="font-semibold mr-2 text-left flex-auto">{props.t('contact.form.confirmation')}</span>
+                </div>
+              </div>
+          }
+        </form>
+
+        <span className="text-white font-normal text-2xl sm:text-lg sm:font-semibold">{props.t('hero.support')}</span>
+        <div className="my-2 sm:my-10 flex justify-center">
+          <a href="https://www.instagram.com/ecopoop.cali/" target="_blank" rel="noreferrer">
+            <img className="w-20 transform transition duration-500 hover:scale-150" src="./assets/images/ecopoop2.png" alt="" />
+          </a>
+          <a href="https://www2.javerianacali.edu.co/vicerrectoria-academica/oficina-de-emprendimiento#gsc.tab=0" target="_blank" rel="noreferrer">
+            <img className="w-28 mx-5 sm:mx-20 transform transition duration-500 hover:scale-150" src="./assets/images/javeriana.png" alt=""/>
+          </a>
+          <a href="https://www2.javerianacali.edu.co/vicerrectoria-academica/oficina-de-emprendimiento/campus-novar-incubator#gsc.tab=0" target="_blank" rel="noreferrer">
+            <img className="w-28 transform transition duration-500 hover:scale-150" src="./assets/images/campus.png" alt="" />
+          </a>
+        </div>
       </div>
-      <span className="text-white font-semibold  sm:text-lg sm:max-w-xl sm:mx-auto md:text-2xl">{props.t('hero.support')}</span>
-      <div className="my-6 sm:my-10 flex justify-center">
-        <a href="https://www.instagram.com/ecopoop.cali/" target="_blank" rel="noreferrer">
-          <img className="w-20 transform transition duration-500 hover:scale-150" src="./assets/images/ecopoop2.png" alt="" />
-        </a>
-        <a href="https://www2.javerianacali.edu.co/vicerrectoria-academica/oficina-de-emprendimiento#gsc.tab=0" target="_blank" rel="noreferrer">
-          <img className="w-28 mx-5 sm:mx-20 transform transition duration-500 hover:scale-150" src="./assets/images/javeriana.png" alt=""/>
-        </a>
-        <a href="https://www2.javerianacali.edu.co/vicerrectoria-academica/oficina-de-emprendimiento/campus-novar-incubator#gsc.tab=0" target="_blank" rel="noreferrer">
-          <img className="w-28 transform transition duration-500 hover:scale-150" src="./assets/images/campus.png" alt="" />
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
+  );
+};
 
 export default Hero;
