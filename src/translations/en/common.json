@@ -47,7 +47,8 @@
       "company": "Your Company",
       "message": "Your message",
       "button": "I want to join the sustainable revolution!",
-      "confirmation": "We will contact you so you can test the platform, follow us on our networks to learn more."
+      "confirmation": "We will contact you so you can test the platform, follow us on our networks to learn more.",
+      "missing_input": "Upss.. We will not be able to contact you"
     }
   },
   "footer": {

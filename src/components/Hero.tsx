@@ -12,7 +12,7 @@ const heroStyles: React.CSSProperties = {
 const Hero = (props: any) => {
   const [messageSended, setMessageSended] = useState(false)
   const [sendingRequest, setSendingRequest] = useState(false)
-  const { register, handleSubmit } = useForm<IContact>();
+  const { register, handleSubmit, formState: { errors } } = useForm<IContact>();
 
   const onSubmit: SubmitHandler<IContact> = async data => {
     try {
@@ -58,31 +58,34 @@ const Hero = (props: any) => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {
-            !messageSended ?
+            !messageSended && !sendingRequest &&
               <>
                 <div className="p-2 flex justify-center">
                   <label htmlFor="name" className="hidden">Name</label>
                   <input
-                    {...register("phone_mail")}
+                    {...register("phone_mail", { required: true })}
                     type="text"
                     placeholder={props.t('contact.form.phone_email')}
                     className="mt-2 py-3 px-3 rounded-full border border-gray-400 text-gray-800 font-semibold focus:border-green-500 focus:outline-none"
                   />
                 </div>
-                {
-                  !sendingRequest ?
-                    <button type="submit"
-                      className="flex justify-center w-auto my-4 py-4 mx-auto sm:p-4 gradient hover:underline text-white font-inter font-bold text-xl leading-none rounded-full"
-                    >
-                      {props.t('contact.form.button')}
-                    </button>
-                  :
-                    <div className="flex justify-center items-center">
-                      <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white"></div>
-                    </div>
-                }
+                {errors.phone_mail && errors.phone_mail.type === "required" && <span className="text-white">{props.t('contact.form.missing_input')}</span>}
+                <button type="submit"
+                  className="flex justify-center w-auto my-4 py-4 mx-auto sm:p-4 gradient hover:underline text-white font-inter font-bold text-xl leading-none rounded-full"
+                >
+                  {props.t('contact.form.button')}
+                </button>
               </>
-            :
+          }
+          {
+            sendingRequest &&
+              // Loader
+              <div className="flex justify-center items-center">
+                <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white"></div>
+              </div>
+          }
+          {
+            messageSended &&
               <div className="text-center py-4 lg:px-4 ">
                 <div className="p-2 gradient items-center text-indigo-100 sm:max-w-lg leading-none rounded-full flex lg:inline-flex" role="alert">
                   <span className="p-1 text-2xl">👍</span>

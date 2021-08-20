@@ -47,7 +47,8 @@
       "company": "Tu empresa (Opcionál)",
       "message": "Dejanos tu mensaje",
       "button": "¡Quiero unirme a la revolucion sostenible!",
-      "confirmation": "Te contactaremos para que puedas probar la plataforma, síguenos en nuestras redes para saber más."
+      "confirmation": "Te contactaremos para que puedas probar la plataforma, síguenos en nuestras redes para saber más.",
+      "missing_input": "Upss.. No podremos contactarte"
     }
   },
   "footer": {
