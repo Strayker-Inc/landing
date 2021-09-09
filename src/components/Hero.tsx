@@ -1,8 +1,6 @@
 import React, { useState }  from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-// Interfaces
 import IContact from "../interfaces/contact";
-// Services
 import LandingService from '../services/landing.service';
 
 const heroStyles: React.CSSProperties = {
@@ -20,7 +18,7 @@ const Hero = (props: any) => {
       await LandingService.send(data);
       setMessageSended(true);
     } catch (e) {
-      console.error (e.message)
+      console.error (e)
     } finally {
       setSendingRequest(false);
     }
@@ -33,15 +31,15 @@ const Hero = (props: any) => {
         <div className="visible flex justify-center lg:hidden">
           <img id="logo" className="h-12" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
         </div>
-        <h1 className="text-3xl mt-3 font-extrabold text-white leading-none tracking-tight lg:text-5xl ">
+        <h1 className="text-4xl mb-4 font-extrabold text-white leading-none tracking-tight lg:text-6xl ">
           <span>{props.t('hero.title')}</span>
-          <br />
+          &nbsp;
           <span className="text-green">{props.t('hero.titleColored')}</span>
         </h1>
-        <p className="text-xl my-4 text-white font-semibold leading-tight tracking-tight sm:max-w-lg sm:mx-auto ">
+        <p className="text-xl mb-8 text-white sm:max-w-lg sm:mx-auto ">
           {props.t('hero.text')}
         </p>
-        <div className="my-3 sm:mt-8 flex justify-center">
+        {/* <div className="my-3 sm:mt-8 flex justify-center">
           <a href="https://twitter.com/slinqer" target="_blank" rel="noreferrer">
             <img className="w-10 mx-2 sm:mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-twitter.svg" alt=""/>
           </a>
@@ -54,27 +52,27 @@ const Hero = (props: any) => {
           <a href="https://github.com/slinqer" target="_blank" rel="noreferrer">
             <img className="w-10 mx-2 sm:mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-github.svg" alt=""/>
           </a>
-        </div>
+        </div> */}
 
         <form onSubmit={handleSubmit(onSubmit)}>
           {
             !messageSended && !sendingRequest &&
               <>
-                <div className="p-2 flex justify-center">
+                <div>
                   <label htmlFor="name" className="hidden">Name</label>
                   <input
                     {...register("phone_mail", { required: true })}
                     type="text"
                     placeholder={props.t('contact.form.phone_email')}
-                    className="mt-2 py-3 px-3 rounded-full border border-gray-400 text-gray-800 font-semibold focus:border-green-500 focus:outline-none"
+                    className="py-3 rounded-l-full mb-2 border border-gray-400 text-gray-800 font-semibold focus:border-green-500 focus:outline-none"
                   />
+                  <button type="submit"
+                    className="p-3 mx-1  gradient hover:underline text-white font-bold rounded-r-full"
+                  >
+                    {props.t('contact.form.button')}
+                  </button>
                 </div>
                 {errors.phone_mail && errors.phone_mail.type === "required" && <span className="text-white">{props.t('contact.form.missing_input')}</span>}
-                <button type="submit"
-                  className="flex justify-center w-auto my-4 py-4 mx-auto sm:p-4 gradient hover:underline text-white font-inter font-bold text-xl leading-none rounded-full"
-                >
-                  {props.t('contact.form.button')}
-                </button>
               </>
           }
           {
@@ -95,7 +93,6 @@ const Hero = (props: any) => {
           }
         </form>
 
-        <span className="text-white font-normal text-2xl sm:text-lg sm:font-semibold">{props.t('hero.support')}</span>
         <div className="my-2 sm:my-10 flex justify-center">
           <a href="https://www.instagram.com/ecopoop.cali/" target="_blank" rel="noreferrer">
             <img className="w-20 transform transition duration-500 hover:scale-150" src="./assets/images/ecopoop2.png" alt="" />

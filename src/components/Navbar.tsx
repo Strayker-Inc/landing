@@ -102,14 +102,14 @@ const Navbar = (props: any) => {
     </>
 
   return (
-    <nav id="header" className="fixed w-full z-30 top-0 text-white bg-transparent" style={styleNavbar} >
+    <nav id="header" className="fixed w-full text-white bg-transparent" style={styleNavbar} >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
-        <a href="#top" className="invisible pl-4 flex items-center lg:visible">
+        <a href="#top" className="flex items-center ml-40 invisible lg:visible">
           <img id="logo" className="h-24 fill-current inline" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
         </a>
 
-        <div className="block lg:invisible pr-4">
+        <div className="block lg:invisible">
           <button id="nav-toggle" onClick={() => setShowDropMenu(!showDropMenu)} className="flex items-center p-1 text-orange-800 hover:text-gray-900">
             <svg className="fill-current h-6 w-6" style={{color: "white"}} viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
@@ -122,7 +122,7 @@ const Navbar = (props: any) => {
         <div id="nav-content"
           className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
         >
-          <ul className="list-reset font-inter lg:flex justify-end flex-1 items-center">
+          <ul className="list-reset font-inter lg:flex justify-end flex-1 items-center mr-60">
             {languageSwitchComponent()}
           </ul>
         </div>

@@ -5,9 +5,9 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Compensar tu huella de Carbono",
-    "titleColored": "Nunca fue tan fácil.",
-    "text": "Somos la primera plataforma que conecta marcas sostenibles con personas que quieren compensar su huella de Carbono.",
+    "title": "Ser más sostenible",
+    "titleColored": "fácil",
+    "text": "Conectamos marcas ecologicas con personas que quieren ser mas sostenibles.",
     "support": "Aliados",
     "buttons": {
       "contact": "Contacto",
@@ -46,7 +46,7 @@
       "email": "Tu correo",
       "company": "Tu empresa (Opcionál)",
       "message": "Dejanos tu mensaje",
-      "button": "¡Quiero unirme a la revolucion sostenible!",
+      "button": "Inscribirme",
       "confirmation": "Te contactaremos para que puedas probar la plataforma, síguenos en nuestras redes para saber más.",
       "missing_input": "Upss.. No podremos contactarte"
     }
