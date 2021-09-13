@@ -23,7 +23,7 @@ const Navbar = (props: any) => {
     const slinqerLogo = document.getElementById("logo") as HTMLImageElement;
     const scrollpos = window.scrollY;
     /*Apply classes for slide in bar*/
-
+    console.log (scrollpos);
     if (header && navButton && slinqerLogo && navcontent) {
       if (scrollpos > 10 ) {
         header.classList.add("bg-white");
@@ -109,7 +109,7 @@ const Navbar = (props: any) => {
           <img id="logo" className="h-24 fill-current inline" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
         </a>
 
-        <div className="block lg:invisible">
+        {/* <div className="block lg:invisible">
           <button id="nav-toggle" onClick={() => setShowDropMenu(!showDropMenu)} className="flex items-center p-1 text-orange-800 hover:text-gray-900">
             <svg className="fill-current h-6 w-6" style={{color: "white"}} viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
@@ -117,19 +117,19 @@ const Navbar = (props: any) => {
               <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
             </svg>
           </button>
-        </div>
+        </div> */}
 
-        <div id="nav-content"
+        {/* <div id="nav-content"
           className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
         >
-          <ul className="list-reset font-inter lg:flex justify-end flex-1 items-center mr-60">
+          <ul className="list-reset lg:flex justify-end flex-1 items-center mr-60">
             {languageSwitchComponent()}
           </ul>
-        </div>
+        </div> */}
       </div>
 
       {/* Drowpdown Menu */}
-      <div id="dropMenu"
+      {/* <div id="dropMenu"
         className={`${!showDropMenu && 'invisible'} origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none`}
       >
         <ul className="flex justify-center mt-2">
@@ -137,11 +137,11 @@ const Navbar = (props: any) => {
         </ul>
 
         <div className="flex justify-center mb-2">
-          <button className="gradient text-white font-inter font-bold rounded-full mt-4 py-4 px-8 shadow opacity-75">
+          <button className="gradient text-white font-bold rounded-full mt-4 py-4 px-8 shadow opacity-75">
             {props.t('navbar.contact')}
           </button>
         </div>
-      </div>
+      </div> */}
 
     </nav>
   );
