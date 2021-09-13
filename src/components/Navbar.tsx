@@ -1,16 +1,17 @@
-import { useEffect, useState }  from "react";
+import { useEffect }  from "react";
+// import { useEffect, useState }  from "react";
 import '../pages/Home/Home.css';
-import Switch from "react-switch";
-import {useTranslation} from "react-i18next";
+// import Switch from "react-switch";
+// import {useTranslation} from "react-i18next";
 
 const styleNavbar: any = {
   transition: "0.8s"
 };
 
 const Navbar = (props: any) => {
-  const {i18n} = useTranslation('common');
-  const [languageCheck, setLanguageCheck] = useState(false);
-  const [showDropMenu, setShowDropMenu] = useState(false);
+  // const {i18n} = useTranslation('common');
+  // const [languageCheck, setLanguageCheck] = useState(false);
+  // const [showDropMenu, setShowDropMenu] = useState(false);
 
 
   const navBarStyles = () => {
@@ -79,27 +80,27 @@ const Navbar = (props: any) => {
     }
   }
 
-  const changeLanguage = (checked: boolean) => {
-    setLanguageCheck(checked);
-  }
+  // const changeLanguage = (checked: boolean) => {
+  //   setLanguageCheck(checked);
+  // }
 
-  useEffect(() => {
-    languageCheck ? i18n.changeLanguage('en') : i18n.changeLanguage('es')
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [languageCheck]);
+  // useEffect(() => {
+  //   languageCheck ? i18n.changeLanguage('en') : i18n.changeLanguage('es')
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [languageCheck]);
 
   useEffect(() => {
     document.addEventListener('scroll', navBarStyles)
   }, []);
 
-  const languageSwitchComponent = () =>
-    <>
-      <li className="text-2xl">🇪🇸</li>
-      <li className="mx-4">
-        <Switch uncheckedIcon={false} offColor={"#3FB0B0"} onColor={"#3FB0B0"} checkedIcon={false} onChange={changeLanguage} checked={languageCheck} />
-      </li>
-      <li className="text-2xl">🇺🇸</li>
-    </>
+  // const languageSwitchComponent = () =>
+  //   <>
+  //     <li className="text-2xl">🇪🇸</li>
+  //     <li className="mx-4">
+  //       <Switch uncheckedIcon={false} offColor={"#3FB0B0"} onColor={"#3FB0B0"} checkedIcon={false} onChange={changeLanguage} checked={languageCheck} />
+  //     </li>
+  //     <li className="text-2xl">🇺🇸</li>
+  //   </>
 
   return (
     <nav id="header" className="fixed w-full text-white bg-transparent" style={styleNavbar} >
