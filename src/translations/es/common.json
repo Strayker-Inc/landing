@@ -19,21 +19,25 @@
     "subTitle": "compañias TOP en Estados Unidos y LATAM"
   },
   "aboutUs": {
-    "title": "Juntos podemos salvar el Planeta",
-    "text": "Nos aliamos con las mejores marcas de productos y servicios ecologicos. Asi puedes ser parte del cambio."
+    "title": "Juntos podemos salvar nuestro Planeta",
+    "text": "Encuentra los mejores productos y servicios ecológicos de nuestras marcas aliadas. Empieza siendo parte del cambio."
   },
   "servicesCards": {
-    "title": "Servicios",
+    "title": "Cuidar del planeta es cuidar de tí",
+    "text": "Puedes encontrar multiples opciones para un mismo producto. Con esto nos ajustamos a tus gustos.",
     "firstCard": {
-      "title": "Aumento de Personal",
-      "text": "Nuestros ingenieros expertos trabajan junto a tu equipo interno de tecnologia. Ellos se unen a su equipo actual de manera remota hasta la finalización del proyecto."
+      "title": "Ecológico no significa una sola opción",
+      "label": "Consumo responsable",
+      "text": "Puedes encontrar múltiples opciones para un mismo producto. Con esto nos ajustamos a tus gustos."
     },
     "secondCard": {
-      "title": "Equipos Dedicados",
-      "text": "Destinamos un equipo de desarrollo y un lider tecnologico que supervisa directamente todo el desarrollo del proyecto. Esta opción te da una estructura de gestión y supervisión práctica del flujo de tus proyectos o stack tecnológico."
+      "title": "Te enseñamos a ser Ecológico",
+      "label": "Educación",
+      "text": "Encuentra los mejores consejos y tips para disminuir tu huella de carbono sin sacrificar lo que más te gusta."
     },
-    "thirthCard": {
+    "thirdCard": {
       "title": "Modelo basado en proyectos",
+      "label": "Educación",
       "text": "Tu supervisas todo el proceso de desarrollo del proyecto: desde el establecimiento de las especificaciones hasta la asignación del flujo de trabajo, la fijación de los plazos y las pruebas de calidad."
     }
   },

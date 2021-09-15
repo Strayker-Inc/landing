@@ -5,7 +5,7 @@ import LandingService from '../services/landing.service';
 
 /* Page scroll effect https://www.youtube.com/watch?v=htw4iKMYzEc */
 const sectionStyle: React.CSSProperties = {
-  backgroundImage: `url('./assets/images/background.png')`,
+  // backgroundImage: `url('./assets/images/background.png')`,
   scrollSnapAlign: 'start',
   height: '95vh',
 };
@@ -28,19 +28,18 @@ const Hero = (props: any) => {
   }
 
   return (
-    <section className="bg-fixed flex justify-center items-center" style={sectionStyle} id="top">
-      {/* <div className=""> */}
-        <div className="mx-5 sm:p-6 text-center backdrop-filter backdrop-blur-lg bg-white shadow-lg rounded-3xl bg-opacity-5">
+    <section className="bg-fixed flex justify-center items-center bg-gray-100" style={sectionStyle} id="top">
+        <div className="text-center">
 
           <div className="visible flex justify-center lg:hidden">
             <img id="logo" className="h-12" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
           </div>
-          <h1 className="text-4xl mb-4 font-extrabold text-white leading-none tracking-tight lg:text-6xl ">
+          <h1 className="text-4xl text-gray-800 mb-4 font-extrabold leading-none tracking-tight lg:text-6xl ">
             <span>{props.t('hero.title')}</span>
             &nbsp;
             <span className="text-green">{props.t('hero.titleColored')}</span>
           </h1>
-          <p className="text-xl mb-8 text-white sm:max-w-lg sm:mx-auto ">
+          <p className="text-2xl mb-8 text-gray-600 sm:max-w-lg sm:mx-auto ">
             {props.t('hero.text')}
           </p>
           {/* <div className="my-3 sm:mt-8 flex justify-center">
@@ -110,7 +109,6 @@ const Hero = (props: any) => {
           </div> */}
         </div>
 
-      {/* </div> */}
     </section>
   );
 };

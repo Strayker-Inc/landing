@@ -107,7 +107,7 @@ const Navbar = (props: any) => {
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
         <a href="#top" className="flex items-center ml-40 invisible lg:visible">
-          <img id="logo" className="h-24 fill-current inline" src="./assets/images/logo_symbolic.svg" alt="logo slinqer" />
+          <img id="logo" className="h-24 fill-current inline" src="./assets/images/logo.svg" alt="logo slinqer" />
         </a>
 
         {/* <div className="block lg:invisible">

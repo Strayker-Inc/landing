@@ -3,7 +3,7 @@ import { RouteComponentProps, withRouter  } from "react-router-dom";
 import IPage from "../../interfaces/page";
 import './Home.css'
 import AboutUs from '../../components/AboutUsSection';
-// import ServicesCards from '../../components/ServicesCards'
+import ServicesCards from '../../components/ServicesCards'
 // import Footer from '../../components/Footer';
 // import ContactSection from '../../components/ContactSection';
 // import Partners from "../../components/Partners";
@@ -22,22 +22,25 @@ const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = prop
   const {t} = useTranslation('common');
 
   return (
+    <>
     <div className="font-inter" style={containerStyle}>
       <Navbar t={t} />
 
       <Hero t={t} />
 
       <AboutUs t={t} />
+
       {/*
       <Partners t={t} />
 
-      <ServicesCards t={t}/>
 
       <ContactSection t={t}/>
 
-      <Footer t={t}/> */}
-
+       */}
+      <ServicesCards t={t}/>
     </div>
+    {/* <Footer t={t}/> */}
+    </>
   );
 };
 
