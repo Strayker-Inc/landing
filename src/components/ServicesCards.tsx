@@ -50,10 +50,10 @@ const ServicesCards = (props: any) =>
       <div className="mx-2 md:mx-auto max-w-6xl mb-6 md:mb-20	">
         <div className="flex flex-wrap md:flex-nowrap">
           <div className="order-2 md:order-1 md:mt-10 md:mr-10 md:py-8 text-center md:text-left">
-            <div className="text-md md:text-lg text-green uppercase font-semibold">{props.t('servicesCards.firstCard.label')}</div>
-            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-800">{props.t('servicesCards.firstCard.title')}</h3>
+            <div className="text-md md:text-lg text-green uppercase font-semibold">{props.t('servicesCards.thirdCard.label')}</div>
+            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-800">{props.t('servicesCards.thirdCard.title')}</h3>
             <p className="mt-2 text-xl mx-6 md:mx-0 md:text-2xl text-gray-600 md:max-w-lg">
-              {props.t('servicesCards.firstCard.text')}
+              {props.t('servicesCards.thirdCard.text')}
             </p>
           </div>
           <div className="order-1 md:order-2 w-4/5 md:w-3/5 mt-2 mx-auto mb-10 md:mb-0">

@@ -24,7 +24,7 @@
   },
   "servicesCards": {
     "title": "Cuidar del planeta es cuidar de tí",
-    "text": "Puedes encontrar multiples opciones para un mismo producto. Con esto nos ajustamos a tus gustos.",
+    "text": "Este texto aun debe cambiarse y hay que pensar que se puede poner aqui",
     "firstCard": {
       "title": "Ecológico no significa una sola opción",
       "label": "Consumo responsable",
@@ -36,9 +36,9 @@
       "text": "Encuentra los mejores consejos y tips para disminuir tu huella de carbono sin sacrificar lo que más te gusta."
     },
     "thirdCard": {
-      "title": "Modelo basado en proyectos",
-      "label": "Educación",
-      "text": "Tu supervisas todo el proceso de desarrollo del proyecto: desde el establecimiento de las especificaciones hasta la asignación del flujo de trabajo, la fijación de los plazos y las pruebas de calidad."
+      "title": "Este texto debe cambiarse",
+      "label": "Cambiarse",
+      "text": "Hay que pensar en un cambio para este texto, ya que se debe colocar la tercera caracteristica del producto."
     }
   },
   "contact": {

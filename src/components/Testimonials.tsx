@@ -8,18 +8,18 @@ const sectionStyle: React.CSSProperties = {
 const test = [
   {
     name: "Anderson",
-    rol: "CEO",
-    text: "-- Lorem"
+    rol: "CEO Slinqer SAS.",
+    text: "-- Esto es un ejemplo de testimonio pero hay que cambiarlo por uno valido"
   },
   {
-    name: "Anderson",
-    rol: "CEO",
-    text: "-- Lorem impsum"
+    name: "Andres Navia",
+    rol: "Biologo Javeriana Cali",
+    text: "-- Lorem impsum del segundo ejemplo de testimonio pero hay que cambiarlo tambien"
   },
   {
-    name: "Anderson",
-    rol: "CEO",
-    text: "-- Lorem nose"
+    name: "David RB",
+    rol: "CTO Slinqer SAS.",
+    text: "-- Tercer ejemplo que hay que cambiar por uno valido."
   }
 ]
 
