@@ -1,18 +1,11 @@
-import React, { useState }  from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import IContact from "../interfaces/contact";
-import LandingService from '../services/landing.service';
-
+import React from "react";
 /* Page scroll effect https://www.youtube.com/watch?v=htw4iKMYzEc */
 const sectionStyle: React.CSSProperties = {
-  // backgroundImage: `url('./assets/images/background.png')`,
   scrollSnapAlign: 'start',
   height: '95vh',
 };
 
 const Hero = (props: any) => {
-
-
   return (
     <section className="flex justify-center items-center bg-gray-100" style={sectionStyle} id="top">
         <div className="text-center">
@@ -39,8 +32,6 @@ const Hero = (props: any) => {
               <img className="w-10 mx-2 sm:mx-5 transform transition duration-500 hover:scale-150" src="./assets/icons/logo-github.svg" alt=""/>
             </a>
           </div> */}
-
-
 
         {/* <div className="">
           <img className="h-96 rounded-lg" src="./assets/images/nature.jpg" alt="" />

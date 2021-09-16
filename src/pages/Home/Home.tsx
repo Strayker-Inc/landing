@@ -13,11 +13,11 @@ import Navbar from "../../components/Navbar";
 import {useTranslation} from "react-i18next";
 
 /* Page scroll effect https://www.youtube.com/watch?v=htw4iKMYzEc */
-const containerStyle: React.CSSProperties = {
-  scrollSnapType: "y mandatory",
-  overflowY: "scroll",
-  height: '100vh',
-};
+// const containerStyle: React.CSSProperties = {
+//   scrollSnapType: "y mandatory",
+//   overflowY: "scroll",
+//   height: '100vh',
+// };
 
 const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
   const { t } = useTranslation('common');
