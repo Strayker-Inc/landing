@@ -4,8 +4,9 @@ import IPage from "../../interfaces/page";
 import './Home.css'
 import AboutUs from '../../components/AboutUsSection';
 import ServicesCards from '../../components/ServicesCards'
-// import Footer from '../../components/Footer';
-// import ContactSection from '../../components/ContactSection';
+import Testimonials from "../../components/Testimonials";
+import Footer from '../../components/Footer';
+import ContactSection from '../../components/ContactSection';
 // import Partners from "../../components/Partners";
 import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
@@ -19,27 +20,27 @@ const containerStyle: React.CSSProperties = {
 };
 
 const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
-  const {t} = useTranslation('common');
+  const { t } = useTranslation('common');
 
   return (
     <>
-    <div className="font-inter" style={containerStyle}>
-      <Navbar t={t} />
+      <div className="font-inter bg-gray-100" >
+        <Navbar t={t} />
 
-      <Hero t={t} />
+        <Hero t={t} />
 
-      <AboutUs t={t} />
+        <AboutUs t={t} />
 
-      {/*
-      <Partners t={t} />
+        {/*<Partners t={t} />*/}
 
+        <ServicesCards t={t}/>
 
-      <ContactSection t={t}/>
+        <Testimonials t={t} />
 
-       */}
-      <ServicesCards t={t}/>
-    </div>
-    {/* <Footer t={t}/> */}
+        <ContactSection t={t}/>
+
+        <Footer t={t}/>
+      </div>
     </>
   );
 };

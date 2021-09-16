@@ -24,7 +24,6 @@ const Navbar = (props: any) => {
     const slinqerLogo = document.getElementById("logo") as HTMLImageElement;
     const scrollpos = window.scrollY;
     /*Apply classes for slide in bar*/
-    console.log (scrollpos);
     if (header && navButton && slinqerLogo && navcontent) {
       if (scrollpos > 10 ) {
         header.classList.add("bg-white");
@@ -103,11 +102,11 @@ const Navbar = (props: any) => {
   //   </>
 
   return (
-    <nav id="header" className="fixed w-full text-white bg-transparent" style={styleNavbar} >
+    <nav id="header" className="w-full text-white bg-transparent" style={styleNavbar} >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
-        <a href="#top" className="flex items-center ml-40 invisible lg:visible">
-          <img id="logo" className="h-24 fill-current inline" src="./assets/images/logo.svg" alt="logo slinqer" />
+        <a href="#top" className="flex items-center mx-2 md:ml-40">
+          <img id="logo" className="h-16 md:h-24 fill-current inline" src="./assets/images/slinqer_logo.svg" alt="logo slinqer" />
         </a>
 
         {/* <div className="block lg:invisible">

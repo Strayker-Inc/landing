@@ -5,9 +5,9 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Ser ecologico, sin",
-    "titleColored": "excusas",
-    "text": "Conectamos marcas ecologicas con personas que quieren ser mas sostenibles.",
+    "title": "Vive más, usa ",
+    "titleColored": "menos",
+    "text": "Conectamos marcas ecologicas con una comunidad de personas sostenibles",
     "support": "Aliados",
     "buttons": {
       "contact": "Contacto",
@@ -32,7 +32,7 @@
     },
     "secondCard": {
       "title": "Te enseñamos a ser Ecológico",
-      "label": "Educación",
+      "label": "Educación - Zero Waste",
       "text": "Encuentra los mejores consejos y tips para disminuir tu huella de carbono sin sacrificar lo que más te gusta."
     },
     "thirdCard": {
@@ -43,7 +43,7 @@
   },
   "contact": {
     "title": "Sigamos en Contacto!",
-    "text": "Potencia tu negocio con equipos expertos en desarrollo de software.",
+    "text": "Dejanos tus datos y nosotros nos encargamos del resto.",
     "form": {
       "name": "Tu nombre",
       "phone_email": "Telefono o Correo",
