@@ -7,39 +7,37 @@
   "hero": {
     "title": "Vive más, usa ",
     "titleColored": "menos",
-    "text": "Conectamos marcas ecologicas con una comunidad de personas sostenibles",
-    "support": "Aliados",
+    "text": "Slinqer conecta marcas ecológicas con una comunidad sostenible en la que solo faltas tu.",
     "buttons": {
-      "contact": "Contacto",
-      "aboutUs": "Acerca Nuestro"
+      "join": "Inscribime"
+    }
+  },
+  "aboutUs": {
+    "title": "Juntos podemos salvar nuestro Planeta",
+    "text": "Encuentra los mejores productos y servicios ecológicos de nuestras marcas aliadas. Empieza a ser parte del cambio."
+  },
+  "servicesCards": {
+    "title": "Cuidar del planeta es cuidar de tí",
+    "text": "Creemos que ser ecologico es mas que una opcion, es un estilo de vida. Es por eso que estamos en constante innovacion para tu bienestar y la de nuestro Planeta.",
+    "firstCard": {
+      "label": "Consumo responsable",
+      "title": "Ecológico no significa una sola opción",
+      "text": "Puedes encontrar varias opciones para un mismo producto o servicio. Así nos ajustamos a tus gustos."
+    },
+    "secondCard": {
+      "label": "Educación - Zero Waste",
+      "title": "Te enseñamos a ser Ecológica",
+      "text": " ¿Quieres empezar a ser ecológica pero no sabes como?, Tranqui! Aquí encontraras guias basicas, consejos y tips para disminuir tu huella de carbono sin sacrificar lo que te gusta. Cada pequeño cambio cuenta."
+    },
+    "thirdCard": {
+      "label": "Cultura ECO",
+      "title": "Comunidad Ecologica Slinqer",
+      "text": "Podras intercambiar tu conocimiento mediante preguntas y respuestas con nuestra comunidad. Apuntate a nuestros eco-retos, participa en eventos, gana puntos, premios y más."
     }
   },
   "partners": {
     "title": "Nuestos Desarrolladores y partners estan construyendo software para",
     "subTitle": "compañias TOP en Estados Unidos y LATAM"
-  },
-  "aboutUs": {
-    "title": "Juntos podemos salvar nuestro Planeta",
-    "text": "Encuentra los mejores productos y servicios ecológicos de nuestras marcas aliadas. Empieza siendo parte del cambio."
-  },
-  "servicesCards": {
-    "title": "Cuidar del planeta es cuidar de tí",
-    "text": "Este texto aun debe cambiarse y hay que pensar que se puede poner aqui",
-    "firstCard": {
-      "title": "Ecológico no significa una sola opción",
-      "label": "Consumo responsable",
-      "text": "Puedes encontrar múltiples opciones para un mismo producto. Con esto nos ajustamos a tus gustos."
-    },
-    "secondCard": {
-      "title": "Te enseñamos a ser Ecológico",
-      "label": "Educación - Zero Waste",
-      "text": "Encuentra los mejores consejos y tips para disminuir tu huella de carbono sin sacrificar lo que más te gusta."
-    },
-    "thirdCard": {
-      "title": "Este texto debe cambiarse",
-      "label": "Cambiarse",
-      "text": "Hay que pensar en un cambio para este texto, ya que se debe colocar la tercera caracteristica del producto."
-    }
   },
   "contact": {
     "title": "Sigamos en Contacto!",

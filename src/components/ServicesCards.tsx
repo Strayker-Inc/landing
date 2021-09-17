@@ -8,7 +8,7 @@ const ServicesCards = (props: any) =>
       <h2 className="w-full mt-20 mb-4 text-4xl md:text-5xl font-black text-center text-gray-800">
         {props.t('servicesCards.title')}
       </h2>
-      <p className="text-xl md:text-2xl mb-8 mx-6 text-gray-600 sm:max-w-lg sm:mx-auto ">
+      <p className="text-xl md:text-2xl mb-8 mx-6 text-gray-600 md:max-w-lg md:mx-auto ">
         {props.t('servicesCards.text')}
       </p>
 
@@ -57,7 +57,7 @@ const ServicesCards = (props: any) =>
             </p>
           </div>
           <div className="order-1 md:order-2 w-4/5 md:w-3/5 mt-2 mx-auto mb-10 md:mb-0">
-            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/soaps.jpg" alt="Man looking at item at a store"/>
+            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/comunity.jpg" alt="Man looking at item at a store"/>
           </div>
         </div>
       </div>

@@ -7,8 +7,8 @@ const sectionStyle: React.CSSProperties = {
 
 const test = [
   {
-    name: "Anderson",
-    rol: "CEO Slinqer SAS.",
+    name: "Laura Isabel Giraldo",
+    rol: "Presidenta de URUMI y Bióloga",
     text: "-- Esto es un ejemplo de testimonio pero hay que cambiarlo por uno valido"
   },
   {
@@ -96,17 +96,17 @@ const Testimonials = (props: any) => {
               <button onClick={() => setTestimonialActive(0)}
                 className={`text-center font-bold shadow-xs focus:outline-none focus:shadow-outline h-12 w-12 inline-block rounded-full mx-2
                   ${testimonialActive !== 0 ? "h-12 w-12 opacity-25 bg-indigo-300 text-gray-600" : "h-16 w-16 opacity-100 bg-green text-white"}`}>
-                JD
+                LG
               </button>
               <button onClick={() => setTestimonialActive(1)}
                 className={`text-center font-bold shadow-xs focus:outline-none focus:shadow-outline h-12 w-12 inline-block rounded-full mx-2
                   ${testimonialActive !== 1 ? "h-12 w-12 opacity-25 bg-indigo-300 text-gray-600" : "h-16 w-16 opacity-100 bg-green text-white"}`}>
-                WD
+                AN
               </button>
               <button onClick={() => setTestimonialActive(2)}
                 className={`text-center font-bold shadow-xs focus:outline-none focus:shadow-outline h-12 w-12 inline-block rounded-full mx-2
                   ${testimonialActive !== 2 ? "h-12 w-12 opacity-25 bg-indigo-300 text-gray-600" : "h-16 w-16 opacity-100 bg-green text-white"}`}>
-                JW
+                DB
               </button>
             </div>
 

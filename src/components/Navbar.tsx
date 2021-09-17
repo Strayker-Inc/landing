@@ -102,7 +102,7 @@ const Navbar = (props: any) => {
   //   </>
 
   return (
-    <nav id="header" className="w-full text-white bg-transparent" style={styleNavbar} >
+    <nav id="header" className="absolute z-10 w-full text-white bg-transparent" style={styleNavbar} >
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2" >
 
         <a href="#top" className="flex items-center mx-2 md:ml-40">
