@@ -5,48 +5,50 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Compensar tu huella de Carbono",
-    "titleColored": "Nunca fue tan fácil.",
-    "text": "Somos la primera plataforma que conecta marcas sostenibles con personas que quieren compensar su huella de Carbono.",
-    "support": "Aliados",
+    "title": "Vive más, usa ",
+    "titleColored": "menos",
+    "text": "Slinqer conecta marcas ecológicas con una comunidad sostenible en la que solo faltas tu.",
     "buttons": {
-      "contact": "Contacto",
-      "aboutUs": "Acerca Nuestro"
+      "join": "Inscribime"
+    }
+  },
+  "aboutUs": {
+    "title": "Juntos podemos salvar nuestro Planeta",
+    "text": "Encuentra los mejores productos y servicios ecológicos de nuestras marcas aliadas. Empieza a ser parte del cambio."
+  },
+  "servicesCards": {
+    "title": "Cuidar del planeta es cuidar de tí",
+    "text": "Creemos que ser ecologico es mas que una opcion, es un estilo de vida. Es por eso que estamos en constante innovacion para tu bienestar y la de nuestro Planeta.",
+    "firstCard": {
+      "label": "Consumo responsable",
+      "title": "Ecológico no significa una sola opción",
+      "text": "Puedes encontrar varias opciones para un mismo producto o servicio. Así nos ajustamos a tus gustos."
+    },
+    "secondCard": {
+      "label": "Educación - Zero Waste",
+      "title": "Te enseñamos a ser Ecológica",
+      "text": " ¿Quieres empezar a ser ecológica pero no sabes como?, Tranqui! Aquí encontraras guias basicas, consejos y tips para disminuir tu huella de carbono sin sacrificar lo que te gusta. Cada pequeño cambio cuenta."
+    },
+    "thirdCard": {
+      "label": "Cultura ECO",
+      "title": "Comunidad Ecologica Slinqer",
+      "text": "Podras intercambiar tu conocimiento mediante preguntas y respuestas con nuestra comunidad. Apuntate a nuestros eco-retos, participa en eventos, gana puntos, premios y más."
     }
   },
   "partners": {
     "title": "Nuestos Desarrolladores y partners estan construyendo software para",
     "subTitle": "compañias TOP en Estados Unidos y LATAM"
   },
-  "aboutUs": {
-    "title": "Quienes Somos",
-    "text": "Somos una consultora de desarrollo de software, que construye y despliega los proyectos más complejos y desafiantes para sus clientes."
-  },
-  "servicesCards": {
-    "title": "Servicios",
-    "firstCard": {
-      "title": "Aumento de Personal",
-      "text": "Nuestros ingenieros expertos trabajan junto a tu equipo interno de tecnologia. Ellos se unen a su equipo actual de manera remota hasta la finalización del proyecto."
-    },
-    "secondCard": {
-      "title": "Equipos Dedicados",
-      "text": "Destinamos un equipo de desarrollo y un lider tecnologico que supervisa directamente todo el desarrollo del proyecto. Esta opción te da una estructura de gestión y supervisión práctica del flujo de tus proyectos o stack tecnológico."
-    },
-    "thirthCard": {
-      "title": "Modelo basado en proyectos",
-      "text": "Tu supervisas todo el proceso de desarrollo del proyecto: desde el establecimiento de las especificaciones hasta la asignación del flujo de trabajo, la fijación de los plazos y las pruebas de calidad."
-    }
-  },
   "contact": {
     "title": "Sigamos en Contacto!",
-    "text": "Potencia tu negocio con equipos expertos en desarrollo de software.",
+    "text": "Dejanos tus datos y nosotros nos encargamos del resto.",
     "form": {
       "name": "Tu nombre",
       "phone_email": "Telefono o Correo",
       "email": "Tu correo",
       "company": "Tu empresa (Opcionál)",
       "message": "Dejanos tu mensaje",
-      "button": "¡Quiero unirme a la revolucion sostenible!",
+      "button": "Inscribirme",
       "confirmation": "Te contactaremos para que puedas probar la plataforma, síguenos en nuestras redes para saber más.",
       "missing_input": "Upss.. No podremos contactarte"
     }
