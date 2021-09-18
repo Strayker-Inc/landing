@@ -9,17 +9,17 @@ const test = [
   {
     name: "Laura Isabel Giraldo",
     rol: "Presidenta de URUMI y Bióloga",
-    text: "-- Esto es un ejemplo de testimonio pero hay que cambiarlo por uno valido"
+    text: "-- ''"
   },
   {
     name: "Andres Navia",
     rol: "Biologo Javeriana Cali",
-    text: "-- Lorem impsum del segundo ejemplo de testimonio pero hay que cambiarlo tambien"
+    text: "-- ''"
   },
   {
     name: "David RB",
-    rol: "CTO Slinqer SAS.",
-    text: "-- Tercer ejemplo que hay que cambiar por uno valido."
+    rol: "CTO  Strayker",
+    text: "-- ''"
   }
 ]
 
