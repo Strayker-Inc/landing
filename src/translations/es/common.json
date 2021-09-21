@@ -7,9 +7,9 @@
   "hero": {
     "title": "Vive más, usa ",
     "titleColored": "menos",
-    "text": "Slinqer conecta marcas ecológicas con una comunidad sostenible en la que solo faltas tu.",
+    "text": "Slinqer conecta marcas ecológicas con una comunidad sostenible en la que solo faltas tú.",
     "buttons": {
-      "join": "Inscribime"
+      "join": "¡Únete Aquí!"
     }
   },
   "aboutUs": {
@@ -18,7 +18,7 @@
   },
   "servicesCards": {
     "title": "Cuidar del planeta es cuidar de tí",
-    "text": "Creemos que ser ecologico es mas que una opcion, es un estilo de vida. Es por eso que estamos en constante innovacion para tu bienestar y la de nuestro Planeta.",
+    "text": "Creemos que ser ecológico más que una opción, es una responsabilidad. Es por eso que en Slinqer te ayudamos a cumplir esa responsabilidad.",
     "firstCard": {
       "label": "Consumo responsable",
       "title": "Ecológico no significa una sola opción",
@@ -27,33 +27,22 @@
     "secondCard": {
       "label": "Educación - Zero Waste",
       "title": "Te enseñamos a ser Ecológica",
-      "text": " ¿Quieres empezar a ser ecológica pero no sabes como?, Tranqui! Aquí encontraras guias basicas, consejos y tips para disminuir tu huella de carbono sin sacrificar lo que te gusta. Cada pequeño cambio cuenta."
+      "text": " ¿Quieres empezar a ser ecológica pero no sabes como?, Tranqui! Aquí encontraras guías básicas, consejos y tips para disminuir tu huella de carbono sin sacrificar lo que te gusta. Cada pequeño cambio cuenta."
     },
     "thirdCard": {
       "label": "Cultura ECO",
-      "title": "Comunidad Ecologica Slinqer",
-      "text": "Podras intercambiar tu conocimiento mediante preguntas y respuestas con nuestra comunidad. Apuntate a nuestros eco-retos, participa en eventos, gana puntos, premios y más."
+      "title": "Comunidad Ecológica Slinqer",
+      "text": "Podrás intercambiar tu conocimiento mediante preguntas y respuestas con nuestra comunidad. Apuntate a nuestros eco-retos, participa en eventos, gana puntos, premios y más."
     }
-  },
-  "partners": {
-    "title": "Nuestos Desarrolladores y partners estan construyendo software para",
-    "subTitle": "compañias TOP en Estados Unidos y LATAM"
   },
   "contact": {
-    "title": "Sigamos en Contacto!",
-    "text": "Dejanos tus datos y nosotros nos encargamos del resto.",
+    "title": "Se parte de la revolución Ecológica",
+    "text": "Solo hay un requisito: Querer ser parte del cambio",
     "form": {
-      "name": "Tu nombre",
-      "phone_email": "Telefono o Correo",
-      "email": "Tu correo",
-      "company": "Tu empresa (Opcionál)",
-      "message": "Dejanos tu mensaje",
-      "button": "Inscribirme",
+      "phone_email": "Tu mejor email",
+      "button": "Unirme",
       "confirmation": "Te contactaremos para que puedas probar la plataforma, síguenos en nuestras redes para saber más.",
-      "missing_input": "Upss.. No podremos contactarte"
+      "missing_input": "Upss.. No podremos avisarte"
     }
-  },
-  "footer": {
-
   }
 }

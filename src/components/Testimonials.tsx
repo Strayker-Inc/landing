@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const sectionStyle: React.CSSProperties = {
-  scrollSnapAlign: "start",
+  // scrollSnapAlign: "start",
   height: '100vh',
 }
 
@@ -134,8 +134,6 @@ const Testimonials = (props: any) => {
       </div>
 
       </div>
-
-
 		</section>
   );
 };
