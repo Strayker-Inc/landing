@@ -7,11 +7,12 @@ import LandingService from '../services/landing.service';
 
 const sectionStyle: React.CSSProperties = {
   // backgroundImage: `url('./assets/images/background.png')`,
-  scrollSnapAlign: 'start',
+  // scrollSnapAlign: 'start',
   height: '60vh',
 };
 
 const ContactSection = (props: any) => {
+  const [callToAction, setCallToAction] = useState(false);
   const [messageSended, setMessageSended] = useState(false)
   const [sendingRequest, setSendingRequest] = useState(false)
   const { register, handleSubmit, formState: { errors } } = useForm<IContact>();
@@ -29,21 +30,23 @@ const ContactSection = (props: any) => {
   }
 
   return (
-    <section id="contactForm" className="flex gradient items-center" style={sectionStyle}>
-      <div className=" mx-auto px-6">
+    <section id="contactForm" className="relative flex justify-center gradient" style={sectionStyle}>
+      <div className="container flex flex-wrap">
 
-          <div className="flex justify-center flex-wrap items-center">
-            <div className="w-full md:w-2/6 p-6 mb-10 rounded-lg md:mr-10">
-              <h1 className="text-4xl md:text-5xl text-white font-extrabold tracking-tight">
-                {props.t('contact.title')}
-              </h1>
-              <br />
-              <p className="text-lg md:text-2xl font-medium text-white">
-                {props.t('contact.text')}
-              </p>
-            </div>
+        <div className="w-full sm:w-4/12 mx-2 md:mx-auto flex items-center">
+          <div>
+            <h1 className="w-full text-4xl md:text-5xl text-white font-extrabold tracking-tight">
+              {props.t('contact.title')}
+            </h1>
+            <p className="text-lg md:text-2xl font-medium text-white">
+              {props.t('contact.text')}
+            </p>
+          </div>
+        </div>
 
-            <div className="">
+        <div className="w-full md:w-5/12 mx-auto px-4 flex items-center">
+          {
+            callToAction ?
               <form onSubmit={handleSubmit(onSubmit)}>
                 {
                   !messageSended && !sendingRequest &&
@@ -54,10 +57,10 @@ const ContactSection = (props: any) => {
                           {...register("phone_mail", { required: true })}
                           type="text"
                           placeholder={props.t('contact.form.phone_email')}
-                          className="py-4 text-xl rounded-lg md:rounded-none md:rounded-l-lg mb-2 bg-gray-100 text-gray-800 focus:border-green-500 focus:outline-none"
+                          className="w-full py-4 text-xl rounded-lg mb-2 bg-gray-100 text-gray-800 focus:border-green-500 focus:outline-none"
                         />
                         <button type="submit"
-                          className="p-4 text-xl bg-green hover:underline text-white font-bold rounded-lg md:rounded-none md:rounded-r-lg"
+                          className="w-full mx-auto p-4 text-xl bg-green hover:underline text-white font-bold rounded-lg"
                         >
                           {props.t('contact.form.button')}
                         </button>
@@ -82,10 +85,16 @@ const ContactSection = (props: any) => {
                     </div>
                 }
               </form>
-            </div>
-
-          </div>
+            :
+              <button onClick={() => setCallToAction(true)}
+                className="w-full mx-auto md:w-8/12 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-125"
+              >
+                {props.t('hero.buttons.join')}
+              </button>
+          }
+        </div>
       </div>
+      <img src="./assets/images/waves-inverted-gray.svg" className="absolute inset-x-0 bottom-0 w-full" alt="" />
     </section>
   );
 }

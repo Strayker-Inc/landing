@@ -1,10 +1,10 @@
 const sectionStyle: React.CSSProperties = {
-  scrollSnapAlign: "start",
+  // scrollSnapAlign: "start",
   height: '100vh',
 }
 
 const AboutUsSection = (props: any) =>
-  <section className="flex justify-center bg-gray-100   " style={sectionStyle}>
+  <section className="flex justify-center bg-gray-100" style={sectionStyle}>
     <div className="container items-center flex flex-wrap">
       <div className="w-5/12 md:w-3/12 mx-auto">
         <img alt="people" className="rounded-lg shadow-lg" src="./assets/images/brushes.jpg"/>
@@ -19,14 +19,13 @@ const AboutUsSection = (props: any) =>
           <p className="text-2xl text-gray-600 mb-8 md:text-3xl ">
             {props.t('aboutUs.text')}
           </p>
-          <div className="flex">
+          <div className="flex justify-center">
             <img src="./assets/images/image.png" alt="aliado emprendimiento ecopoop" className="h-16 mr-4 md:h-20 md:mr-8" />
-            <img src="./assets/images/javeriana_black.png" alt="aliado javeriana" className="h-16 mr-4 md:h-20 md:mr-8" />
-            <img src="./assets/images/campus_symbolic.png" alt="aliado Campus nova" className="h-16 mr-4 md:h-20 md:mr-8" />
           </div>
         </div>
       </div>
 
     </div>
   </section>
+
 export default AboutUsSection;
