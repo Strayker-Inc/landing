@@ -2,13 +2,13 @@ import React from "react";
 /* Page scroll effect https://www.youtube.com/watch?v=htw4iKMYzEc */
 const sectionStyle: React.CSSProperties = {
   // scrollSnapAlign: 'start',
-  height: '100vh',
+
 };
 
 const Hero = (props: any) => {
   return (
-    <section className="flex justify-center items-center bg-gray-100" style={sectionStyle} id="top">
-      <video className="absolute h-screen w-full object-cover" autoPlay loop muted>
+    <section className="flex h-screen justify-center items-center bg-gray-100" style={sectionStyle} id="top">
+      <video className="absolute w-full h-screen object-cover" autoPlay loop muted>
         <source src="https://res.cloudinary.com/slinqer/video/upload/v1631900417/video_background_eshz8b.mp4" type="video/mp4" />
       </video>
       <div className="text-center z-10">
@@ -21,7 +21,7 @@ const Hero = (props: any) => {
           {props.t('hero.text')}
         </p>
         <a href="#contactForm">
-          <button className="w-full max-auto md:w-1/2 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
+          <button className="w-5/6  md:w-1/2 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
             {props.t('hero.buttons.join')}
           </button>
         </a>

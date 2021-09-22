@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const sectionStyle: React.CSSProperties = {
-  // scrollSnapAlign: "start",
+  scrollSnapAlign: "start",
   height: '100vh',
 }
 
@@ -44,7 +44,7 @@ const Testimonials = (props: any) => {
 
   return (
     <section className="flex justify-center items-center" style={sectionStyle}>
-			<div className="container flex flex-wrap md:flex-nowrap">
+			<div className="w-11/12 md:w-4/6 flex flex-wrap md:flex-nowrap">
 
         <div className="relative py-10 md:py-24 w-5/6 md:w-1/2 mx-auto text-center bg-green rounded-t-3xl md:rounded-t-none md:rounded-l-3xl shadow-lg">
           <div className="text-2xl md:text-5xl py-2 px-6 md:py-6 md:px-1 md:w-64 md:mx-auto text-white font-semibold leading-tight tracking-tight mb-0 z-20">
@@ -134,6 +134,8 @@ const Testimonials = (props: any) => {
       </div>
 
       </div>
+
+
 		</section>
   );
 };

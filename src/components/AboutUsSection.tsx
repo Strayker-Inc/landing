@@ -4,10 +4,10 @@ const sectionStyle: React.CSSProperties = {
 }
 
 const AboutUsSection = (props: any) =>
-  <section className="flex justify-center bg-gray-100" style={sectionStyle}>
+  <section className="flex justify-center bg-gray-100 " style={sectionStyle}>
     <div className="container items-center flex flex-wrap">
-      <div className="w-5/12 md:w-3/12 mx-auto">
-        <img alt="people" className="rounded-lg shadow-lg" src="./assets/images/brushes.jpg"/>
+      <div className="w-6/12 md:w-3/12 mx-auto">
+        <img alt="cepillos de bambu" className="rounded-lg shadow-lg" src="./assets/images/brushes.webp"/>
       </div>
 
       <div className="w-full md:w-5/12 mx-auto px-4">
@@ -20,7 +20,8 @@ const AboutUsSection = (props: any) =>
             {props.t('aboutUs.text')}
           </p>
           <div className="flex justify-center">
-            <img src="./assets/images/image.png" alt="aliado emprendimiento ecopoop" className="h-16 mr-4 md:h-20 md:mr-8" />
+            <img src="./assets/images/ecopoop.webp" alt="Logo aliado Ecopoop" className="h-16 mr-4 md:h-20 md:mr-8" />
+            <img src="./assets/images/lifepack.webp" alt="Logo aliado Lifepack" className="h-16 mr-4 md:h-24 md:mr-8" />
           </div>
         </div>
       </div>
