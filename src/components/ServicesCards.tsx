@@ -12,7 +12,7 @@ const ServicesCards = (props: any) =>
         {props.t('servicesCards.text')}
       </p>
       <a href="#contactForm">
-        <button className="w-full md:w-3/12 mx-1 md:mx-auto p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
+        <button className="w-5/6 md:w-3/12 mb-10 md:mx-auto p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
           {props.t('hero.buttons.join')}
         </button>
       </a>
@@ -31,7 +31,7 @@ const ServicesCards = (props: any) =>
             </p>
           </div>
           <div className="order-1 md:order-2 w-4/5 md:w-3/5 mt-2 mx-auto mb-10 md:mb-0">
-            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/soaps.jpg" alt="Man looking at item at a store"/>
+            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/soaps.webp" alt="Man looking at item at a store"/>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ const ServicesCards = (props: any) =>
       <div className="mx-2 md:mx-auto max-w-6xl	md:mb-20">
         <div className="flex flex-wrap md:flex-nowrap">
           <div className="w-4/5 md:w-3/5 mt-2 mx-auto mb-10 md:mb-0 md:ml-6">
-            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/education.jpg" alt="Man looking at item at a store"/>
+            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/education.webp" alt="Man looking at item at a store"/>
           </div>
           <div className="md:mt-10 md:mr-10 md:py-8 text-center md:text-left md:ml-20 mb-6 md:mb-0">
             <div className="text-md md:text-lg text-green uppercase font-semibold">{props.t('servicesCards.secondCard.label')}</div>
@@ -62,7 +62,7 @@ const ServicesCards = (props: any) =>
             </p>
           </div>
           <div className="order-1 md:order-2 w-4/5 md:w-3/5 mt-2 mx-auto mb-10 md:mb-0">
-            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/comunity.jpg" alt="Man looking at item at a store"/>
+            <img className="object-fit rounded-lg shadow-lg" src="/assets/images/comunity.webp" alt="Man looking at item at a store"/>
           </div>
         </div>
       </div>

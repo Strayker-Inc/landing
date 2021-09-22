@@ -33,7 +33,7 @@ const ContactSection = (props: any) => {
     <section id="contactForm" className="relative flex justify-center gradient" style={sectionStyle}>
       <div className="container flex flex-wrap">
 
-        <div className="w-full sm:w-4/12 mx-2 md:mx-auto flex items-center">
+        <div className="w-5/6 sm:w-5/12 mx-auto flex items-center">
           <div>
             <h1 className="w-full text-4xl md:text-5xl text-white font-extrabold tracking-tight">
               {props.t('contact.title')}
@@ -44,7 +44,7 @@ const ContactSection = (props: any) => {
           </div>
         </div>
 
-        <div className="w-full md:w-5/12 mx-auto px-4 flex items-center">
+        <div className="w-11/12 sm:w-5/12 mx-auto px-4 flex items-center">
           {
             callToAction ?
               <form onSubmit={handleSubmit(onSubmit)}>
