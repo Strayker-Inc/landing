@@ -1,25 +1,21 @@
-const sectionStyle: React.CSSProperties = {
-  scrollSnapAlign: "start",
-}
+const Fade = require('react-reveal/Fade');
 
 const ServicesCards = (props: any) =>
-  <section className="border-b bg-gray-100 md:pt-8" style={sectionStyle}>
-    <div className="text-center md:pb-14">
-      <h2 className="w-full mt-20 mb-4 text-4xl md:text-5xl font-black text-center text-gray-800">
-        {props.t('servicesCards.title')}
-      </h2>
-      <p className="text-xl md:text-2xl mb-8 mx-6 text-gray-600 md:max-w-lg md:mx-auto ">
-        {props.t('servicesCards.text')}
-      </p>
-      <a href="#contactForm">
-        <button className="w-5/6 md:w-3/12 mb-10 md:mx-auto p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
-          {props.t('hero.buttons.join')}
-        </button>
-      </a>
-
-    </div>
-
-    {/* <div className="grid grid-cols-1 gap-10 mx-8 mt-20 mb-40 sm:mx-24  2xl:grid-cols-3"> */}
+  <section className="border-b bg-gray-100 md:pt-8">
+    <Fade bottom cascade>
+      <div className="text-center md:pb-14">
+        <h2 className="w-full mt-20 mb-4 text-4xl md:text-5xl font-black text-center text-gray-800">
+          {props.t('servicesCards.title')}
+        </h2>
+        <p className="text-xl md:text-2xl mb-8 mx-6 text-gray-600 md:max-w-lg md:mx-auto ">
+          {props.t('servicesCards.text')}
+        </p>
+        <a href="#contactForm">
+          <button className="w-5/6 md:w-3/12 mb-10 md:mx-auto p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
+            {props.t('hero.buttons.join')}
+          </button>
+        </a>
+      </div>
 
       <div className="mx-2 md:mx-auto max-w-6xl mb-6 md:mb-20	">
         <div className="flex flex-wrap md:flex-nowrap">
@@ -66,8 +62,8 @@ const ServicesCards = (props: any) =>
           </div>
         </div>
       </div>
+    </Fade>
 
-    {/* </div> */}
   </section>
 
 export default ServicesCards;
