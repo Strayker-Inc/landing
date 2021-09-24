@@ -29,7 +29,7 @@ const ContactSection = (props: any) => {
   return (
     <section id="contactForm" className="relative flex justify-center gradient" style={sectionStyle}>
       <Fade bottom cascade>
-        <div className="container flex flex-wrap">
+        <div className="w-11/12 md:w-8/12 flex flex-wrap">
 
           <div className="w-5/6 sm:w-5/12 mx-auto flex items-center">
             <div>

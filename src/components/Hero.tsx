@@ -16,12 +16,12 @@ const Hero = (props: any) => {
       </video>
       <Fade bottom cascade>
         <div className="text-center z-10">
-          <h1 className="text-4xl text-white mb-4 font-extrabold leading-none tracking-tight lg:text-6xl ">
+          <h1 className="text-5xl text-white mb-4 font-extrabold leading-none tracking-tight lg:text-7xl ">
             <span>{props.t('hero.title')}</span>
             &nbsp;
             <span className="text-green">{props.t('hero.titleColored')}</span>
           </h1>
-          <p className="text-2xl mb-8 text-white sm:max-w-lg sm:mx-auto ">
+          <p className="text-2xl md:text-3xl mb-8 text-white max-w-sm sm:max-w-xl mx-auto ">
             {props.t('hero.text')}
           </p>
           <a href="#contactForm">
