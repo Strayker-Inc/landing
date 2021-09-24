@@ -1,16 +1,8 @@
-import React from "react";
 const Fade = require('react-reveal/Fade');
-
-
-/* Page scroll effect https://www.youtube.com/watch?v=htw4iKMYzEc */
-const sectionStyle: React.CSSProperties = {
-  // scrollSnapAlign: 'start',
-
-};
 
 const Hero = (props: any) => {
   return (
-    <section className="flex h-screen justify-center items-center bg-gray-100" style={sectionStyle} id="top">
+    <section className="flex h-screen justify-center items-center bg-gray-100" id="top">
       <video className="absolute w-full h-screen object-cover" autoPlay loop muted>
         <source src="https://res.cloudinary.com/slinqer/video/upload/v1631900417/video_background_eshz8b.mp4" type="video/mp4" />
       </video>
