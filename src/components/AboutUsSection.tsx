@@ -17,10 +17,11 @@ const AboutUsSection = (props: any) =>
             <p className="text-2xl text-gray-600 mb-8 md:text-3xl ">
               {props.t('aboutUs.text')}
             </p>
-            <div className="flex justify-center">
-              <img src="./assets/images/ecopoop.webp" alt="Logo aliado Ecopoop" className="h-16 mr-4 md:h-20 md:mr-8" />
-              <img src="./assets/images/lifepack.webp" alt="Logo aliado Lifepack" className="h-16 mr-4 md:h-24 md:mr-8" />
-              <img src="./assets/images/kaoba.webp" alt="Logo aliado Kaoba" className="h-16 mr-4 md:h-24 md:mr-8" />
+            <div className="flex justify-center items-center flex-wrap">
+              <img src="./assets/images/ecopoop.webp" alt="Logo aliado Ecopoop" className="h-16 mr-2 md:h-20 md:mr-2" />
+              <img src="./assets/images/lifepack.webp" alt="Logo aliado Lifepack" className="h-16 mr-2 md:h-24 md:mr-2" />
+              <img src="./assets/images/kaoba.webp" alt="Logo aliado Kaoba" className="h-16 mr-2 md:h-24 md:mr-2" />
+              <img src="./assets/images/grafincol.webp" alt="Logo aliado Grafincol" className="h-12 mr-2 md:h-14" />
             </div>
           </div>
         </div>
