@@ -2,14 +2,14 @@ import React from "react";
 import { RouteComponentProps, withRouter  } from "react-router-dom";
 import IPage from "../../interfaces/page";
 import './Home.css'
-import AboutUs from '../../components/AboutUsSection';
-import ServicesCards from '../../components/ServicesCards'
-import Testimonials from "../../components/Testimonials";
-import Footer from '../../components/Footer';
-import ContactSection from '../../components/ContactSection';
+import AboutUs from '../../components/landing/AboutUsSection';
+import ServicesCards from '../../components/landing/ServicesCards'
+import Testimonials from "../../components/landing/Testimonials";
+import Footer from '../../components/landing/Footer';
+import ContactSection from '../../components/landing/ContactSection';
 // import Partners from "../../components/Partners";
-import Hero from "../../components/Hero";
-import Navbar from "../../components/Navbar";
+import Hero from "../../components/landing/Hero";
+import Navbar from "../../components/landing/Navbar";
 import {useTranslation} from "react-i18next";
 
 /* Page scroll effect https://www.youtube.com/watch?v=htw4iKMYzEc */
@@ -19,29 +19,27 @@ import {useTranslation} from "react-i18next";
 //   height: '100vh',
 // };
 
-const HomePage: React.FunctionComponent<IPage & RouteComponentProps<any>> = props => {
+const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const { t } = useTranslation('common');
 
   return (
-    <>
-      <div className="font-inter bg-gray-100" >
-        <Navbar t={t} />
+    <div className="font-inter bg-gray-100" >
+      <Navbar t={t} />
 
-        <Hero t={t} />
+      <Hero t={t} />
 
-        <AboutUs t={t} />
+      <AboutUs t={t} />
 
-        {/*<Partners t={t} />*/}
+      {/*<Partners t={t} />*/}
 
-        <ServicesCards t={t}/>
+      <ServicesCards t={t}/>
 
-        <Testimonials t={t} />
+      <Testimonials t={t} />
 
-        <ContactSection t={t}/>
+      <ContactSection t={t}/>
 
-        <Footer t={t}/>
-      </div>
-    </>
+      <Footer t={t}/>
+    </div>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState }  from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import LandingService from '../services/landing.service';
-import IContact from "../interfaces/contact";
+import LandingService from '../../services/landing.service';
+import IContact from "../../interfaces/contact";
 const Fade = require('react-reveal/Fade');
 
 const sectionStyle: React.CSSProperties = {
