@@ -1,6 +1,6 @@
 import { useEffect }  from "react";
 // import { useEffect, useState }  from "react";
-import '../../pages/Home/Home.css';
+import '../../pages/Landing/Landing';
 // import Switch from "react-switch";
 // import {useTranslation} from "react-i18next";
 

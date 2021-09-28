@@ -1,7 +1,7 @@
 import React from "react";
 import { RouteComponentProps, withRouter  } from "react-router-dom";
 import IPage from "../../interfaces/page";
-import './Home.css'
+import './Landing.css'
 import AboutUs from '../../components/landing/AboutUsSection';
 import ServicesCards from '../../components/landing/ServicesCards'
 import Testimonials from "../../components/landing/Testimonials";
@@ -19,7 +19,7 @@ import {useTranslation} from "react-i18next";
 //   height: '100vh',
 // };
 
-const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
+const LandingPage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const { t } = useTranslation('common');
 
   return (
@@ -43,4 +43,4 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   );
 };
 
-export default withRouter(HomePage);
+export default withRouter(LandingPage);

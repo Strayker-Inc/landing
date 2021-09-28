@@ -24,7 +24,7 @@ const Hero = (props: any) => {
         </div>
 
       </Fade>
-      <img src="./assets/images/waves-inverted-gray.svg" className="absolute inset-x-0 bottom-0 w-full" alt="" />
+      <img src="./assets/images/waves-inverted-gray.svg" className="absolute inset-x-0 bottom-0 w-full" alt="Olas de decoracion" />
     </section>
   );
 };
