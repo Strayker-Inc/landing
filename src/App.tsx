@@ -24,24 +24,20 @@ import '@ionic/react/css/normalize.css';
 const App: React.FC<{}> = props =>
   <BrowserRouter>
 		<Switch>
-			{
-				routes.map ((route,index) => {
-					return (
-						<Route
-							key={index}
-							path={route.path}
-							exact={route.exact}
-							render={(props: RouteComponentProps<any>) => (
-								<route.component
-									name={route.name}
-									{...props}
-									{...route.props}
-								/>
-							)}
-						/>
-					)
-				})
-			}
+			{routes.map ((route,index) =>
+        <Route
+          key={index}
+          path={route.path}
+          exact={route.exact}
+          render={(props: RouteComponentProps<any>) => (
+            <route.component
+              name={route.name}
+              {...props}
+              {...route.props}
+            />
+          )}
+        />
+      )}
 		</Switch>
 	</BrowserRouter>
 
