@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { IonChip, IonLabel } from '@ionic/react';
 import { RouteComponentProps, useHistory, useParams, withRouter  } from "react-router-dom";
-import Footer from "../../components/footer";
-import Header from "../../components/searchBar";
-import IPage from "../../interfaces/page";
-import { categories } from '../home/Home';
+import Footer from "../components/footer";
+import Header from "../components/searchBar";
+import IPage from "../interfaces/page";
+import { categories } from './Home';
 
 export interface IProduct {
   name: string,
@@ -13,7 +13,7 @@ export interface IProduct {
   image: string,
   description: string
 }
-const products_list = [
+export const products_list = [
   {
     name: "Producto 1",
     cost: 10000,
@@ -60,7 +60,7 @@ const CategoriesPage: React.FC<IPage & RouteComponentProps<any>> = props => {
   }
 
   const productCard = (product:IProduct) =>
-    <div key={product.id} className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
+    <div key={product.id} onClick={() => history.push(`${category}/${product.id.toString()}`)} className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="w-1/3 bg-cover"
         style={{backgroundImage: `url(${product.image})`}}
       >

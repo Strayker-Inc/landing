@@ -1,9 +1,9 @@
 import React from 'react';
 import { RouteComponentProps, useHistory, withRouter  } from "react-router-dom";
-import Footer from "../../components/footer";
-import Header from "../../components/searchBar";
-import IPage from "../../interfaces/page";
-import { IProduct } from '../categories/Categories';
+import Footer from "../components/footer";
+import Header from "../components/searchBar";
+import IPage from "../interfaces/page";
+import { IProduct } from './Categories';
 
 
 
@@ -41,14 +41,14 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
         {
           categories.map(item => (
             <div onClick={() => history.push(`/home/${item.code}`)}
-              className="flex items-center relative mx-4 w-full mb-4 md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
+              className="flex justify-between md:justify-around items-center relative mx-4 w-full mb-4 md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
               style={{backgroundColor: item.cardColor}}
             >
-              <div className="py-8 pl-4 md:py-8 md:pl-8">
+              <div className="py-8 pl-8 md:py-8 md:pl-8">
                 <p className="text-md md:text-lg font-semibold">{item.description}</p>
                 <span className="text-4xl md:text-5xl font-bold">{item.name}</span>
               </div>
-              <div className="text-6xl mx-auto md:pr-4">
+              <div className="text-6xl pr-8 md:pr-4">
                 <span>{item.emoji}</span>
               </div>
             </div>

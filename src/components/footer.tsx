@@ -2,7 +2,7 @@ import React, { SetStateAction, useState } from 'react';
 import { IonBadge, IonIcon, IonToast} from '@ionic/react';
 import { RouteComponentProps, useHistory, withRouter  } from "react-router-dom";
 import { logoWhatsapp, cartOutline, cartSharp } from 'ionicons/icons';
-import { IProduct } from '../pages/categories/Categories';
+import { IProduct } from '../pages/Categories';
 
 const footerStyles: React.CSSProperties = {
   backgroundColor: "#00bb2d",
@@ -24,7 +24,7 @@ const FooterApp: React.FC<Props & RouteComponentProps<any>> = ({addToCart, cart}
     setShowToastEmpty(true);
   }
   return (
-      <footer>
+      <footer className="">
         <IonToast
           isOpen={showToastEmpty}
           onDidDismiss={() => setShowToastEmpty(false)}

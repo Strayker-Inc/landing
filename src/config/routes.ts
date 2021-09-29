@@ -1,7 +1,9 @@
 import Landing from '../pages/Landing/Landing';
-import Home from '../pages/home/Home';
-import Categories from '../pages/categories/Categories';
+import Home from '../pages/Home';
+import Categories from '../pages/Categories';
 import IRoute from '../interfaces/route';
+import Product from '../pages/Product';
+
 const routes: IRoute[] = [
   {
 		path: '/',
@@ -19,6 +21,12 @@ const routes: IRoute[] = [
 		path: '/home/:category',
 		name: 'Categories',
 		component: Categories,
+		exact: true
+	},
+  {
+		path: '/home/:category/:productId',
+		name: 'Product',
+		component: Product,
 		exact: true
 	},
 ]
