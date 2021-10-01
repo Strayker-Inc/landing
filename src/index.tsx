@@ -8,8 +8,10 @@ import i18next from "i18next";
 import config from './config/config';
 import { initializeApp } from 'firebase/app';
 import { initializeAnalytics } from 'firebase/analytics';
+import { Provider } from "react-redux";
 import common_es from "./translations/es/common.json";
 import common_en from "./translations/en/common.json";
+import store from './redux/store';
 
 // Initialize firebase app with analytics
 const app = initializeApp(config.firebaseConfig);
@@ -32,7 +34,9 @@ i18next.init({
 ReactDOM.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </I18nextProvider>
   </React.StrictMode>,
   document.getElementById('root')

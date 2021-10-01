@@ -1,11 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, {  useState } from 'react';
 import { IonChip, IonLabel } from '@ionic/react';
-import { RouteComponentProps, useHistory, useParams, withRouter  } from "react-router-dom";
+import { RouteComponentProps, useHistory, useParams } from "react-router-dom";
 import Footer from "../components/footer";
 import Header from "../components/searchBar";
 import IPage from "../interfaces/page";
 import { categories } from './Home';
-
+import { addToCart } from '../redux/shopping/shoppingActions';
+import { connect } from 'react-redux';
 export interface IProduct {
   name: string,
   cost: number,
@@ -17,11 +18,13 @@ export interface IProduct {
 }
 export const products_list = [
   {
-    name: "Producto 1",
-    cost: 10000,
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1589365252845-092198ba5334?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit In odit exercitationem fuga id nam quia'
+    name: "Caja Ela Germinable",
+        cost: 21450,
+        id: 1,
+        image: "https://i.ibb.co/pj13mzh/ejemplo.jpg",
+        images: ['https://i.ibb.co/pj13mzh/ejemplo.jpg','https://i.ibb.co/zF2DkY2/Lifepack-Caja-Ela-Germinable-2.jpg', 'https://i.ibb.co/cYdtXXT/Lifepack-Caja-Ela-Germinable-1.jpg' ],
+        size: '15cm x 11,5cm x 5,5 cm',
+        description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.'
   },
   {
     name: "Lorem",
@@ -45,6 +48,7 @@ export const products_list = [
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit In odit exercitationem fuga id nam quia'
   },
 ]
+
 type Params = {
   category: string
 }
@@ -56,10 +60,10 @@ const CategoriesPage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const [products, setProducts] = useState<IProduct[]>(products_list)
   const [cart, setCart] = useState<IProduct[]>([]);
 
-  const addToCart = (product: IProduct) => {
-    console.log (cart);
-    setCart(cart => [...cart, product]);
-  }
+  // const addToCart = (product: IProduct) => {
+  //   addToCart()
+  //   setCart(cart => [...cart, product]);
+  // }
 
   const goToProduct = (productId: string) => {
     history.push(`${category}/${productId.toString()}`)
@@ -67,7 +71,7 @@ const CategoriesPage: React.FC<IPage & RouteComponentProps<any>> = props => {
 
   const productCard = (product:IProduct) =>
     <div key={product.id} className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="w-1/3 bg-cover"
+      <div className="w-1/3 bg-cover bg-center"
         style={{backgroundImage: `url(${product.image})`}}
         onClick={() => goToProduct(product.id.toString())}
       >
@@ -84,7 +88,7 @@ const CategoriesPage: React.FC<IPage & RouteComponentProps<any>> = props => {
           <p className="text-gray-700 font-bold text-xl" onClick={() => goToProduct(product.id.toString())}
             >{`$${product.cost}`}
           </p>
-          <button onClick={() => addToCart(product)}
+          <button onClick={() => addToCart(product.id.toString())}
             className="px-3 py-2 bg-green text-white text-xs font-bold uppercase rounded"
           >Agregar al carro
           </button>
@@ -114,9 +118,15 @@ const CategoriesPage: React.FC<IPage & RouteComponentProps<any>> = props => {
         {products.map(product => productCard(product))}
       </main>
 
-      <Footer cart={cart} addToCart={addToCart}/>
+      {/* <Footer cart={cart} addToCart={addToCart}/> */}
     </div>
   );
 };
 
-export default withRouter(CategoriesPage);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    addToCart: (productId: string) => dispatch(addToCart(productId))
+  }
+}
+
+export default connect(null, mapDispatchToProps(CategoriesPage));
