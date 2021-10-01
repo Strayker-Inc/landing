@@ -37,11 +37,11 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     <div className="flex flex-col font-inter bg-gray-100">
       <Header showBack={false}/>
 
-      <main className="flex-1 overflow-y-auto flex justify-center flex-wrap pt-4">
+      <main className="flex-1 overflow-y-auto flex justify-center flex-wrap ">
         {
           categories.map(item => (
             <div onClick={() => history.push(`/home/${item.code}`)}
-              className="flex justify-between md:justify-around items-center relative mx-4 w-full mb-4 md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
+              className="mx-4 my-2 flex justify-between md:justify-around items-center relative w-full  md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
               style={{backgroundColor: item.cardColor}}
             >
               <div className="py-8 pl-8 md:py-8 md:pl-8">

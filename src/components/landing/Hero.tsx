@@ -20,7 +20,7 @@ const Hero = (props: any) => {
             {props.t('hero.text')}
           </p>
 
-          <button onClick={() => history.push('/home')} className="w-5/6  md:w-1/2 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
+          <button onClick={() => history.push('/slides')} className="w-5/6  md:w-1/2 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
             {props.t('hero.buttons.join')}
           </button>
         </div>
