@@ -4,22 +4,37 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 import { IProduct } from "./Categories";
 import './Product.css'
 
+// const current_product = {
+//   name: "Caja Ela Germinable",
+//   cost: 21450,
+//   id: 1,
+//   image: "",
+//   images: ['https://i.ibb.co/pj13mzh/ejemplo.jpg','https://i.ibb.co/zF2DkY2/Lifepack-Caja-Ela-Germinable-2.jpg', 'https://i.ibb.co/cYdtXXT/Lifepack-Caja-Ela-Germinable-1.jpg' ],
+//   size: '15cm x 11,5cm x 5,5 cm',
+//   description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.'
+// }
+const current_product = {
+  name: "Abono organico ecopoop",
+  cost: 4500,
+  id: 2,
+  image: "",
+  images: [
+    'https://i.ibb.co/JnnVnN7/DSC-0492-JPG.webp',
+    'https://i.ibb.co/9T025HT/DSC-0510-JPG.webp',
+    'https://i.ibb.co/Np1b5Yf/DSC-0541-JPG.webp',
+    'https://i.ibb.co/hWhcZ49/DSC-0513-JPG.webp',
+    'https://i.ibb.co/tYgLxK6/DSC-0536-JPG.webp'
+  ],
+  size: '15cm x 11,5cm x 5,5 cm',
+  description: 'El abono organico ecopoop es producto de compostaje de excremento de mascotas. No contiene quimicos'
+}
+
 const ProductPage: React.FC<RouteComponentProps<any>> = props => {
   // const history = useHistory();
   const [product, setProduct] = useState<IProduct>();
 
   useEffect(() => {
-    setProduct(
-      {
-        name: "Caja Ela Germinable",
-        cost: 21450,
-        id: 1,
-        image: "",
-        images: ['https://i.ibb.co/pj13mzh/ejemplo.jpg','https://i.ibb.co/zF2DkY2/Lifepack-Caja-Ela-Germinable-2.jpg', 'https://i.ibb.co/cYdtXXT/Lifepack-Caja-Ela-Germinable-1.jpg' ],
-        size: '15cm x 11,5cm x 5,5 cm',
-        description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.'
-      },
-    )
+    setProduct(current_product)
   },[]);
 
   return (
