@@ -5,26 +5,33 @@ export const addToCart = (productId: string) => {
   return {
     type: actionTypes.ADD_TO_CART,
     payload: {
-      productId
+      id: productId
     }
   }
 }
 
 export const removeFromCart = (productId: string) => {
   return {
-    type: actionTypes.REMOVE_TO_CART,
+    type: actionTypes.REMOVE_FROM_CART,
     payload: {
-      productId
+      id: productId
     }
   }
 }
 
-export const adjutQty = (productId: string, qty: number) => {
+export const adjustQty = (productId: string, qty: number) => {
   return {
-    type: actionTypes.ADJUST,
+    type: actionTypes.ADJUST_ITEM_QTY,
     payload: {
-      productId,
+      id: productId,
       qty
     }
+  }
+}
+
+export const loadCurrentItem = (product: IProduct) => {
+  return {
+    type: actionTypes.LOAD_CURRENT_ITEM,
+    payload: product
   }
 }

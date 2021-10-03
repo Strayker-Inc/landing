@@ -4,7 +4,6 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 import { IProduct } from "./Categories";
 import './Product.css'
 
-import { connect } from 'react-redux';
 const ProductPage: React.FC<RouteComponentProps<any>> = props => {
   // const history = useHistory();
   const [product, setProduct] = useState<IProduct>();
