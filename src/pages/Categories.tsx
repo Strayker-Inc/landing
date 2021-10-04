@@ -26,7 +26,7 @@ export const products_list = [
     description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.'
   },
   {
-    name: "Abono organico ecopoop",
+    name: "Abono organico potenciado Ecopoop",
     cost: 4500,
     id: 2,
     image: "https://i.ibb.co/JnnVnN7/DSC-0492-JPG.webp",
@@ -67,7 +67,7 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
     <IonPage className="font-inter">
       <Header showBack={true}/>
       <IonContent>
-        <div className="my-2 mx-4 md:flex md:justify-center">
+        <div className="sticky w-full top-0 my-2 px-4  md:flex md:justify-center bg-white">
           {categories.map(item => {
             const isTheSameCategory = (item.code === category.toLowerCase().replace(' ', '_'))
             return (
@@ -84,7 +84,6 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
         <div className="w-full md:w-9/12 mx-auto flex flex-wrap justify-center overflow-y-auto pt-4">
           {props.products.map(product => <ProductRow key={product.id} product={product}/>)}
         </div>
-
       </IonContent>
 
       <Footer />

@@ -2,6 +2,7 @@ import { IonContent, IonFooter, IonPage, IonSlides, IonSlide } from "@ionic/reac
 import { useEffect, useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { IProduct } from "./Categories";
+import  Header from "../components/BackButtonHeader";
 import './Product.css'
 
 // const current_product = {
@@ -39,6 +40,7 @@ const ProductPage: React.FC<RouteComponentProps<any>> = props => {
 
   return (
     <IonPage className="font-inter">
+      <Header />
       <IonContent style={{'--ion-background-color':'#f3f4f6'}}>
         {product &&
           <div className="relaive h-screen md:mt-4">

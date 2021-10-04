@@ -4,6 +4,8 @@ import Categories from '../pages/Categories';
 import IRoute from '../interfaces/route';
 import Product from '../pages/Product';
 import Onboarding from '../pages/Onboarding';
+import CartPage from '../pages/Cart';
+import Checkout from '../pages/Checkout';
 
 const routes: IRoute[] = [
   {
@@ -25,13 +27,25 @@ const routes: IRoute[] = [
 		exact: true
 	},
   {
+		path: '/home/cart',
+		name: 'Cart',
+		component: CartPage,
+		exact: true
+	},
+  {
+		path: '/home/checkout',
+		name: 'Checkout',
+		component: Checkout,
+		exact: true
+	},
+  {
 		path: '/home/:category',
 		name: 'Categories',
 		component: Categories,
 		exact: true
 	},
   {
-		path: '/home/:category/:productId',
+		path: '/home/producto/:productId',
 		name: 'Product',
 		component: Product,
 		exact: true
