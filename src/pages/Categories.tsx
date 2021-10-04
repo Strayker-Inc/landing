@@ -1,12 +1,10 @@
-import React, {  useState } from 'react';
-import { IonChip, IonLabel } from '@ionic/react';
+import React from 'react';
+import { IonChip, IonContent, IonLabel, IonPage } from '@ionic/react';
 import { RouteComponentProps, useHistory, useParams } from "react-router-dom";
 import Footer from "../components/footer";
 import Header from "../components/searchBar";
 import ProductRow, { Params } from "../components/ProductRow";
-import IPage from "../interfaces/page";
 import { categories } from './Home';
-import { addToCart } from '../redux/shopping/shoppingActions';
 import { connect } from 'react-redux';
 export interface IProduct {
   name: string,
@@ -20,19 +18,27 @@ export interface IProduct {
 export const products_list = [
   {
     name: "Caja Ela Germinable",
-        cost: 21450,
-        id: 1,
-        image: "https://i.ibb.co/pj13mzh/ejemplo.jpg",
-        images: ['https://i.ibb.co/pj13mzh/ejemplo.jpg','https://i.ibb.co/zF2DkY2/Lifepack-Caja-Ela-Germinable-2.jpg', 'https://i.ibb.co/cYdtXXT/Lifepack-Caja-Ela-Germinable-1.jpg' ],
-        size: '15cm x 11,5cm x 5,5 cm',
-        description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.'
+    cost: 21450,
+    id: 1,
+    image: "https://i.ibb.co/pj13mzh/ejemplo.jpg",
+    images: ['https://i.ibb.co/pj13mzh/ejemplo.jpg','https://i.ibb.co/zF2DkY2/Lifepack-Caja-Ela-Germinable-2.jpg', 'https://i.ibb.co/cYdtXXT/Lifepack-Caja-Ela-Germinable-1.jpg' ],
+    size: '15cm x 11,5cm x 5,5 cm',
+    description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.'
   },
   {
-    name: "Lorem",
-    cost: 9800,
+    name: "Abono organico ecopoop",
+    cost: 4500,
     id: 2,
-    image: 'https://images.unsplash.com/photo-1617658946735-2611514fedc3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=716&q=80',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit In odit exercitationem fuga id nam quia'
+    image: "https://i.ibb.co/JnnVnN7/DSC-0492-JPG.webp",
+    images: [
+      'https://i.ibb.co/JnnVnN7/DSC-0492-JPG.webp',
+      'https://i.ibb.co/9T025HT/DSC-0510-JPG.webp',
+      'https://i.ibb.co/Np1b5Yf/DSC-0541-JPG.webp',
+      'https://i.ibb.co/hWhcZ49/DSC-0513-JPG.webp',
+      'https://i.ibb.co/tYgLxK6/DSC-0536-JPG.webp'
+    ],
+    size: '15cm x 11,5cm x 5,5 cm',
+    description: 'El abono organico ecopoop es producto de compostaje de excremento de mascotas. No contiene quimicos'
   },
   {
     name: "Caja de Zapatos",
@@ -57,48 +63,39 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
   const { category } = useParams<Params>();
   const history = useHistory();
 
-  // const [products, setProducts] = useState<IProduct[]>(products_list)
-  const [cart, setCart] = useState<IProduct[]>([]);
-
-  // const addToCart = (product: IProduct) => {
-  //   addToCart()
-  //   setCart(cart => [...cart, product]);
-  // }
-
   return (
-    <div className="font-inter">
+    <IonPage className="font-inter">
       <Header showBack={true}/>
-      <div className="my-2 mx-4 md:flex md:justify-center">
-        {categories.map(item => {
-          const isTheSameCategory = (item.code === category.toLowerCase().replace(' ', '_'))
-          return (
-            <IonChip key={item.code}
-              onClick={() => history.push(`${item.code}`)}
-              className={`${isTheSameCategory && 'bg-green text-white font-bold' } text-lg`}>
-              <span>{item.emoji}</span>
-              <IonLabel>{item.name}</IonLabel>
-            </IonChip>
-          )
-        })}
-      </div>
+      <IonContent>
+        <div className="my-2 mx-4 md:flex md:justify-center">
+          {categories.map(item => {
+            const isTheSameCategory = (item.code === category.toLowerCase().replace(' ', '_'))
+            return (
+              <IonChip key={item.code}
+                onClick={() => history.push(`${item.code}`)}
+                className={`${isTheSameCategory && 'bg-green text-white font-bold' } text-lg`}>
+                <span>{item.emoji}</span>
+                <IonLabel>{item.name}</IonLabel>
+              </IonChip>
+            )
+          })}
+        </div>
 
-      <main className="w-full md:w-9/12 mx-auto flex flex-wrap justify-center overflow-y-auto pt-4">
-        {props.products.map(product => <ProductRow key={product.id} product={product}/>)}
-      </main>
+        <div className="w-full md:w-9/12 mx-auto flex flex-wrap justify-center overflow-y-auto pt-4">
+          {props.products.map(product => <ProductRow key={product.id} product={product}/>)}
+        </div>
 
-      {/* <Footer cart={cart} addToCart={addToCart}/> */}
-    </div>
+      </IonContent>
+
+      <Footer />
+    </IonPage>
   );
 };
 
 const mapStateToProps = (state: any) => {
   return {
     products: state.shop.products,
-    // addToCart: (productId: string) => dispatch(addToCart(productId))
   }
 }
 
-
-
 export default connect(mapStateToProps)(CategoriesPage);
-// export default CategoriesPage;

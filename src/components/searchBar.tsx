@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonIcon, IonSearchbar} from '@ionic/react';
+import { IonHeader, IonIcon, IonSearchbar} from '@ionic/react';
 import { RouteComponentProps, withRouter, useHistory } from "react-router-dom";
 import { chevronBack } from 'ionicons/icons';
 interface componentProperties {
@@ -12,12 +12,12 @@ const SearchBar: React.FC<componentProperties & RouteComponentProps<any>> = prop
   const [showBack] = useState(props.showBack);
 
   return (
-    <header className="ml-2 h-14 md:h-20 flex justify-center items-center">
+    <IonHeader className="h-14 md:h-20 flex justify-center items-center">
       {
         showBack ?
-        <IonIcon onClick={() => history.goBack()} className="text-4xl" icon={chevronBack} />
+        <IonIcon onClick={() => history.goBack()} className="ml-2 text-4xl" icon={chevronBack} />
         :
-        <img id="logo" className="h-12 md:h-16" src="./assets/images/slinqer_logo.svg" alt="logo slinqer" />
+        <img id="logo" className="ml-2 h-12 md:h-16" src="./assets/images/slinqer_logo.svg" alt="logo slinqer" />
       }
       <IonSearchbar className="mx-auto" mode="ios"
         placeholder="Champu en barra" animated={true}
@@ -25,7 +25,7 @@ const SearchBar: React.FC<componentProperties & RouteComponentProps<any>> = prop
       >
       </IonSearchbar>
 
-    </header>
+    </IonHeader>
   );
 };
 
