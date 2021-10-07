@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory, withRouter  } from "react-router-dom";
 import Footer from "../components/footer";
 import Header from "../components/searchBar";
+import { collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { IProduct } from './Categories';
+import { db } from '../config/firebase';
+import { IonPage } from '@ionic/react';
 
-
+interface ICategory {
+  id: string,
+  name: string,
+  code: string,
+  description: string,
+  color: string,
+  emoji: string
+}
 
 export const categories = [
   {
@@ -33,16 +42,33 @@ export const categories = [
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
+  const [categoriess, setCategories] = useState<ICategory[]>();
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const categoriesCol = collection(db, 'categories');
+        const categoriesSnapshot = await getDocs(categoriesCol);
+        const categoriesDb = categoriesSnapshot.docs.map(doc => doc.data());
+        setCategories(categoriesDb as ICategory[]);
+      } catch (error) {
+        console.log (error)
+      }
+    }
+    getCategories();
+  }, [])
+
+
   return (
-    <div className="flex flex-col font-inter bg-gray-100">
+    <IonPage className="flex flex-col font-inter bg-gray-100">
       <Header showBack={false}/>
 
       <main className="flex-1 overflow-y-auto flex justify-center flex-wrap ">
         {
-          categories.map(item => (
+          categoriess && categoriess.map(item => (
             <div onClick={() => history.push(`/home/${item.code}`)}
               className="mx-4 my-2 flex justify-between md:justify-around items-center relative w-full  md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
-              style={{backgroundColor: item.cardColor}}
+              style={{backgroundColor: item.color}}
             >
               <div className="py-8 pl-8 md:py-8 md:pl-8">
                 <p className="text-md md:text-lg font-semibold">{item.description}</p>
@@ -55,9 +81,8 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
           ))
         }
       </main>
-
-      {/* <Footer cart={props.cart} addToCart={props.addToCart}/> */}
-    </div>
+      <Footer />
+    </IonPage>
   );
 };
 
