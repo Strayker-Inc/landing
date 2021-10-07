@@ -1,7 +1,8 @@
-import { connect } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { IProduct } from "../pages/Categories";
 import { addToCart } from "../redux/shopping/shoppingActions";
+import { connect } from "react-redux";
+import { useEffect } from "react";
 
 interface IProps {
   product: IProduct,
@@ -11,6 +12,7 @@ interface IProps {
 export type Params = {
   category: string
 }
+
 const ProductRow: React.FC<IProps> = props => {
   const history = useHistory();
   const { category } = useParams<Params>();
@@ -20,14 +22,15 @@ const ProductRow: React.FC<IProps> = props => {
   };
 
   return (
-    <div key={props.product.id} className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="w-1/3 bg-cover bg-center"
-        style={{backgroundImage: `url(${props.product.image})`}}
+        style={{backgroundImage: `url(${props.product.images[0]})`}}
         onClick={() => goToProduct(props.product.id.toString())}
-      >
-      </div>
+      ></div>
       <div className="w-2/3 p-4">
-        <span className="text-gray-800 font-bold text-2xl"  onClick={() => goToProduct(props.product.id.toString())}>{props.product.name}</span>
+        <span className="text-gray-800 font-bold text-2xl"
+          onClick={() => goToProduct(props.product.id.toString())}
+        >{props.product.name}</span>
         <p className="mt-2 text-gray-600 text-sm"  onClick={() => goToProduct(props.product.id.toString())}>
           { props.product.description.length > 100
             ? `${props.product.description.slice(0, 100)}...`
@@ -40,9 +43,9 @@ const ProductRow: React.FC<IProps> = props => {
           </svg>
         </div> */}
         <div className="flex flex-wrap item-center justify-between mt-3">
-          <p className="text-gray-700 font-bold text-xl" onClick={() => goToProduct(props.product.id.toString())}
-            >{`$${props.product.cost}`}
-          </p>
+          <p className="text-gray-700 font-bold text-xl"
+            onClick={() => goToProduct(props.product.id.toString())}
+          >{`$${props.product.cost}`}</p>
           <button onClick={() => props.addToCart(props.product.id.toString())}
             className="px-3 py-2 bg-green text-white text-xs font-bold uppercase rounded"
           >Agregar al carro

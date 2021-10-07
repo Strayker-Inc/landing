@@ -24,7 +24,7 @@ const CartPage: React.FC<IProps> = props => {
             <div className="block mt-4 mx-4 flex h-40 bg-white shadow-lg rounded-lg overflow-hidden">
               <div className="m-3 rounded-lg w-1/3 bg-cover bg-center"
                 onClick={() => history.push(`/home/${item.id}`)}
-                style={{backgroundImage: `url(${item.image})`}}
+                style={{backgroundImage: `url(${item.images[0]})`}}
               ></div>
               <div className="w-2/3 p-4 relative">
                 <span className="text-gray-700 font-bold text-xl md:text-2xl">{item.name}</span>

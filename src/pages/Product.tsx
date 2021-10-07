@@ -1,42 +1,35 @@
 import { IonContent, IonFooter, IonPage, IonSlides, IonSlide } from "@ionic/react";
 import { useEffect, useState } from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import { RouteComponentProps, useParams, withRouter } from "react-router-dom";
 import { IProduct } from "./Categories";
 import  Header from "../components/BackButtonHeader";
 import './Product.css'
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../config/firebase";
 
-// const current_product = {
-//   name: "Caja Ela Germinable",
-//   cost: 21450,
-//   id: 1,
-//   image: "",
-//   images: ['https://i.ibb.co/pj13mzh/ejemplo.jpg','https://i.ibb.co/zF2DkY2/Lifepack-Caja-Ela-Germinable-2.jpg', 'https://i.ibb.co/cYdtXXT/Lifepack-Caja-Ela-Germinable-1.jpg' ],
-//   size: '15cm x 11,5cm x 5,5 cm',
-//   description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.'
-// }
-const current_product = {
-  name: "Abono organico ecopoop",
-  cost: 4500,
-  id: 2,
-  image: "",
-  images: [
-    'https://i.ibb.co/JnnVnN7/DSC-0492-JPG.webp',
-    'https://i.ibb.co/9T025HT/DSC-0510-JPG.webp',
-    'https://i.ibb.co/Np1b5Yf/DSC-0541-JPG.webp',
-    'https://i.ibb.co/hWhcZ49/DSC-0513-JPG.webp',
-    'https://i.ibb.co/tYgLxK6/DSC-0536-JPG.webp'
-  ],
-  size: '15cm x 11,5cm x 5,5 cm',
-  description: 'El abono organico ecopoop es producto de compostaje de excremento de mascotas. No contiene quimicos'
+interface IParams {
+  productId: string
 }
 
 const ProductPage: React.FC<RouteComponentProps<any>> = props => {
+  const { productId } = useParams<IParams>();
   // const history = useHistory();
   const [product, setProduct] = useState<IProduct>();
 
   useEffect(() => {
-    setProduct(current_product)
-  },[]);
+    const getProducts = async () => {
+      try {
+        const q = query(collection(db, 'products'), where('id', '==', productId))
+        const productsSnapshot = await getDocs(q);
+        const data = productsSnapshot.docs.map(doc => doc.data());
+        setProduct(data[0] as IProduct);
+      } catch (error) {
+        console.log (error)
+      }
+    }
+    getProducts();
+  }, [productId])
+
 
   return (
     <IonPage className="font-inter">
@@ -45,8 +38,8 @@ const ProductPage: React.FC<RouteComponentProps<any>> = props => {
         {product &&
           <div className="relaive h-screen md:mt-4">
             <IonSlides pager={true} className="h-3/6 w-full md:w-2/5">
-              {product.images?.map((img)=>
-                <IonSlide>
+              {product.images.map((img)=>
+                <IonSlide key={img}>
                   <div className="w-full h-full bg-cover bg-center md:rounded-3xl"
                     style={{backgroundImage: `url(${img})`}}
                   ></div>

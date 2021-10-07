@@ -1,4 +1,4 @@
-import { IProduct, products_list } from '../../pages/Categories';
+import { IProduct } from '../../pages/Categories';
 import * as actionTypes from './shoppingTypes';
 
 export interface ICart extends IProduct {
@@ -12,7 +12,7 @@ export interface IState {
 }
 
 const INITIAL_STATE: IState = {
-  products: products_list,
+  products: [],
   cart: [],
   currentItem: null,
 }

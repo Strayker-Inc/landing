@@ -27,25 +27,25 @@ const routes: IRoute[] = [
 		exact: true
 	},
   {
-		path: '/home/cart',
+		path: '/tienda/carrito',
 		name: 'Cart',
 		component: CartPage,
 		exact: true
 	},
   {
-		path: '/home/checkout',
+		path: '/tienda/carrito/checkout',
 		name: 'Checkout',
 		component: Checkout,
 		exact: true
 	},
   {
-		path: '/home/:category',
+		path: '/tienda/:category',
 		name: 'Categories',
 		component: Categories,
 		exact: true
 	},
   {
-		path: '/home/producto/:productId',
+		path: '/tienda/producto/:productId',
 		name: 'Product',
 		component: Product,
 		exact: true
