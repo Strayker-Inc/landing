@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory, withRouter  } from "react-router-dom";
 import Footer from "../components/footer";
 import Header from "../components/searchBar";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import IPage from "../interfaces/page";
 import { db } from '../config/firebase';
 import { IonPage } from '@ionic/react';
@@ -31,7 +31,26 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
         console.log (error)
       }
     }
+    const nose = async () => {
+      await setDoc(doc(db, "products", "LBrbpBXQo9dmyXUjyQ2A"), {
+        id: "prod_2",
+        store_id: "store_2",
+        category_code: "hogar",
+        name: "Abono organico potenciado Ecopoop",
+        cost: 4500,
+        images: [
+          'https://i.ibb.co/JnnVnN7/DSC-0492-JPG.webp',
+          'https://i.ibb.co/9T025HT/DSC-0510-JPG.webp',
+          'https://i.ibb.co/Np1b5Yf/DSC-0541-JPG.webp',
+          'https://i.ibb.co/hWhcZ49/DSC-0513-JPG.webp',
+          'https://i.ibb.co/tYgLxK6/DSC-0536-JPG.webp'
+        ],
+        description: 'El abono organico ecopoop es producto de compostaje de excremento de mascotas. No contiene quimicos',
+        size: '1kg /1000gr'
+      });
+    }
     getCategories();
+    // nose();
   }, [])
 
 

@@ -49,12 +49,12 @@ const FooterApp: React.FC<Props> = (props) => {
   return (
     <IonFooter style={{}}>
       <button onClick={(e) => present({event: e.nativeEvent})} style={footerStyles}
-        className="p-3 w-16 h-16 mb-2 md:mb-6 justify-center text-center shadow-lg rounded-full absolute bottom-24 right-6">
+        className="p-3 w-16 h-16 md:w-20 md:h-20 md:mb-6 justify-center text-center shadow-lg rounded-full absolute bottom-20 md:bottom-24 right-2 md:right-6">
           <IonIcon className="block text-4xl mx-auto text-white"icon={logoWhatsapp} />
       </button>
 
       <button onClick={() => goToCart()}
-        className="p-3 w-20 h-20 mb-2 md:mb-6 flex items-center inline-flex justify-center text-center shadow-lg rounded-full bg-white absolute bottom-0 right-6">
+        className="p-3 w-16 h-16 md:w-20 md:h-20 mb-2 md:mb-6 flex items-center inline-flex justify-center text-center shadow-lg rounded-full bg-white absolute bottom-0  right-2 md:right-6 ">
           {cartCount === 0
             ? <IonIcon className="text-4xl" icon={cartOutline} />
             : <>

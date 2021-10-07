@@ -6,6 +6,7 @@ import  Header from "../components/BackButtonHeader";
 import './Product.css'
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
+import Footer from "../components/footer";
 
 interface IParams {
   productId: string
@@ -77,6 +78,7 @@ const ProductPage: React.FC<RouteComponentProps<any>> = props => {
         }
 
       </IonContent>
+      <Footer />
       <IonFooter>
         <div className="md:w-2/5 md:mx-auto flex justify-around items-center mb-4">
           <span className="flex">
