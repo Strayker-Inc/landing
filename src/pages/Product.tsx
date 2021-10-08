@@ -1,6 +1,6 @@
 import { IonContent, IonFooter, IonPage, IonSlides, IonSlide } from "@ionic/react";
 import { useEffect, useState } from "react";
-import { RouteComponentProps, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { IProduct } from "./Categories";
 import  Header from "../components/BackButtonHeader";
 import './Product.css'

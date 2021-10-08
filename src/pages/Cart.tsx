@@ -21,7 +21,7 @@ const CartPage: React.FC<IProps> = props => {
           <span className="text-4xl font-bold text-gray-800">Eco-Carrito</span>
         </div>
         <div className="w-full lg:w-5/12 mx-auto">
-          {props.cart.map(item => <CartProductRow item={item}/>)}
+          {props.cart.map(item => <CartProductRow key={item.id} item={item}/>)}
 
           <a className="mt-4 mx-4 flex h-20 flex justify-around items-center bg-white shadow-lg rounded-lg overflow-hidden"
             style={{background: '#00bb2d' }} href="https://wa.me/573162452663"

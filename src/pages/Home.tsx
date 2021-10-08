@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory, withRouter  } from "react-router-dom";
 import Footer from "../components/footer";
 import Header from "../components/searchBar";
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
 import { db } from '../config/firebase';
 import { IonPage } from '@ionic/react';
@@ -32,7 +32,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
       }
     }
     const nose = async () => {
-      await setDoc(doc(db, "products", "LBrbpBXQo9dmyXUjyQ2A"), {
+      await addDoc(collection(db, "products"), {
         id: "prod_2",
         store_id: "store_2",
         category_code: "hogar",
