@@ -41,7 +41,7 @@ const FooterApp: React.FC<Props> = (props) => {
 
   const goToCart = () => {
     if (cartCount > 0) {
-      return history.push('/home/cart')
+      return history.push('/tienda/carrito')
     }
     setShowToastEmpty(true);
   }

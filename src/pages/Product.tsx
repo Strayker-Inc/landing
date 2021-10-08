@@ -1,24 +1,30 @@
 import { IonContent, IonFooter, IonPage, IonSlides, IonSlide } from "@ionic/react";
 import { useEffect, useState } from "react";
-import { RouteComponentProps, useParams, withRouter } from "react-router-dom";
+import { RouteComponentProps, useParams } from "react-router-dom";
 import { IProduct } from "./Categories";
 import  Header from "../components/BackButtonHeader";
 import './Product.css'
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../config/firebase";
 import Footer from "../components/footer";
+import { addToCart } from "../redux/shopping/shoppingActions";
+import { connect } from "react-redux";
 
 interface IParams {
-  productId: string
+  productId: string,
 }
 
-const ProductPage: React.FC<RouteComponentProps<any>> = props => {
+interface IProps {
+  addToCart: any
+}
+
+const ProductPage: React.FC<IProps> = props => {
   const { productId } = useParams<IParams>();
   // const history = useHistory();
   const [product, setProduct] = useState<IProduct>();
 
   useEffect(() => {
-    const getProducts = async () => {
+    const getProduct = async () => {
       try {
         const q = query(collection(db, 'products'), where('id', '==', productId))
         const productsSnapshot = await getDocs(q);
@@ -28,7 +34,7 @@ const ProductPage: React.FC<RouteComponentProps<any>> = props => {
         console.log (error)
       }
     }
-    getProducts();
+    getProduct();
   }, [productId])
 
 
@@ -83,10 +89,10 @@ const ProductPage: React.FC<RouteComponentProps<any>> = props => {
         <div className="md:w-2/5 md:mx-auto flex justify-around items-center mb-4">
           <span className="flex">
             <p className="text-3xl text-gray-700 font-bold">{`$ ${product?.cost}`}</p>
-            <p className="self-end text-xl text-gray-600"> x25</p>
+            {/* <p className="self-end text-xl text-gray-600"> x25</p> */}
           </span>
           <div>
-            <button
+            <button onClick={() => props.addToCart(product)}
               className="p-4 bg-green rounded-xl text-white text-lg font-semibold"
             >Agregar al carro
             </button>
@@ -97,4 +103,11 @@ const ProductPage: React.FC<RouteComponentProps<any>> = props => {
   );
 };
 
-export default withRouter(ProductPage);
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    addToCart: (product: IProduct) => dispatch(addToCart(product))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ProductPage);

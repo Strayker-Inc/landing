@@ -17,10 +17,10 @@ const SearchBar: React.FC<componentProperties & RouteComponentProps<any>> = prop
         showBack ?
         <IonIcon onClick={() => history.goBack()} className="ml-2 text-4xl" icon={chevronBack} />
         :
-        <img id="logo" className="ml-2 h-12 md:h-16" src="./assets/images/slinqer_logo.svg" alt="logo slinqer" />
+        <img id="logo" className="ml-2 h-12 md:h-16" src="./assets/images/slinqer_logo.svg" alt="Logo Slinqer" />
       }
       <IonSearchbar className="mx-auto" mode="ios"
-        placeholder="Champu en barra" animated={true}
+        placeholder="Shampoo en barra" animated={true}
         value={searchText} onIonChange={e => setSearchText(e.detail.value!)}
       >
       </IonSearchbar>

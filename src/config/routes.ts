@@ -50,6 +50,12 @@ const routes: IRoute[] = [
 		component: Product,
 		exact: true
 	},
+  {
+		path: '**',
+		name: 'Redirect',
+		component: Home,
+		exact: true
+	},
 ]
 
 export default routes;
