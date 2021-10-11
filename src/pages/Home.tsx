@@ -62,7 +62,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
         {
           categoriess && categoriess.map(item => (
             <div key={item.id} onClick={() => history.push(`/tienda/${item.code}`)}
-              className="mx-4 my-2 flex justify-between md:justify-around items-center relative w-full  md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
+              className="mx-4 my-2 cursor-pointer flex justify-between md:justify-around items-center relative w-full  md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
               style={{backgroundColor: item.color}}
             >
               <div className="py-8 pl-8 md:py-8 md:pl-8">

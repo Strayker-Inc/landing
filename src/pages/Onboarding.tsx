@@ -1,13 +1,6 @@
-import { useEffect, useState } from "react";
 import { RouteComponentProps, useHistory, withRouter } from "react-router-dom";
-import { IProduct } from "./Categories";
-import { IonButton, IonContent, IonFooter, IonPage, IonSlide, IonSlides } from "@ionic/react";
+import { IonContent, IonFooter, IonPage, IonSlide, IonSlides } from "@ionic/react";
 import './Onboarding.css';
-// Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
-const slideOpts = {
-
-};
-
 
 const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
   const history = useHistory();
@@ -16,7 +9,7 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
     <IonPage className="font-inter">
       <IonContent className="">
 
-        <IonSlides  pager={true} options={slideOpts} className="flex h-full ">
+        <IonSlides  pager={true} className="flex h-full cursor-move">
           <IonSlide>
             <div className="space-y-6">
               <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
@@ -66,7 +59,7 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
           <button className="w-5/6 md:w-5/12 p-3 text-xl mx-auto text-center bg-green text-white font-bold rounded-xl"
             onClick={() => history.push('/home')}
           >
-            Ingresar
+            Siguiente
           </button>
         </div>
       </IonFooter>

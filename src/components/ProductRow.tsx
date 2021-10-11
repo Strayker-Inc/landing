@@ -23,15 +23,15 @@ const ProductRow: React.FC<IProps> = props => {
 
   return (
     <div className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="w-1/3 bg-cover bg-center"
+      <div className="w-1/3 bg-cover bg-center cursor-pointer"
         style={{backgroundImage: `url(${props.product.images[0]})`}}
         onClick={() => goToProduct(props.product.id)}
       ></div>
       <div className="w-2/3 p-4">
-        <span className="text-gray-800 font-bold text-2xl"
+        <span className="text-gray-800 font-bold text-2xl cursor-pointer"
           onClick={() => goToProduct(props.product.id)}
         >{props.product.name}</span>
-        <p className="mt-2 text-gray-600 text-sm"  onClick={() => goToProduct(props.product.id)}>
+        <p className="mt-2 text-gray-600 text-sm cursor-pointer"  onClick={() => goToProduct(props.product.id)}>
           { props.product.description.length > 100
             ? `${props.product.description.slice(0, 100)}...`
             : props.product.description
@@ -43,7 +43,7 @@ const ProductRow: React.FC<IProps> = props => {
           </svg>
         </div> */}
         <div className="flex flex-wrap item-center justify-between mt-3">
-          <p className="text-gray-700 font-bold text-xl"
+          <p className="text-gray-700 font-bold text-xl cursor-pointer"
             onClick={() => goToProduct(props.product.id)}
           >{`$${props.product.cost}`}</p>
           <button onClick={() => props.addToCart(props.product)}

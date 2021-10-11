@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { IonIcon } from "@ionic/react";
 import { addCircleOutline, removeCircleOutline, trashOutline } from "ionicons/icons";
 import { ICart } from "../redux/shopping/shoppingReducer";
-import { IProduct } from "../pages/Categories";
 
 interface IProps {
   item: ICart
@@ -16,13 +15,13 @@ const CartProductRow: React.FC<IProps> = props => {
 
   return (
     <div className="block mt-4 mx-4 flex h-40 bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="m-3 rounded-lg w-1/3 bg-cover bg-center"
-        onClick={() => history.push(`/home/${props.item.id}`)}
+      <div className="m-3 rounded-lg w-1/3 bg-cover bg-center cursor-pointer"
+        onClick={() => history.push(`/tienda/producto/${props.item.id}`)}
         style={{backgroundImage: `url(${props.item.images[0]})`}}
       ></div>
       <div className="w-2/3 p-4 relative">
         <span className="text-gray-700 font-bold text-xl md:text-2xl">{props.item.name}</span>
-        <div className="absolute inset-y-4 right-0 mr-4 ">
+        <div className="absolute inset-y-4 right-0 mr-4 cursor-pointer">
           <IonIcon className="text-3xl text-gray-600" icon={trashOutline} />
         </div>
         <div className="flex flex-wrap absolute inset-x-0 bottom-0 item-center justify-between mb-6 mx-4">

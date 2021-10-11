@@ -44,7 +44,7 @@ const ProductPage: React.FC<IProps> = props => {
       <IonContent style={{'--ion-background-color':'#f3f4f6'}}>
         {product &&
           <div className="relaive h-screen md:mt-4">
-            <IonSlides pager={true} className="h-3/6 w-full md:w-2/5">
+            <IonSlides pager={true} className="h-3/6 w-full md:w-2/5 cursor-move">
               {product.images.map((img)=>
                 <IonSlide key={img}>
                   <div className="w-full h-full bg-cover bg-center md:rounded-3xl"
@@ -56,15 +56,15 @@ const ProductPage: React.FC<IProps> = props => {
 
             <div className="z-10 absolute h-3/6 w-full inset-x-0 bottom-0 mb-10 md:mb-20">
               <div className="flex justify-evenly md:w-2/5 mx-auto ">
-                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white">
+                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
                   <img className="block w-10 mx-auto" src="./assets/images/vegan.svg" alt="Producto Vegano"/>
                   <span className="block text-lg font-semibold text-gray-800">Vegano</span>
                 </div>
-                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white">
+                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
                   <img className="block w-10 mx-auto" src="./assets/images/co2.svg" alt="Producto carbono neutro"/>
                   <span className="block text-lg font-semibold text-gray-800 mx-auto">Neutro</span>
                 </div>
-                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white">
+                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
                   <img className="block w-10 mx-auto" src="./assets/images/nature.svg" alt="Producto natural"/>
                   <span className="block text-lg font-semibold text-gray-800">Natural</span>
                 </div>
