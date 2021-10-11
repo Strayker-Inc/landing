@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { RouteComponentProps, useHistory, withRouter } from "react-router-dom";
 import { IonContent, IonFooter, IonPage} from "@ionic/react";
 import './Onboarding.css';
@@ -6,20 +7,38 @@ import SwiperCore, {
   Pagination,Navigation,Mousewheel
 } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
-import 'swiper/components/navigation/navigation.min.css'
-import 'swiper/components/pagination/pagination.min.css'
+import 'swiper/components/navigation/navigation.min.css';
+import 'swiper/components/pagination/pagination.min.css';
 
 SwiperCore.use([Pagination,Navigation,Mousewheel]);
 
-
 const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
   const history = useHistory();
+  const [ swipe, setSwipe ] = useState<SwiperCore>()
+  const [ lastSlide, setLastSlide] = useState(false);
+
+  useEffect(() => {
+    setSwipe(new SwiperCore(".onboarding_slides"))
+  }, [])
+
+  const nextSlide = () => {
+    if (swipe) {
+      if (lastSlide) {
+        localStorage.setItem('visited', 'true');
+        return history.push('/home');
+      }
+      if (swipe.activeIndex === 1) setLastSlide(true)
+      swipe.slideNext();
+    }
+  }
 
   return (
     <IonPage className="font-inter">
       <IonContent className="">
 
-        <Swiper pagination={true} navigation={true} mousewheel={true} className="flex h-full cursor-move">
+        <Swiper pagination={true} mousewheel={true}
+          className="onboarding_slides flex h-full cursor-move"
+        >
           <SwiperSlide className="flex items-center">
             <div className="space-y-6">
               <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
@@ -67,9 +86,9 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
       <IonFooter >
         <div className="flex mb-4">
           <button className="w-5/6 md:w-5/12 p-3 text-xl mx-auto text-center bg-green text-white font-bold rounded-xl"
-            onClick={() => history.push('/home')}
+            onClick={() => nextSlide()}
           >
-            Siguiente
+            {lastSlide ? 'Ingresar': 'Siguiente'}
           </button>
         </div>
       </IonFooter>

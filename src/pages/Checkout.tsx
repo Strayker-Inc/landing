@@ -118,7 +118,6 @@ const CheckoutPage: React.FC<{}> = props => {
 
                 </div>
                 <p className="text-xl text-gray-500">Entrega en 1 o 2 dias habiles</p>
-                {/* <img className="h-12 md:h-16 " src="./assets/icons/nequi.webp" alt="Logo Nequi" /> */}
               </label>
             </div>
             <div className="w-1/2 p-4 flex items-center justify-center bg-gray-100 rounded-xl shadow-lg relative ring-2 ring-green-500 ring-opacity-50">

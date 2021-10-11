@@ -1,6 +1,5 @@
 import { IonContent, IonFooter, IonIcon, IonPage } from "@ionic/react";
 import { chevronForwardOutline,logoWhatsapp  } from "ionicons/icons";
-import { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import Header from "../components/BackButtonHeader";

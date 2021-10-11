@@ -11,13 +11,19 @@ import { addToCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
-  Pagination,Navigation,Mousewheel
+  Pagination,Navigation,Mousewheel,Autoplay
 } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/components/navigation/navigation.min.css'
 import 'swiper/components/pagination/pagination.min.css'
 
-SwiperCore.use([Pagination,Navigation,Mousewheel]);
+SwiperCore.use([
+  Pagination,
+  Navigation,
+  Mousewheel,
+  Autoplay
+]);
+
 
 interface IParams {
   productId: string,
@@ -53,7 +59,9 @@ const ProductPage: React.FC<IProps> = props => {
       <IonContent style={{'--ion-background-color':'#f3f4f6'}}>
         {product &&
           <div className="relaive h-screen md:mt-4">
-            <Swiper navigation={true} pagination={true} mousewheel={true} className="h-3/6 w-full md:w-2/5 cursor-move">
+            <Swiper id="product_swipper" autoplay={{delay: 2500, disableOnInteraction: true}} navigation={true}
+              pagination={true} mousewheel={true} className="h-3/6 w-full md:w-2/5 cursor-move"
+            >
               {product.images.map((img)=>
                 <SwiperSlide key={img}>
                   <div className="w-full h-full bg-cover bg-center md:rounded-3xl"

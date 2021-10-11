@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { IProduct } from "../pages/Categories";
 import { addToCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
@@ -15,7 +15,6 @@ export type Params = {
 
 const ProductRow: React.FC<IProps> = props => {
   const history = useHistory();
-  const { category } = useParams<Params>();
 
   const goToProduct = (productId: string) => {
     history.push(`producto/${productId}`)
