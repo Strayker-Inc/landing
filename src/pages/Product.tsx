@@ -1,4 +1,4 @@
-import { IonContent, IonFooter, IonPage, IonSlides, IonSlide } from "@ionic/react";
+import { IonContent, IonFooter, IonPage } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IProduct } from "./Categories";
@@ -9,6 +9,15 @@ import { db } from "../config/firebase";
 import Footer from "../components/footer";
 import { addToCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, {
+  Pagination,Navigation,Mousewheel
+} from 'swiper';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/components/navigation/navigation.min.css'
+import 'swiper/components/pagination/pagination.min.css'
+
+SwiperCore.use([Pagination,Navigation,Mousewheel]);
 
 interface IParams {
   productId: string,
@@ -44,15 +53,15 @@ const ProductPage: React.FC<IProps> = props => {
       <IonContent style={{'--ion-background-color':'#f3f4f6'}}>
         {product &&
           <div className="relaive h-screen md:mt-4">
-            <IonSlides pager={true} className="h-3/6 w-full md:w-2/5 cursor-move">
+            <Swiper navigation={true} pagination={true} mousewheel={true} className="h-3/6 w-full md:w-2/5 cursor-move">
               {product.images.map((img)=>
-                <IonSlide key={img}>
+                <SwiperSlide key={img}>
                   <div className="w-full h-full bg-cover bg-center md:rounded-3xl"
                     style={{backgroundImage: `url(${img})`}}
                   ></div>
-                </IonSlide>
+                </SwiperSlide>
               )}
-            </IonSlides>
+            </Swiper>
 
             <div className="z-10 absolute h-3/6 w-full inset-x-0 bottom-0 mb-10 md:mb-20">
               <div className="flex justify-evenly md:w-2/5 mx-auto ">

@@ -18,27 +18,6 @@ export interface IProduct {
   size: string,
 }
 
-// export const products_list = [
-//
-//   {
-//
-//   },
-//   {
-//     name: "Caja de Zapatos",
-//     cost: 4000,
-//     id: 3,
-//     image: 'https://calicreativa.com/wp-content/uploads/IMG_8234-min.jpg',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit In odit exercitationem fuga id nam quia'
-//   },
-//   {
-//     name: "Gel de Baño",
-//     cost: 22000,
-//     id: 4,
-//     image: 'https://images.unsplash.com/photo-1615290144628-8fa0f0d61658?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit In odit exercitationem fuga id nam quia'
-//   },
-// ]
-
 interface IProps {
   products: IProduct[],
 }
