@@ -1,5 +1,4 @@
-import { ICart } from '../../interfaces/Order.interface';
-import { IProduct } from '../../interfaces/Product.interface';
+import { ICartProduct } from '../../interfaces/Order.interface';
 import { IState } from '../../interfaces/Shop.interface';
 import actionTypes from './shoppingTypes';
 
@@ -16,47 +15,65 @@ interface IAction {
   type: actionTypes,
   payload: any,
 }
+let STATE = INITIAL_STATE;
+const state_saved = localStorage.getItem('cart');
+if (state_saved) {
+  STATE = JSON.parse(state_saved) as IState;
+}
 
-const getProductFromCart = (productId: string, cart: ICart[]) => {
-  const product = cart.find(item => item.id === productId);
+const getProductFromCart = (productId: string, presentationId: string, cart: ICartProduct[]) => {
+  const product = cart.find(item => (item.id === productId && item.presentationSelected.id === presentationId));
   return product;
 }
 
-const shopReducer = (state = INITIAL_STATE, action: IAction) => {
+const shopReducer = (state = STATE, action: IAction) => {
+
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
-      const productToAdd: IProduct = action.payload.product;
-      state.total += productToAdd.cost;
+      const productToAdd: ICartProduct = action.payload.product;
+      state.total += productToAdd.presentationSelected.cost;
       // Check if Item is in cart already
-      let inCart = state.cart.some(item => item.id === productToAdd.id);
-
-      return {
+      let inCart = state.cart.some(item => (item.id === productToAdd.id && item.presentationSelected.id === productToAdd.presentationSelected.id));
+      let newState: IState = {
         ...state,
         cart: inCart
           ? state.cart.map((item) =>
-              item.id === productToAdd.id
+              (item.id === productToAdd.id && item.presentationSelected.id === productToAdd.presentationSelected.id )
                 ? { ...item, qty: item.qty + 1 }
                 : item
             )
           : [...state.cart, { ...action.payload.product, qty: 1 }],
-      };
+      }
+
+      localStorage.setItem('cart', JSON.stringify(newState));
+      return newState;
 
     case actionTypes.REMOVE_FROM_CART:
-      let product = getProductFromCart(action.payload.id, state.cart);
+      let product = getProductFromCart(action.payload.id, action.payload.presentationId, state.cart);
       // TODO: Update the total cost of cart multiply the qty of products by cost of each and substract from total
-      if (product) state.total -= product.cost;
-      return {
-        ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id),
-      };
+      if (product) state.total -= (product.presentationSelected.cost * product.qty);
+      // console.log (state.cart);
+      // const nose = state.cart.filter((item) => {
+      //   // console.log (action.payload.presentationId)
+      //   if (item.id === action.payload.id && item.presentationSelected.id === action.payload.presentationId) {
+      //     return item
+      //   }
+      // });
+      const nose = state.cart.filter((item) => (item.id !== action.payload.id && item.presentationSelected.id === action.payload.presentationId));
+      console.log (nose)
+      return { ...state};
+      // return {
+      //   ...state,
+      //   cart: state.cart.filter((item) => (item.id !== action.payload.id && item.presentationSelected.id !== action.payload.presentationId )),
+      // };
 
     case actionTypes.ADJUST_ITEM_QTY:
       switch (action.payload.action) {
         case "remove":
-          state.total -= action.payload.product.cost;
+          state.total -= action.payload.product.presentationSelected.cost;
           break;
         case "add":
-          state.total += action.payload.product.cost;
+          state.total += action.payload.product.presentationSelected.cost;
           break;
         default:
           break;
@@ -64,7 +81,7 @@ const shopReducer = (state = INITIAL_STATE, action: IAction) => {
       return {
         ...state,
         cart: state.cart.map((item) =>
-          item.id === action.payload.product.id
+          (item.id === action.payload.product.id && item.presentationSelected.id === action.payload.product.presentationSelected.id)
             ? { ...item, qty: + action.payload.qty }
             : item
         ),

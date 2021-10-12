@@ -1,9 +1,10 @@
-import { IProduct } from "./Product.interface";
+import { IProduct, IProductPresentation } from "./Product.interface";
 
-
-export interface ICart extends IProduct {
+export interface ICartProduct extends IProduct {
+  presentationSelected: IProductPresentation,
   qty: number
 }
+
 
 export interface IOrder {
   name: string,
@@ -15,5 +16,5 @@ export interface IOrder {
     city: string,
     comments?: string
   },
-  products: ICart[]
+  products: ICartProduct[]
 }

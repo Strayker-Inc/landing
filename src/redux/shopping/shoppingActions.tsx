@@ -1,8 +1,9 @@
-import { IProduct } from '../../pages/Categories';
-import { ICart } from './shoppingReducer';
+import { ICartProduct } from '../../interfaces/Order.interface';
+import { IProduct} from '../../interfaces/Product.interface';
 import actionTypes from './shoppingTypes';
 
-export const addToCart = (product: IProduct) => {
+
+export const addToCart = (product: ICartProduct) => {
   return {
     type: actionTypes.ADD_TO_CART,
     payload: {
@@ -11,16 +12,17 @@ export const addToCart = (product: IProduct) => {
   }
 }
 
-export const removeFromCart = (productId: string) => {
+export const removeFromCart = (productId: string, productPresentationId: string) => {
   return {
     type: actionTypes.REMOVE_FROM_CART,
     payload: {
-      id: productId
+      id: productId,
+      presentationId: productPresentationId
     }
   }
 }
 
-export const adjustQty = (product: ICart, qty: number, action: "remove" | "add") => {
+export const adjustQty = (product: ICartProduct, qty: number, action: "remove" | "add") => {
   return {
     type: actionTypes.ADJUST_ITEM_QTY,
     payload: {

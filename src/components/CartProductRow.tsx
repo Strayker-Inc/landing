@@ -1,13 +1,16 @@
 import { useHistory } from "react-router-dom";
-import { adjustQty } from "../redux/shopping/shoppingActions";
+import { adjustQty, removeFromCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
-import { IonIcon } from "@ionic/react";
+import { IonChip, IonIcon } from "@ionic/react";
 import { addCircleOutline, removeCircleOutline, trashOutline } from "ionicons/icons";
-import { ICart } from "../redux/shopping/shoppingReducer";
+import NumberFormat from 'react-number-format';
+import { ICartProduct } from "../interfaces/Order.interface";
+
 
 interface IProps {
-  item: ICart
-  adjustQty: (product: ICart, qty:number, action: "remove" | "add") => any,
+  item: ICartProduct
+  adjustQty: (product: ICartProduct, qty:number, action: "remove" | "add") => any,
+  removeFromCart: (productId: string, presentationId: string) => any
 }
 
 const CartProductRow: React.FC<IProps> = props => {
@@ -20,12 +23,26 @@ const CartProductRow: React.FC<IProps> = props => {
         style={{backgroundImage: `url(${props.item.images[0]})`}}
       ></div>
       <div className="w-2/3 p-4 relative">
-        <span className="text-gray-700 font-bold text-xl md:text-2xl">{props.item.name}</span>
-        <div className="absolute inset-y-4 right-0 mr-4 cursor-pointer">
+        <span className="text-gray-700 w-4/6 font-bold text-xl md:text-2xl">{props.item.name}</span>
+        <div >
+          <IonChip>
+            <label>{props.item.presentationSelected.presentation}</label>
+          </IonChip>
+        </div>
+
+        <div className="absolute inset-y-4 right-0 mr-4 cursor-pointer"
+          onClick={() => props.removeFromCart(props.item.id, props.item.presentationSelected.id)}
+        >
           <IonIcon className="text-3xl text-gray-600" icon={trashOutline} />
         </div>
-        <div className="flex flex-wrap absolute inset-x-0 bottom-0 item-center justify-between mb-6 mx-4">
-          <p className="text-gray-900 font-bold text-2xl">{`$${props.item.cost}`}</p>
+
+        <div className="flex item-center justify-between ">
+          <div className="flex">
+            <p className="text-2xl text-gray-700 font-bold">
+              <NumberFormat value={props.item.presentationSelected.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            </p>
+            <p className="self-end text-xl text-gray-600">{`x${props.item.presentationSelected.units}`}</p>
+          </div>
           <div className="flex items-center">
             <button className="text-gray-700"
               onClick={() => props.adjustQty(props.item, props.item.qty - 1, 'remove')}
@@ -46,7 +63,8 @@ const CartProductRow: React.FC<IProps> = props => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    adjustQty: (productId: ICart, qty: number, action: "remove"|"add") => dispatch(adjustQty(productId, qty, action))
+    adjustQty: (product: ICartProduct, qty: number, action: "remove"|"add") => dispatch(adjustQty(product, qty, action)),
+    removeFromCart: (productId: string, presentationId: string) => dispatch(removeFromCart(productId, presentationId))
   }
 }
 

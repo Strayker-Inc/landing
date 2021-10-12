@@ -1,4 +1,4 @@
-import { IonChip, IonContent, IonFooter, IonLabel, IonPage, IonRadio, IonRadioGroup } from "@ionic/react";
+import { IonContent, IonFooter, IonPage, IonRadio, IonRadioGroup } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -16,8 +16,9 @@ import SwiperCore, {
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/components/navigation/navigation.min.css'
 import 'swiper/components/pagination/pagination.min.css'
-import { SubmitHandler, useForm } from "react-hook-form";
 import { IProduct, IProductPresentation } from "../interfaces/Product.interface";
+import NumberFormat from 'react-number-format';
+import { ICartProduct } from "../interfaces/Order.interface";
 
 SwiperCore.use([
   Pagination,
@@ -32,23 +33,15 @@ interface IParams {
 }
 
 interface IProps {
-  addToCart: any
+  addToCart: (product: ICartProduct) => any
 }
 
-interface IForm {
-  presentationId: string
-}
 const ProductPage: React.FC<IProps> = props => {
   const { productId } = useParams<IParams>();
   // const history = useHistory();
   const [product, setProduct] = useState<IProduct>();
-  const [selected, setSelected] = useState<string>('biff');
-  const { register, handleSubmit, formState: { errors } } = useForm<IForm>();
-
-  const onSubmit: SubmitHandler<IForm> = async data => {
-
-
-  }
+  const [selected, setSelected] = useState<number>(0);
+  const [presentationSelected, setPresentationSelected] = useState<IProductPresentation>();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -56,7 +49,9 @@ const ProductPage: React.FC<IProps> = props => {
         const q = query(collection(db, 'products'), where('id', '==', productId))
         const productsSnapshot = await getDocs(q);
         const data = productsSnapshot.docs.map(doc => doc.data());
-        setProduct(data[0] as IProduct);
+        const product = data[0] as IProduct;
+        setProduct(product);
+        setPresentationSelected(product.presentations[0])
       } catch (error) {
         console.log (error)
       }
@@ -64,20 +59,44 @@ const ProductPage: React.FC<IProps> = props => {
     getProduct();
   }, [productId])
 
-  const presentationItem = (presentation: IProductPresentation) =>
-    <div className="p-2 flex items-center justify-center bg-white rounded-xl shadow-lg relative" key={presentation.id}>
-      <input className="absolute top-3 right-3" {...register("presentationId", { required: true })}  id={presentation.id} name="product" type="radio" value={presentation.id} />
-      <label htmlFor={presentation.id} >
-        <p>{presentation.presentation}</p>
-        <span>{presentation.units} unidades x {`$${presentation.cost}`}</span>
-      </label>
-    </div>
+  useEffect(() => {
+    setPresentationSelected(product?.presentations[selected])
+  }, [selected, product?.presentations])
 
+  const addProduct = () => {
+    if (product && presentationSelected) {
+      const productToAdd:ICartProduct = {
+        ...product,
+        qty: 1,
+        presentationSelected: presentationSelected
+      };
+      props.addToCart(productToAdd)
+
+    }
+  }
+
+  const presentationItem = (presentation: IProductPresentation, index: number) =>
+
+      <div className={`p-2 flex items-center justify-center bg-white rounded-xl shadow-lg relative
+        ${selected === index && 'ring ring-green-400' }`}
+        onClick={() => setSelected(index)} key={presentation.id}
+      >
+        <IonRadio color="success" value={index} />
+        <label>
+          <p className="text-center text-xl font-bold text-gray-700">{presentation.presentation}</p>
+          <div className="flex text-center items-center">
+            <span className="text-lg text-gray-600">{presentation.units} unidades X</span>
+            <p className="text-xl text-gray-900 font-bold">
+              <NumberFormat value={presentation.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            </p>
+          </div>
+        </label>
+      </div>
 
   return (
     <IonPage className="font-inter">
       <Header />
-      <IonContent style={{'--ion-background-color':'#f3f4f6'}}>
+      <IonContent style={{'--ion-background-color':'#f5f7ff'}}>
         {product &&
           <div className="relaive h-screen md:mt-4">
             <Swiper id="product_swipper" autoplay={{delay: 2500, disableOnInteraction: true}} navigation={true}
@@ -91,56 +110,33 @@ const ProductPage: React.FC<IProps> = props => {
                 </SwiperSlide>
               )}
             </Swiper>
-
-            <div className="z-10 absolute h-3/6 w-full inset-x-0 bottom-0 mb-10 md:mb-20">
-              <div className="flex justify-evenly md:w-2/5 mx-auto ">
-                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
-                  <img className="block w-10 mx-auto" src="./assets/images/vegan.svg" alt="Producto Vegano"/>
-                  <span className="block text-lg font-semibold text-gray-800">Vegano</span>
-                </div>
-                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
-                  <img className="block w-10 mx-auto" src="./assets/images/co2.svg" alt="Producto carbono neutro"/>
-                  <span className="block text-lg font-semibold text-gray-800 mx-auto">Neutro</span>
-                </div>
-                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
-                  <img className="block w-10 mx-auto" src="./assets/images/nature.svg" alt="Producto natural"/>
-                  <span className="block text-lg font-semibold text-gray-800">Natural</span>
-                </div>
+            <div className="flex justify-evenly md:w-2/5 mx-auto my-4">
+              <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
+                <img className="block w-10 mx-auto" src="./assets/images/vegan.svg" alt="Producto Vegano"/>
+                <span className="block text-lg font-semibold text-gray-800">Vegano</span>
+              </div>
+              <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
+                <img className="block w-10 mx-auto" src="./assets/images/co2.svg" alt="Producto carbono neutro"/>
+                <span className="block text-lg font-semibold text-gray-800 mx-auto">Neutro</span>
+              </div>
+              <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
+                <img className="block w-10 mx-auto" src="./assets/images/nature.svg" alt="Producto natural"/>
+                <span className="block text-lg font-semibold text-gray-800">Natural</span>
               </div>
             </div>
 
-            <div className="p-8 md:w-2/5 mx-auto">
+            <div className="px-8 mb-4 md:w-2/5 mx-auto">
               <span className="block text-3xl text-gray-800 font-semibold">{product.name}</span>
-              <span className="block text-sm text-gray-700 mb-2">Arreglar con las presentaciones</span>
+              {/* <span className="block text-sm text-gray-700 mb-2">Arreglar con las presentaciones</span> */}
               <p className="block text-lg text-gray-600">{product.description}</p>
             </div>
 
             <div className="px-8 md:w-2/5 mx-auto">
-              <form onSubmit={handleSubmit(onSubmit)} id="presentationForm">
-                <span className="block text-xl text-gray-800 font-semibold">Presentaciones</span>
-                <div className="grid grid-cols-2 gap-4 mb-10">
-                  {/* {product.presentations?.map(presentation => (presentationItem(presentation)))} */}
-
-                </div>
-
-                <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)}>
-                  <div>
-                    <label ></label>
-                    <IonRadio value="biff" />
-                  </div>
-                  <div>
-                    <label ></label>
-                    <IonRadio value="Hola" />
-                  </div>
-                </IonRadioGroup>
-
-
-              </form>
+              <span className="block text-xl text-gray-800 font-semibold mb-4">Presentaciones</span>
+              <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)} className="grid grid-cols-2 gap-4 mb-10">
+                {product.presentations.map((presentation, index) => (presentationItem(presentation, index)))}
+              </IonRadioGroup>
             </div>
-            {/*
-            <div className="p-10 absolute h-3/6 w-full inset-x-0 bottom-0 bg-black rounded-t-3xl">
-              <span className="text-3xl font-bold text-gray-800">{product.name}</span>
-            </div> */}
           </div>
         }
 
@@ -149,11 +145,17 @@ const ProductPage: React.FC<IProps> = props => {
       <IonFooter>
         <div className="md:w-2/5 md:mx-auto flex justify-around items-center mb-4">
           <span className="flex">
-            <p className="text-3xl text-gray-700 font-bold">{`$ ${product?.cost}`}</p>
-            {/* <p className="self-end text-xl text-gray-600"> x25</p> */}
+            {presentationSelected &&
+              <>
+                <p className="text-3xl text-gray-700 font-bold">
+                  <NumberFormat value={presentationSelected.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+                </p>
+                <p className="self-end text-xl text-gray-600">{`x${presentationSelected.units}`}</p>
+              </>
+            }
           </span>
           <div>
-            <button onClick={() => props.addToCart(product)}
+            <button onClick={() => addProduct()}
               className="p-4 bg-green rounded-xl text-white text-lg font-semibold"
             >Agregar al carro
             </button>
@@ -167,7 +169,7 @@ const ProductPage: React.FC<IProps> = props => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    addToCart: (product: IProduct) => dispatch(addToCart(product))
+    addToCart: (product: ICartProduct) => dispatch(addToCart(product))
   }
 }
 

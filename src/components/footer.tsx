@@ -3,14 +3,14 @@ import { IonBadge, IonFooter, IonIcon, IonItem, IonToast, useIonPopover} from '@
 import { useHistory } from "react-router-dom";
 import { logoWhatsapp, cartOutline, cartSharp, paperPlane } from 'ionicons/icons';
 import { connect } from "react-redux";
-import { ICart } from '../redux/shopping/shoppingReducer';
+import { ICartProduct } from '../interfaces/Order.interface';
 
 const footerStyles: React.CSSProperties = {
   backgroundColor: "#00bb2d",
 }
 
 type Props = {
-  cart: ICart[]
+  cart: ICartProduct[]
 };
 
 const PopoverList: React.FC<{onHide: () => void}> = ({ onHide }) => (

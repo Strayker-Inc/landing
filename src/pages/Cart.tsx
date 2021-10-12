@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import Header from "../components/BackButtonHeader";
 import CartProductRow from "../components/CartProductRow";
-import { ICart } from "../redux/shopping/shoppingReducer";
+import { ICartProduct } from "../interfaces/Order.interface";
 interface IProps {
-  cart: ICart[],
+  cart: ICartProduct[],
   total: number,
 }
 

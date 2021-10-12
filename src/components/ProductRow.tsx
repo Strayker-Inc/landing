@@ -1,7 +1,9 @@
 import { useHistory } from "react-router-dom";
-import { IProduct } from "../pages/Categories";
 import { addToCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
+import { IProduct } from "../interfaces/Product.interface";
+import NumberFormat from 'react-number-format';
+import { ICartProduct } from "../interfaces/Order.interface";
 
 
 interface IProps {
@@ -19,6 +21,15 @@ const ProductRow: React.FC<IProps> = props => {
   const goToProduct = (productId: string) => {
     history.push(`producto/${productId}`)
   };
+
+  const addProduct = () => {
+    const productToAdd:ICartProduct = {
+      ...props.product,
+      qty: 1,
+      presentationSelected: props.product.presentations[0]
+    };
+    props.addToCart(productToAdd)
+  }
 
   return (
     <div className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
@@ -42,10 +53,15 @@ const ProductRow: React.FC<IProps> = props => {
           </svg>
         </div> */}
         <div className="flex flex-wrap item-center justify-between mt-3">
-          <p className="text-gray-700 font-bold text-xl cursor-pointer"
-            onClick={() => goToProduct(props.product.id)}
-          >{`$${props.product.cost}`}</p>
-          <button onClick={() => props.addToCart(props.product)}
+          <span className="flex items-center">
+            <p className="text-gray-700 font-bold text-xl cursor-pointer"
+              onClick={() => goToProduct(props.product.id)}
+            >
+              <NumberFormat value={props.product.presentations[0].cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            </p>
+            <p className="text-gray-500">{`x${props.product.presentations[0].units}`}</p>
+          </span>
+          <button onClick={() => addProduct()}
             className="px-3 py-2 bg-green text-white text-xs font-bold uppercase rounded"
           >Agregar al carro
           </button>
@@ -57,7 +73,7 @@ const ProductRow: React.FC<IProps> = props => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    addToCart: (product: IProduct) => dispatch(addToCart(product))
+    addToCart: (product: ICartProduct) => dispatch(addToCart(product))
   }
 }
 

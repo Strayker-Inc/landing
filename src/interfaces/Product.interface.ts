@@ -14,5 +14,5 @@ export interface IProduct {
   cost: number,
   images: string[],
   description: string,
-  presentations?: IProductPresentation[]
+  presentations: IProductPresentation[]
 }

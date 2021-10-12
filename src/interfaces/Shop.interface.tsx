@@ -1,9 +1,9 @@
-import { ICart } from "./Order.interface";
+import { ICartProduct } from "./Order.interface";
 import { IProduct } from "./Product.interface";
 
 export interface IState {
   products: IProduct[],
-  cart: ICart[]
+  cart: ICartProduct[]
   total: number,
   currentItem: any,
 }
