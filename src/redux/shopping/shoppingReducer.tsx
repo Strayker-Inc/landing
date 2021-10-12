@@ -1,16 +1,10 @@
-import { IProduct } from '../../pages/Categories';
+import { ICart } from '../../interfaces/Order.interface';
+import { IProduct } from '../../interfaces/Product.interface';
+import { IState } from '../../interfaces/Shop.interface';
 import actionTypes from './shoppingTypes';
 
-export interface ICart extends IProduct {
-  qty: number
-}
 
-export interface IState {
-  products: IProduct[],
-  cart: ICart[]
-  total: number,
-  currentItem: any,
-}
+
 
 const INITIAL_STATE: IState = {
   products: [],

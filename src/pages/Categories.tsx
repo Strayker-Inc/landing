@@ -7,16 +7,7 @@ import ProductRow, { Params } from "../components/ProductRow";
 import { connect } from 'react-redux';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../config/firebase';
-export interface IProduct {
-  id: string,
-  store_id: string,
-  category_code: string,
-  name: string,
-  cost: number,
-  images: string[],
-  description: string,
-  size: string,
-}
+import { IProduct } from '../interfaces/Product.interface';
 
 interface IProps {
   products: IProduct[],

@@ -6,15 +6,8 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
 import { db } from '../config/firebase';
 import { IonPage } from '@ionic/react';
+import { ICategory } from '../interfaces/Category.interface';
 
-interface ICategory {
-  id: string,
-  name: string,
-  code: string,
-  description: string,
-  color: string,
-  emoji: string
-}
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
@@ -33,20 +26,23 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     }
     const nose = async () => {
       await addDoc(collection(db, "products"), {
-        id: "prod_2",
-        store_id: "store_2",
+        id: "prod_3",
+        store_id: "store_1",
         category_code: "hogar",
-        name: "Abono organico potenciado Ecopoop",
-        cost: 4500,
+        name: "Caja Multibox Germinable",
+        description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.',
+        benefit: 'Es germinable, 100% organico, compostable y se biotransforman en plantas.',
+        presentations: [
+          {
+            id: 'pr_1',
+            presentation: '12cm x 11,5cm x 7,5cm',
+            cost: '23400',
+            units: 25
+          }
+        ],
         images: [
-          'https://i.ibb.co/JnnVnN7/DSC-0492-JPG.webp',
-          'https://i.ibb.co/9T025HT/DSC-0510-JPG.webp',
-          'https://i.ibb.co/Np1b5Yf/DSC-0541-JPG.webp',
-          'https://i.ibb.co/hWhcZ49/DSC-0513-JPG.webp',
           'https://i.ibb.co/tYgLxK6/DSC-0536-JPG.webp'
         ],
-        description: 'El abono organico ecopoop es producto de compostaje de excremento de mascotas. No contiene quimicos',
-        size: '1kg /1000gr'
       });
     }
     getCategories();

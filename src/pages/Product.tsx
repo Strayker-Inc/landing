@@ -1,7 +1,7 @@
-import { IonContent, IonFooter, IonPage } from "@ionic/react";
+import { IonChip, IonContent, IonFooter, IonLabel, IonPage, IonRadio, IonRadioGroup } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IProduct } from "./Categories";
+
 import  Header from "../components/BackButtonHeader";
 import './Product.css'
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -16,6 +16,8 @@ import SwiperCore, {
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/components/navigation/navigation.min.css'
 import 'swiper/components/pagination/pagination.min.css'
+import { SubmitHandler, useForm } from "react-hook-form";
+import { IProduct, IProductPresentation } from "../interfaces/Product.interface";
 
 SwiperCore.use([
   Pagination,
@@ -33,10 +35,20 @@ interface IProps {
   addToCart: any
 }
 
+interface IForm {
+  presentationId: string
+}
 const ProductPage: React.FC<IProps> = props => {
   const { productId } = useParams<IParams>();
   // const history = useHistory();
   const [product, setProduct] = useState<IProduct>();
+  const [selected, setSelected] = useState<string>('biff');
+  const { register, handleSubmit, formState: { errors } } = useForm<IForm>();
+
+  const onSubmit: SubmitHandler<IForm> = async data => {
+
+
+  }
 
   useEffect(() => {
     const getProduct = async () => {
@@ -51,6 +63,15 @@ const ProductPage: React.FC<IProps> = props => {
     }
     getProduct();
   }, [productId])
+
+  const presentationItem = (presentation: IProductPresentation) =>
+    <div className="p-2 flex items-center justify-center bg-white rounded-xl shadow-lg relative" key={presentation.id}>
+      <input className="absolute top-3 right-3" {...register("presentationId", { required: true })}  id={presentation.id} name="product" type="radio" value={presentation.id} />
+      <label htmlFor={presentation.id} >
+        <p>{presentation.presentation}</p>
+        <span>{presentation.units} unidades x {`$${presentation.cost}`}</span>
+      </label>
+    </div>
 
 
   return (
@@ -88,10 +109,33 @@ const ProductPage: React.FC<IProps> = props => {
               </div>
             </div>
 
-            <div className="p-8 bg-gray-100 md:w-2/5 mx-auto">
+            <div className="p-8 md:w-2/5 mx-auto">
               <span className="block text-3xl text-gray-800 font-semibold">{product.name}</span>
-              <span className="block text-sm text-gray-700 mb-2">{product.size}</span>
+              <span className="block text-sm text-gray-700 mb-2">Arreglar con las presentaciones</span>
               <p className="block text-lg text-gray-600">{product.description}</p>
+            </div>
+
+            <div className="px-8 md:w-2/5 mx-auto">
+              <form onSubmit={handleSubmit(onSubmit)} id="presentationForm">
+                <span className="block text-xl text-gray-800 font-semibold">Presentaciones</span>
+                <div className="grid grid-cols-2 gap-4 mb-10">
+                  {/* {product.presentations?.map(presentation => (presentationItem(presentation)))} */}
+
+                </div>
+
+                <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)}>
+                  <div>
+                    <label ></label>
+                    <IonRadio value="biff" />
+                  </div>
+                  <div>
+                    <label ></label>
+                    <IonRadio value="Hola" />
+                  </div>
+                </IonRadioGroup>
+
+
+              </form>
             </div>
             {/*
             <div className="p-10 absolute h-3/6 w-full inset-x-0 bottom-0 bg-black rounded-t-3xl">
