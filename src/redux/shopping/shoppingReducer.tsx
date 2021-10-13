@@ -50,22 +50,18 @@ const shopReducer = (state = STATE, action: IAction) => {
 
     case actionTypes.REMOVE_FROM_CART:
       let product = getProductFromCart(action.payload.id, action.payload.presentationId, state.cart);
-      // TODO: Update the total cost of cart multiply the qty of products by cost of each and substract from total
       if (product) state.total -= (product.presentationSelected.cost * product.qty);
-      // console.log (state.cart);
-      // const nose = state.cart.filter((item) => {
-      //   // console.log (action.payload.presentationId)
-      //   if (item.id === action.payload.id && item.presentationSelected.id === action.payload.presentationId) {
-      //     return item
-      //   }
-      // });
-      const nose = state.cart.filter((item) => (item.id !== action.payload.id && item.presentationSelected.id === action.payload.presentationId));
-      console.log (nose)
-      return { ...state};
-      // return {
-      //   ...state,
-      //   cart: state.cart.filter((item) => (item.id !== action.payload.id && item.presentationSelected.id !== action.payload.presentationId )),
-      // };
+      let newCart = state.cart.filter((item) => {
+        if (item.id === action.payload.id && item.presentationSelected.id === action.payload.presentationId) {
+          return false;
+        }
+        return true;
+      });
+      localStorage.setItem('cart', JSON.stringify({...state, cart: newCart}));
+      return {
+        ...state,
+        cart: newCart
+      };
 
     case actionTypes.ADJUST_ITEM_QTY:
       switch (action.payload.action) {

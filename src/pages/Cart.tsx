@@ -1,5 +1,6 @@
 import { IonContent, IonFooter, IonIcon, IonPage } from "@ionic/react";
 import { chevronForwardOutline,logoWhatsapp  } from "ionicons/icons";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import Header from "../components/BackButtonHeader";
@@ -11,6 +12,10 @@ interface IProps {
 }
 
 const CartPage: React.FC<IProps> = props => {
+  const [cart, setCart] = useState(props.cart)
+  useEffect(() => {
+    setCart(props.cart);
+  }, [props.cart])
   const history = useHistory();
   return (
     <IonPage className="font-inter">
@@ -20,7 +25,7 @@ const CartPage: React.FC<IProps> = props => {
           <span className="text-4xl font-bold text-gray-800">Eco-Carrito</span>
         </div>
         <div className="w-full lg:w-5/12 mx-auto">
-          {props.cart.map(item => <CartProductRow key={item.id} item={item}/>)}
+          {cart.map(item => <CartProductRow key={item.id} item={item}/>)}
 
           <a className="mt-4 mx-4 flex h-20 flex justify-around items-center bg-white shadow-lg rounded-lg overflow-hidden"
             style={{background: '#00bb2d' }} href="https://wa.me/573162452663"

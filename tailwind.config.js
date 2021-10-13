@@ -14,7 +14,6 @@ module.exports = {
           DEFAULT: '#3FB0B0',
           hover : '#059669',
           ligth: "#36D28F",
-
         }
       },
       dropShadow: {

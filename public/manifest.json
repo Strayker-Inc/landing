@@ -1,6 +1,8 @@
 {
-  "name": "Slinqer: Marketplace ecologico",
+  "name": "Slinqer",
   "short_name": "Slinqer",
+  "description": "Marketplace ecológico",
+  "scope": "/home",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,8 +15,8 @@
       "type":"image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display":"standalone",
-  "theme_color": "#ffffff",
+  "theme_color": "#00b1af",
   "background_color": "#ffffff"
 }
