@@ -14,5 +14,7 @@ export interface IProduct {
   cost: number,
   images: string[],
   description: string,
+  benefit: string,
+  vegan: boolean,
   presentations: IProductPresentation[]
 }

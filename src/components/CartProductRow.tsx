@@ -23,20 +23,22 @@ const CartProductRow: React.FC<IProps> = props => {
         style={{backgroundImage: `url(${props.item.images[0]})`}}
       ></div>
       <div className="w-2/3 p-4 relative">
-        <span className="text-gray-700 w-4/6 font-bold text-xl md:text-2xl">{props.item.name}</span>
-        <div >
+        <div className="flex justify-between">
+          <span className="text-gray-700 w-4/6 font-bold text-xl md:text-2xl">{props.item.name}</span>
+          <div className="cursor-pointer"
+            onClick={() => props.removeFromCart(props.item.id, props.item.presentationSelected.id)}
+          >
+            <IonIcon className="text-3xl text-gray-600" icon={trashOutline} />
+          </div>
+        </div>
+
+        <div>
           <IonChip>
             <label>{props.item.presentationSelected.presentation}</label>
           </IonChip>
         </div>
 
-        <div className="absolute inset-y-4 right-0 mr-4 cursor-pointer"
-          onClick={() => props.removeFromCart(props.item.id, props.item.presentationSelected.id)}
-        >
-          <IonIcon className="text-3xl text-gray-600" icon={trashOutline} />
-        </div>
-
-        <div className="flex item-center justify-between ">
+        <div className="flex item-center justify-between">
           <div className="flex">
             <p className="text-2xl text-gray-700 font-bold">
               <NumberFormat value={props.item.presentationSelected.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
@@ -50,7 +52,7 @@ const CartProductRow: React.FC<IProps> = props => {
             >
               <IonIcon className="text-3xl" icon={removeCircleOutline} />
             </button>
-            <span className="mx-4 text-2xl font-bold">{props.item.qty}</span>
+            <span className="mx-1 text-2xl font-bold">{props.item.qty}</span>
             <button className="text-gray-700 disabled:opacity-50" onClick={() => props.adjustQty(props.item, props.item.qty + 1 , 'add')}>
               <IonIcon className="text-3xl" icon={addCircleOutline} />
             </button>

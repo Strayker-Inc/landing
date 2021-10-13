@@ -81,12 +81,12 @@ const ProductPage: React.FC<IProps> = props => {
         ${selected === index && 'ring ring-green-400' }`}
         onClick={() => setSelected(index)} key={presentation.id}
       >
-        <IonRadio color="success" value={index} />
+        <IonRadio className="md:mr-2" color="success" value={index} />
         <label>
-          <p className="text-center text-xl font-bold text-gray-700">{presentation.presentation}</p>
-          <div className="flex text-center items-center">
-            <span className="text-lg text-gray-600">{presentation.units} unidades X</span>
-            <p className="text-xl text-gray-900 font-bold">
+          <div>
+            <p className="text-center text-xl font-bold text-gray-700">{presentation.presentation}</p>
+            <span className="text-center text-lg text-gray-600">{presentation.units} unidades</span>
+            <p className="text-xl text-center text-gray-900 font-bold">
               <NumberFormat value={presentation.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
             </p>
           </div>
@@ -94,9 +94,9 @@ const ProductPage: React.FC<IProps> = props => {
       </div>
 
   return (
-    <IonPage className="font-inter">
+    <IonPage className="">
       <Header />
-      <IonContent style={{'--ion-background-color':'#f5f7ff'}}>
+      <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
         {product &&
           <div className="relaive h-screen md:mt-4">
             <Swiper id="product_swipper" autoplay={{delay: 2500, disableOnInteraction: true}} navigation={true}
@@ -111,10 +111,12 @@ const ProductPage: React.FC<IProps> = props => {
               )}
             </Swiper>
             <div className="flex justify-evenly md:w-2/5 mx-auto my-4">
-              <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
-                <img className="block w-10 mx-auto" src="./assets/images/vegan.svg" alt="Producto Vegano"/>
-                <span className="block text-lg font-semibold text-gray-800">Vegano</span>
-              </div>
+              {product.vegan === true &&
+                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
+                  <img className="block w-10 mx-auto" src="./assets/images/vegan.svg" alt="Producto Vegano"/>
+                  <span className="block text-lg font-semibold text-gray-800">Vegano</span>
+                </div>
+              }
               <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
                 <img className="block w-10 mx-auto" src="./assets/images/co2.svg" alt="Producto carbono neutro"/>
                 <span className="block text-lg font-semibold text-gray-800 mx-auto">Neutro</span>
@@ -126,24 +128,24 @@ const ProductPage: React.FC<IProps> = props => {
             </div>
 
             <div className="px-8 mb-4 md:w-2/5 mx-auto">
-              <span className="block text-3xl text-gray-800 font-semibold">{product.name}</span>
+              <span className="block text-3xl text-gray-800 mb-2 font-semibold">{product.name}</span>
               {/* <span className="block text-sm text-gray-700 mb-2">Arreglar con las presentaciones</span> */}
-              <p className="block text-lg text-gray-600">{product.description}</p>
-            </div>
-
-            <div className="px-8 md:w-2/5 mx-auto">
+              <p className="block text-lg text-gray-600 mb-2">{product.description}</p>
               <span className="block text-xl text-gray-800 font-semibold mb-4">Presentaciones</span>
-              <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)} className="grid grid-cols-2 gap-4 mb-10">
+              <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)} className="grid grid-cols-2 gap-4 mb-4">
                 {product.presentations.map((presentation, index) => (presentationItem(presentation, index)))}
               </IonRadioGroup>
+              <span className="block text-xl text-gray-800 font-semibold mb-2">Beneficios</span>
+              <p className="block text-lg text-gray-600 mb-10">{product.benefit}</p>
             </div>
+
           </div>
         }
 
       </IonContent>
       <Footer />
       <IonFooter>
-        <div className="md:w-2/5 md:mx-auto flex justify-around items-center mb-4">
+        <div className="md:w-2/5 md:mx-auto flex justify-around items-center mb-4 font-inter">
           <span className="flex">
             {presentationSelected &&
               <>

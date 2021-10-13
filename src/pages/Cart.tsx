@@ -1,6 +1,7 @@
 import { IonContent, IonFooter, IonIcon, IonPage } from "@ionic/react";
 import { chevronForwardOutline,logoWhatsapp  } from "ionicons/icons";
 import { useEffect, useState } from "react";
+import NumberFormat from "react-number-format";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import Header from "../components/BackButtonHeader";
@@ -42,7 +43,9 @@ const CartPage: React.FC<IProps> = props => {
         <div className="lg:w-2/5 md:mx-auto flex justify-around items-center my-2">
           <div>
             <span className="block text-gray-400 font-bold text-xl">Total</span>
-            <p className="block text-3xl text-gray-700 font-bold">{`$ ${props.total}`}</p>
+            <p className="block text-3xl text-gray-700 font-bold">
+              <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            </p>
           </div>
           <div>
             <button onClick={() => history.push('/tienda/carrito/checkout')}

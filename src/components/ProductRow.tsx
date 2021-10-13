@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { IProduct } from "../interfaces/Product.interface";
 import NumberFormat from 'react-number-format';
 import { ICartProduct } from "../interfaces/Order.interface";
+import { IonIcon } from "@ionic/react";
+import { cartSharp } from "ionicons/icons";
 
 
 interface IProps {
@@ -32,15 +34,15 @@ const ProductRow: React.FC<IProps> = props => {
   }
 
   return (
-    <div className="m-4 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="w-1/3 bg-cover bg-center cursor-pointer"
+    <div className="m-3 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden font-inter">
+      <div className="w-2/5 bg-cover bg-center cursor-pointer"
         style={{backgroundImage: `url(${props.product.images[0]})`}}
         onClick={() => goToProduct(props.product.id)}
       ></div>
-      <div className="w-2/3 p-4">
-        <span className="text-gray-800 font-bold text-2xl cursor-pointer"
+      <div className="w-3/5 p-4">
+        <p className="text-gray-800 font-bold leading-none text-xl md:text-2xl cursor-pointer"
           onClick={() => goToProduct(props.product.id)}
-        >{props.product.name}</span>
+        >{props.product.name}</p>
         <p className="mt-2 text-gray-600 text-sm cursor-pointer"  onClick={() => goToProduct(props.product.id)}>
           { props.product.description.length > 100
             ? `${props.product.description.slice(0, 100)}...`
@@ -62,8 +64,9 @@ const ProductRow: React.FC<IProps> = props => {
             <p className="text-gray-500">{`x${props.product.presentations[0].units}`}</p>
           </span>
           <button onClick={() => addProduct()}
-            className="px-3 py-2 bg-green text-white text-xs font-bold uppercase rounded"
-          >Agregar al carro
+            className="flex items-center px-3 py-2 bg-green text-white text-xs font-bold uppercase rounded"
+          >
+            Agregar <IonIcon className="text-xl" icon={cartSharp} />
           </button>
         </div>
       </div>
