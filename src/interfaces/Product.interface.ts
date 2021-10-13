@@ -11,7 +11,6 @@ export interface IProduct {
   store_id: string,
   category_code: string,
   name: string,
-  cost: number,
   images: string[],
   description: string,
   benefit: string,

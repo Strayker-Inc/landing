@@ -19,9 +19,9 @@ const CartPage: React.FC<IProps> = props => {
   }, [props.cart])
   const history = useHistory();
   return (
-    <IonPage className="font-inter">
+    <IonPage className="">
       <Header />
-      <IonContent style={{'--ion-background-color':'#f3f4f6'}}>
+      <IonContent className="font-inter" style={{'--ion-background-color':'#f3f4f6'}}>
         <div className="text-center mt-10">
           <span className="text-4xl font-bold text-gray-800">Eco-Carrito</span>
         </div>
@@ -36,11 +36,10 @@ const CartPage: React.FC<IProps> = props => {
             </span>
             <IonIcon className="text-5xl text-white" icon={logoWhatsapp} />
           </a>
-
         </div>
       </IonContent>
       <IonFooter>
-        <div className="lg:w-2/5 md:mx-auto flex justify-around items-center my-2">
+        <div className="lg:w-2/5 md:mx-auto font-inter flex justify-around items-center my-2">
           <div>
             <span className="block text-gray-400 font-bold text-xl">Total</span>
             <p className="block text-3xl text-gray-700 font-bold">

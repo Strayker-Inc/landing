@@ -1,52 +1,74 @@
-import { IonContent, IonFooter, IonIcon, IonPage } from '@ionic/react';
+import { IonContent, IonFooter, IonIcon, IonLoading, IonPage, IonSpinner } from '@ionic/react';
 import { leaf } from 'ionicons/icons';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import NumberFormat from 'react-number-format';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Header from "../components/BackButtonHeader";
+import { ICartProduct, IOrder } from '../interfaces/Order.interface';
+import OrdersService from "../services/order.service";
 import './Checkout.css';
-interface IOrder {
-  name: string,
-  phone: number,
-  address: {
-    city: string,
-    barrio: string,
-    address: string,
-    comments: string,
-  },
-  payment: string,
-  shipment: string,
+
+interface IPageProps {
+  cart: ICartProduct[],
+  total: number
 }
-const CheckoutPage: React.FC<{}> = props => {
-  const { register, handleSubmit, formState: { errors } } = useForm<IOrder>();
-
-  const onSubmit: SubmitHandler<IOrder> = async data => {
-    console.log (data )
-    // try {
-    //   setSendingRequest(true);
-    //   await LandingService.send(data);
-    //   setMessageSended(true);
-    // } catch (e) {
-    //   console.error (e)
-    // } finally {
-    //   setSendingRequest(false);
-    // }
-    // history.push('/final')
-
-  }
-  // const [total, setTotal] = useState(49800);
+const CheckoutPage: React.FC<IPageProps> = props => {
   const history = useHistory();
+  const { register, handleSubmit, formState: { errors } } = useForm<IOrder>();
+  const [sendingRequest, setSendingRequest] = useState(false);
+
+  const onSubmit: SubmitHandler<IOrder> = async formData => {
+    try {
+      setSendingRequest(true);
+      const orderData: IOrder = {
+        ...formData,
+        total: props.total,
+        products: props.cart,
+      }
+      await OrdersService.create(orderData);
+      history.push('/confirmacion');
+    } catch (e) {
+      console.error (e)
+    } finally {
+      setSendingRequest(false);
+    }
+  };
+
   return (
     <IonPage className="font-inter">
       <Header />
-      <IonContent style={{'--ion-background-color':'#f3f4f6'}}>
+      <IonContent className="font-inter" style={{'--ion-background-color':'#f3f4f6'}}>
+        <div className="text-center mt-10">
+          <span className="text-4xl font-bold text-gray-800">Resumen</span>
+        </div>
+        <div className="w-11/12 md:w-5/12 mx-auto space-y-2 mt-4">
+          <div className="flex items-center">
+            <p className="text-2xl text-gray-700 font-bold mr-2">Valor productos:</p>
+            <p className="text-2xl text-gray-500">
+              <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            </p>
+          </div>
+          <div className="flex items-center">
+            <p className="text-2xl text-gray-700 font-bold mr-2">Envio en Cali:</p>
+            <p className="text-2xl text-gray-500">
+              <NumberFormat value={8000} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            </p>
+          </div>
+          <div className="flex items-center">
+            <p className="text-2xl text-gray-700 font-bold mr-2">Otras ciudades:</p>
+            <p className="text-xl text-gray-500">
+              *El valor varia dependiendo de los productos
+            </p>
+          </div>
+        </div>
         <div className="text-center mt-10">
           <span className="text-4xl font-bold text-gray-800">Datos de Envio</span>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} id="myform" className="mt-10 w-11/12 md:w-5/12 mx-auto">
           <div className="flex flex-wrap md:flex-nowrap md:space-x-4">
             <div className="w-full md:w-1/2">
-
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Nombre</label>
               <div className="mt-1">
                 <input
@@ -109,13 +131,15 @@ const CheckoutPage: React.FC<{}> = props => {
             <span className="text-4xl font-bold text-gray-800">Tipo de envio</span>
           </div>
 
+          <div>
+
+          </div>
           <div className="flex w-full md:w-2/3 space-x-4 mx-auto ">
             <div className="w-1/2 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg relative">
               <input className="absolute top-3 right-3" {...register("shipment", { required: true })} id="normal_input" name="shipment" type="radio" value="normal" checked/>
               <label htmlFor="normal_input" >
                 <div>
                   <span className="text-2xl font-semibold text-gray-700">Rapido</span>
-
                 </div>
                 <p className="text-xl text-gray-500">Entrega en 1 o 2 dias habiles</p>
               </label>
@@ -159,14 +183,21 @@ const CheckoutPage: React.FC<{}> = props => {
 
           </div>
         </form>
+        <IonLoading
+          isOpen={sendingRequest}
+          message={'Creando orden...'}
+        />
       </IonContent>
       <IonFooter>
         <div className="flex justify-center">
           <button type="submit" form="myform"
             className="w-9/12 my-2 lg:w-4/12 p-4 bg-green rounded-xl text-white text-2xl font-semibold"
-          >Pagar Ahora
+          >
+            {sendingRequest
+              ?  <IonSpinner name="dots" />
+              : `Pagar ahora`
+            }
           </button>
-
         </div>
       </IonFooter>
     </IonPage>
@@ -176,6 +207,7 @@ const CheckoutPage: React.FC<{}> = props => {
 const mapStateToProps = (state: any) => {
   return {
     cart: state.shop.cart,
+    total: state.shop.total,
   }
 }
 export default connect(mapStateToProps)(CheckoutPage);

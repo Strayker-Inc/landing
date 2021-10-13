@@ -6,6 +6,7 @@ import Product from '../pages/Product';
 import Onboarding from '../pages/Onboarding';
 import CartPage from '../pages/Cart';
 import Checkout from '../pages/Checkout';
+import OrderConfirmedPage from '../pages/OrderConfirmed';
 
 const routes: IRoute[] = [
   {
@@ -36,6 +37,12 @@ const routes: IRoute[] = [
 		path: '/tienda/carrito/checkout',
 		name: 'Checkout',
 		component: Checkout,
+		exact: true
+	},
+  {
+		path: '/confirmacion',
+		name: 'OrderConfirmation',
+		component: OrderConfirmedPage,
 		exact: true
 	},
   {

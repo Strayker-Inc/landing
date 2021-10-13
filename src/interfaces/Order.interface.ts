@@ -5,7 +5,6 @@ export interface ICartProduct extends IProduct {
   qty: number
 }
 
-
 export interface IOrder {
   name: string,
   phone: number,
@@ -14,7 +13,8 @@ export interface IOrder {
   address: {
     address: string,
     city: string,
-    comments?: string
+    comments: string
   },
+  total: number,
   products: ICartProduct[]
 }
