@@ -26,22 +26,27 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     }
     const nose = async () => {
       await addDoc(collection(db, "products"), {
-        id: "prod_3",
-        store_id: "store_1",
+        id: "prod_20",
+        store_id: "store_4",
         category_code: "hogar",
-        name: "Caja Multibox Germinable",
-        description: 'Es armable y de facil almacenamiento. Elaborada de residuos agricolas y semillas, despues de usarla se puede sembrar, el producto se biodegrada y te puede germinar una linda planta de Chia.',
-        benefit: 'Es germinable, 100% organico, compostable y se biotransforman en plantas.',
+        name: "Caja tipo domicilio",
+        description: 'Caja tipo domicilio blanca elaborada en material con revestido antigraso y antihumedad.',
+        benefit: 'Son 100% libres de plástico, gracias al revestido antigraso y antihumedad se logra evitar el plastificado.',
+        vegan: true,
         presentations: [
           {
             id: 'pr_1',
-            presentation: '12cm x 11,5cm x 7,5cm',
-            cost: '23400',
-            units: 25
+            presentation: '22x14x7 cm',
+            cost: 714,
+            units: 1
           }
         ],
         images: [
-          'https://i.ibb.co/tYgLxK6/DSC-0536-JPG.webp'
+          'https://res.cloudinary.com/slinqer/image/upload/v1634146193/shops/grafincol/35A22CF6-716B-42A8-99E1-049993FDB1BC_u9wpbd.jpg',
+          'https://res.cloudinary.com/slinqer/image/upload/v1634146192/shops/grafincol/681CB56D-DE20-41B9-8070-4D91536CFDBF_hlooqt.jpg',
+          'https://res.cloudinary.com/slinqer/image/upload/v1634146190/shops/grafincol/7190F5C3-EE35-4E46-861E-B4C8903AE41B_pr3tz3.jpg',
+          'https://res.cloudinary.com/slinqer/image/upload/v1634146189/shops/grafincol/612643BF-BDA1-407C-B02F-7C5201525AAD_awufqa.jpg',
+          'https://res.cloudinary.com/slinqer/image/upload/v1634146188/shops/grafincol/E9B98F27-F49C-4672-A926-94A57A430A92_livmt9.jpg',
         ],
       });
     }
