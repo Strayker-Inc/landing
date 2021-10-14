@@ -15,13 +15,12 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
 
   useEffect(() => {
     const subscribeFirebase = async() => {
-
       try {
         const supported = await isSupported();
-        console.log(supported);
         if (supported) {
           const token = await getToken(messaging);
-          alert(token);
+          // TODO: check if token is already on database, if not save as new user
+          console.log(token);
         }
       } catch (error) {
         console.log (error)
