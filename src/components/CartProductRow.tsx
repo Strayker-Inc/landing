@@ -17,14 +17,14 @@ const CartProductRow: React.FC<IProps> = props => {
   const history = useHistory();
 
   return (
-    <div className="block mt-4 mx-4 flex h-40 bg-white shadow-lg rounded-lg overflow-hidden">
-      <div className="m-3 rounded-lg w-1/3 bg-cover bg-center cursor-pointer"
+    <div className="block mt-4 mx-4 flex h-40 bg-white shadow-lg rounded-lg overflow-hidden overflow-y-auto">
+      <div className="my-1 ml-1 md:m-3 rounded-lg w-1/3 bg-cover bg-center cursor-pointer"
         onClick={() => history.push(`/tienda/producto/${props.item.id}`)}
         style={{backgroundImage: `url(${props.item.images[0]})`}}
       ></div>
-      <div className="w-2/3 p-4 relative">
+      <div className="w-2/3 p-3 flex flex-col">
         <div className="flex justify-between">
-          <span className="text-gray-700 w-4/6 font-bold text-xl md:text-2xl">{props.item.name}</span>
+          <span className="text-gray-700 w-4/6 font-bold text-lg leading-none md:text-2xl">{props.item.name}</span>
           <div className="cursor-pointer"
             onClick={() => props.removeFromCart(props.item.id, props.item.presentationSelected.id)}
           >
@@ -32,18 +32,18 @@ const CartProductRow: React.FC<IProps> = props => {
           </div>
         </div>
 
-        <div>
+        <div className="flex-grow">
           <IonChip>
             <label>{props.item.presentationSelected.presentation}</label>
           </IonChip>
         </div>
 
         <div className="flex item-center justify-between">
-          <div className="flex">
-            <p className="text-2xl text-gray-700 font-bold">
+          <div className="flex items-center">
+            <p className="text-xl md:text-2xl text-gray-700 font-bold">
               <NumberFormat value={props.item.presentationSelected.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
             </p>
-            <p className="self-end text-xl text-gray-600">{`x${props.item.presentationSelected.units}`}</p>
+            <p className="md:self-end text-sm md:text-xl text-gray-600">{`x${props.item.presentationSelected.units}`}</p>
           </div>
           <div className="flex items-center">
             <button className="text-gray-700"

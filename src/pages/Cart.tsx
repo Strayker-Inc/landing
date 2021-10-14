@@ -19,15 +19,14 @@ const CartPage: React.FC<IProps> = props => {
   }, [props.cart])
   const history = useHistory();
   return (
-    <IonPage className="">
+    <IonPage className="bg-gray">
       <Header />
-      <IonContent className="font-inter" style={{'--ion-background-color':'#f3f4f6'}}>
+      <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
         <div className="text-center mt-10">
           <span className="text-4xl font-bold text-gray-800">Eco-Carrito</span>
         </div>
         <div className="w-full lg:w-5/12 mx-auto">
           {cart.map(item => <CartProductRow key={item.id} item={item}/>)}
-
           <a className="mt-4 mx-4 flex h-20 flex justify-around items-center bg-white shadow-lg rounded-lg overflow-hidden"
             style={{background: '#00bb2d' }} href="https://wa.me/573162452663"
           >

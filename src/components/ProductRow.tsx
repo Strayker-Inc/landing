@@ -34,8 +34,8 @@ const ProductRow: React.FC<IProps> = props => {
   }
 
   return (
-    <div className="m-3 flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden font-inter">
-      <div className="w-2/5 bg-cover bg-center cursor-pointer"
+    <div className="flex bg-white shadow-lg rounded-xl font-inter">
+      <div className="w-2/5 bg-cover bg-center rounded-xl cursor-pointer"
         style={{backgroundImage: `url(${props.product.images[0]})`}}
         onClick={() => goToProduct(props.product.id)}
       ></div>
@@ -43,7 +43,7 @@ const ProductRow: React.FC<IProps> = props => {
         <p className="text-gray-800 font-bold leading-none text-xl md:text-2xl cursor-pointer"
           onClick={() => goToProduct(props.product.id)}
         >{props.product.name}</p>
-        <p className="mt-2 text-gray-600 text-sm cursor-pointer"  onClick={() => goToProduct(props.product.id)}>
+        <p className="mt-2 text-gray-600 text-sm leading-tight cursor-pointer"  onClick={() => goToProduct(props.product.id)}>
           { props.product.description.length > 100
             ? `${props.product.description.slice(0, 100)}...`
             : props.product.description

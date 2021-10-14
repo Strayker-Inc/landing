@@ -83,10 +83,10 @@ const ProductPage: React.FC<IProps> = props => {
       >
         <IonRadio className="md:mr-2" color="success" value={index} />
         <label>
-          <div>
-            <p className="text-center text-xl font-bold text-gray-700">{presentation.presentation}</p>
-            <span className="text-center text-lg text-gray-600">{presentation.units} unidades</span>
-            <p className="text-xl text-center text-gray-900 font-bold">
+          <div className="">
+            <p className="block md:text-lg mx-auto font-bold text-gray-700">{presentation.presentation}</p>
+            <span className="block md:text-lg mx-auto text-gray-600">{presentation.units} unidades</span>
+            <p className="block text-xl text-gray-900 font-bold">
               <NumberFormat value={presentation.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
             </p>
           </div>
@@ -132,7 +132,7 @@ const ProductPage: React.FC<IProps> = props => {
               {/* <span className="block text-sm text-gray-700 mb-2">Arreglar con las presentaciones</span> */}
               <p className="block text-lg text-gray-600 mb-2">{product.description}</p>
               <span className="block text-xl text-gray-800 font-semibold mb-4">Presentaciones</span>
-              <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)} className="grid grid-cols-2 gap-4 mb-4">
+              <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)} className="grid grid-cols-2 gap-2 mb-4">
                 {product.presentations.map((presentation, index) => (presentationItem(presentation, index)))}
               </IonRadioGroup>
               <span className="block text-xl text-gray-800 font-semibold mb-2">Beneficios</span>
@@ -144,7 +144,7 @@ const ProductPage: React.FC<IProps> = props => {
 
       </IonContent>
       <Footer />
-      <IonFooter>
+      <IonFooter className="bg-gray">
         <div className="md:w-2/5 md:mx-auto flex justify-around items-center mb-4 font-inter">
           <span className="flex">
             {presentationSelected &&

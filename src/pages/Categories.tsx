@@ -32,7 +32,7 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
   }, [category])
 
   const productSkeleton = (key: string) =>
-    <div key={key} className="w-11/12 flex bg-white shadow-lg rounded-xl mb-4">
+    <div key={key} className="w-11/12 flex bg-white shadow-sm rounded-xl ">
       <div className="w-1/3">
         <IonSkeletonText animated className="h-full rounded-l-xl" />
       </div>
@@ -52,8 +52,8 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
   return (
     <IonPage className="font-inter">
       <Header showBack={true}/>
-      <IonContent>
-        <div className="sticky w-full top-0 my-2 px-4  md:flex md:justify-center bg-white">
+      <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
+        <div className="sticky w-full top-0 my-2 px-2 md:flex md:justify-center bg-white">
           {/* {categories.map(item => {
             const isTheSameCategory = (item.code === category.toLowerCase().replace(' ', '_'))
             return (
@@ -67,10 +67,10 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
           })} */}
         </div>
 
-        <div className="w-full md:w-9/12 mx-auto flex flex-wrap justify-center overflow-y-auto pt-4">
+        <div className="w-11/12 lg:w-9/12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-auto flex flex-wrap justify-center overflow-y-auto pt-4">
           {products
           ? products.map(product => <ProductRow key={product.id} product={product}/>)
-          : [1,2,3,4].map(skeleton => (productSkeleton((skeleton * 2).toString()))) }
+          : [1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(skeleton => (productSkeleton((skeleton * 2).toString()))) }
         </div>
       </IonContent>
 

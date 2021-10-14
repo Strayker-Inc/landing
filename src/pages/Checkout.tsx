@@ -37,9 +37,9 @@ const CheckoutPage: React.FC<IPageProps> = props => {
   };
 
   return (
-    <IonPage className="font-inter">
+    <IonPage className="font-inter bg-gray">
       <Header />
-      <IonContent className="font-inter" style={{'--ion-background-color':'#f3f4f6'}}>
+      <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
         <div className="text-center mt-10">
           <span className="text-4xl font-bold text-gray-800">Resumen</span>
         </div>
@@ -56,10 +56,10 @@ const CheckoutPage: React.FC<IPageProps> = props => {
               <NumberFormat value={8000} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
             </p>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center flex-wrap">
             <p className="text-2xl text-gray-700 font-bold mr-2">Otras ciudades:</p>
             <p className="text-xl text-gray-500">
-              *El valor varia dependiendo de los productos
+              *El valor de envío varia en torno al peso y tamaño de los productos
             </p>
           </div>
         </div>
