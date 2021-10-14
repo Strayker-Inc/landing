@@ -4,16 +4,29 @@ import Footer from "../components/footer";
 import Header from "../components/searchBar";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { db } from '../config/firebase';
+import { db, messaging } from '../config/firebase';
 import { IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
-
+import { isSupported, getToken } from "firebase/messaging";
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
   const [categoriess, setCategories] = useState<ICategory[]>();
 
   useEffect(() => {
+    const subscribeFirebase = async() => {
+
+      try {
+        const supported = await isSupported();
+        console.log(supported);
+        if (supported) {
+          const token = await getToken(messaging);
+          console.log (token);
+        }
+      } catch (error) {
+        console.log (error)
+      }
+    }
     const getCategories = async () => {
       try {
         const categoriesCol = collection(db, 'categories');
@@ -51,6 +64,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
       });
     }
     getCategories();
+    subscribeFirebase();
     // nose();
   }, [])
 
