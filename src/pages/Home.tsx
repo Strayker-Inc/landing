@@ -21,7 +21,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
         console.log(supported);
         if (supported) {
           const token = await getToken(messaging);
-          console.log (token);
+          alert(token);
         }
       } catch (error) {
         console.log (error)
