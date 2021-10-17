@@ -17,10 +17,6 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
   const [ swipe, setSwipe ] = useState<SwiperCore>()
   const [ lastSlide, setLastSlide] = useState(false);
 
-  useEffect(() => {
-    setSwipe(new SwiperCore(".onboarding_slides"))
-  }, [])
-
   const nextSlide = () => {
     if (swipe) {
       if (lastSlide) {
@@ -34,53 +30,54 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
 
   return (
     <IonPage className="font-inter">
-      <IonContent className="">
+      <IonContent>
 
-        <Swiper pagination={true} mousewheel={true}
-          className="onboarding_slides flex h-full cursor-move"
-        >
-          <SwiperSlide className="flex items-center">
-            <div className="space-y-6">
-              <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
-                <img src="./assets/images/logo_full.svg" alt="Logo slinqer" />
+          <Swiper pagination={true} allowTouchMove={false}
+            className="flex justify-center h-full cursor-move"
+            onInit={(ev) => setSwipe(ev)}
+          >
+            <SwiperSlide className="flex  text-center items-center">
+              <div className="space-y-3">
+                <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
+                  <img src="./assets/images/logo_full.svg" alt="Logo slinqer" />
+                </div>
+                <span className="block  mx-auto w-5/6 text-4xl font-bold text-gray-800">
+                  Bienvenida a Slinqer
+                </span>
+                <p className="block mx-auto  w-4/6 md:w-2/6 text-2xl text-gray-600">
+                  Somos la primera app que conecta marcas ecologicas con una comunidad sotenible
+                </p>
               </div>
-              <span className="block text-center mx-auto w-5/6 text-4xl font-bold text-gray-800">
-                Bienvenida a Slinqer
-              </span>
-              <p className="block mx-auto text-center w-4/6 md:w-2/6 text-2xl text-gray-600">
-                Somos la primera app que conecta marcas ecologicas con una comunidad sotenible
-              </p>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
 
-          <SwiperSlide className="flex items-center">
-            <div className="space-y-6">
-              <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
-                <img src="./assets/images/slide2.svg" alt="Manos sosteniendo una planta" />
+            <SwiperSlide className="flex items-center">
+              <div className="space-y-6">
+                <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
+                  <img src="./assets/images/slide2.svg" alt="Manos sosteniendo una planta" />
+                </div>
+                <span className="block mx-auto text-center w-5/6 text-4xl font-bold text-gray-800">
+                  Productos 100% ecólogicos
+                </span>
+                <p className="block mx-auto text-center w-4/6 md:w-2/6 text-2xl text-gray-600">
+                  Una tienda pensada en el planeta. Encuentra los mejores productos y servicios de nuestras marcas eco-aliadas
+                </p>
               </div>
-              <span className="block mx-auto text-center w-5/6 text-4xl font-bold text-gray-800">
-                Productos 100% ecólogicos
-              </span>
-              <p className="block mx-auto text-center w-4/6 md:w-2/6 text-2xl text-gray-600">
-                Una tienda pensada en el planeta. Encuentra los mejores productos y servicios de nuestras marcas eco-aliadas
-              </p>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
 
-          <SwiperSlide className="flex items-center">
-            <div className="space-y-6">
-              <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
-                <img src="./assets/images/slide3.svg" alt="Mujer comprando online" />
+            <SwiperSlide className="flex items-center">
+              <div className="space-y-6">
+                <div className="block w-3/6 md:w-2/6 mx-auto md:mb-28">
+                  <img src="./assets/images/slide3.svg" alt="Mujer comprando online" />
+                </div>
+                <span className="block mx-auto text-center w-5/6 md:w-2/6 text-4xl font-bold text-gray-800">
+                  Ecologico no es igual a una sola opcion
+                </span>
+                <p className="block mx-auto text-center w-4/6 md:w-2/6 text-2xl text-gray-600">
+                  Para cada necesidad tenemos muchas alternativas ecológicas. Solo entra, elige y listo!.
+                </p>
               </div>
-              <span className="block mx-auto text-center w-5/6 md:w-2/6 text-4xl font-bold text-gray-800">
-                Ecologico no es igual a una sola opcion
-              </span>
-              <p className="block mx-auto text-center w-4/6 md:w-2/6 text-2xl text-gray-600">
-                Para cada necesidad tenemos muchas alternativas ecológicas. Solo entra, elige y listo!.
-              </p>
-            </div>
-          </SwiperSlide>
-        </Swiper>
+            </SwiperSlide>
+          </Swiper>
       </IonContent>
 
       <IonFooter >

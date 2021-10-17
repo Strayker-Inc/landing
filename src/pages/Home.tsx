@@ -4,10 +4,11 @@ import Footer from "../components/footer";
 import Header from "../components/searchBar";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { db, messaging } from '../config/firebase';
+import { analytics, db, messaging } from '../config/firebase';
 import { IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
 import { isSupported, getToken } from "firebase/messaging";
+import { logEvent } from 'firebase/analytics';
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
@@ -16,9 +17,11 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   useEffect(() => {
     const subscribeFirebase = async() => {
       try {
+        logEvent(analytics, "mi_evento");
         const supported = await isSupported();
         if (supported) {
           const token = await getToken(messaging);
+          localStorage.setItem('token', token)
           // TODO: check if token is already on database, if not save as new user
           console.log(token);
         }

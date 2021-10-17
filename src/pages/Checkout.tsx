@@ -59,7 +59,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
           <div className="flex items-center flex-wrap">
             <p className="text-2xl text-gray-700 font-bold mr-2">Otras ciudades:</p>
             <p className="text-xl text-gray-500">
-              *El valor de envío varia en torno al peso y tamaño de los productos
+              *El valor de envío varia depende del peso y tamaño de los productos
             </p>
           </div>
         </div>
@@ -139,7 +139,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
               <input className="absolute top-3 right-3" {...register("shipment", { required: true })} id="normal_input" name="shipment" type="radio" value="normal" checked/>
               <label htmlFor="normal_input" >
                 <div>
-                  <span className="text-2xl font-semibold text-gray-700">Rapido</span>
+                  <span className="text-2xl font-semibold text-gray-700">Normal</span>
                 </div>
                 <p className="text-xl text-gray-500">Entrega en 1 o 2 dias habiles</p>
               </label>
