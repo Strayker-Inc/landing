@@ -39,27 +39,50 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     }
     const nose = async () => {
       await addDoc(collection(db, "products"), {
-        id: "prod_20",
-        store_id: "store_4",
+        id: "prod_28",
+        store_id: "store_1",
         category_code: "hogar",
-        name: "Caja tipo domicilio",
-        description: 'Caja tipo domicilio blanca elaborada en material con revestido antigraso y antihumedad.',
-        benefit: 'Son 100% libres de plástico, gracias al revestido antigraso y antihumedad se logra evitar el plastificado.',
+        name: "Vasos Eco-carton",
+        description: 'Elaborados con Eco-carton 100% biodegradable y compostable.',
+        benefit: 'Biodegradable y compostable 100%.',
         vegan: true,
         presentations: [
           {
             id: 'pr_1',
-            presentation: '22x14x7 cm',
-            cost: 714,
-            units: 1
-          }
+            presentation: '4oz',
+            cost: 7400,
+            units: 50
+          },
+          {
+            id: 'pr_2',
+            presentation: '7oz',
+            cost: 9200,
+            units: 50
+          },
+          {
+            id: 'pr_3',
+            presentation: '9oz',
+            cost: 11400,
+            units: 50
+          },
+          {
+            id: 'pr_4',
+            presentation: '12oz',
+            cost: 10150,
+            units: 40
+          },
+          {
+            id: 'pr_5',
+            presentation: '16oz',
+            cost: 9650,
+            units: 28
+          },
+
         ],
         images: [
-          'https://res.cloudinary.com/slinqer/image/upload/v1634146193/shops/grafincol/35A22CF6-716B-42A8-99E1-049993FDB1BC_u9wpbd.jpg',
-          'https://res.cloudinary.com/slinqer/image/upload/v1634146192/shops/grafincol/681CB56D-DE20-41B9-8070-4D91536CFDBF_hlooqt.jpg',
-          'https://res.cloudinary.com/slinqer/image/upload/v1634146190/shops/grafincol/7190F5C3-EE35-4E46-861E-B4C8903AE41B_pr3tz3.jpg',
-          'https://res.cloudinary.com/slinqer/image/upload/v1634146189/shops/grafincol/612643BF-BDA1-407C-B02F-7C5201525AAD_awufqa.jpg',
-          'https://res.cloudinary.com/slinqer/image/upload/v1634146188/shops/grafincol/E9B98F27-F49C-4672-A926-94A57A430A92_livmt9.jpg',
+          'https://res.cloudinary.com/slinqer/image/upload/v1634747552/shops/lifepack/Lifepack_Vasos_4_a_9_onzas_uvw3jz.jpg',
+          'https://res.cloudinary.com/slinqer/image/upload/v1634747553/shops/lifepack/Lifepack_Vaso_7_onzas_r27ftd.jpg',
+          'https://res.cloudinary.com/slinqer/image/upload/v1634747551/shops/lifepack/Lifepack_Vasos_12_y_16_onzas_ebfzme.jpg',
         ],
       });
     }
@@ -75,7 +98,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
 
       <IonContent style={{'--ion-background-color':'#f5f7ff'}}>
         <div className="text-center mt-10">
-          <span className="text-4xl font-bold text-gray-700">Categorias Ecológicas</span>
+          <span className="text-4xl font-bold text-gray-700">Categorías Ecológicas</span>
         </div>
         <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
           {categoriess && categoriess.map(item => (
