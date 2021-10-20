@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { IonChip, IonContent, IonLabel, IonPage, IonSkeletonText } from '@ionic/react';
-import { RouteComponentProps, useHistory, useParams } from "react-router-dom";
+import { IonContent, IonPage, IonSkeletonText } from '@ionic/react';
+import { RouteComponentProps, useParams } from "react-router-dom";
 import Footer from "../components/footer";
 import Header from "../components/searchBar";
 import ProductRow, { Params } from "../components/ProductRow";
@@ -13,7 +13,7 @@ interface IProps {
   products: IProduct[],
 }
 const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
-  const history = useHistory();
+  // const history = useHistory();
   const { category } = useParams<Params>();
   const [products, setProducts] = useState<IProduct[]>();
 

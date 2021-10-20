@@ -24,6 +24,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       setSendingRequest(true);
       const orderData: IOrder = {
         ...formData,
+        phone: parseInt(formData.phone.toString()),
         total: props.total,
         products: props.cart,
       }
@@ -59,7 +60,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
           <div className="flex items-center flex-wrap">
             <p className="text-2xl text-gray-700 font-bold mr-2">Otras ciudades:</p>
             <p className="text-xl text-gray-500">
-              *El valor de envío varia depende del peso y tamaño de los productos
+              *El valor de envío depende del peso y tamaño de los productos
             </p>
           </div>
         </div>
@@ -70,22 +71,24 @@ const CheckoutPage: React.FC<IPageProps> = props => {
           <div className="flex flex-wrap md:flex-nowrap md:space-x-4">
             <div className="w-full md:w-1/2">
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Nombre</label>
+              {errors.name && <p className="text-green">Campo necesario</p>}
               <div className="mt-1">
                 <input
                   id="name"
                   {...register("name", { required: true })}
                   type="text"
-                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-400 border border-gray-300 focus:ring-2 focus:ring-green-500"
+                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
                 />
               </div>
             </div>
             <div className="w-full md:w-1/2">
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Telefono</label>
+              {errors.phone && <p className="text-green">Campo necesario</p>}
               <div className="mt-1">
                 <input
-                  {...register("phone", { required: true })}
-                  type="number"
-                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-400 border border-gray-300 focus:ring-2 focus:ring-green-500"
+                  {...register("phone", { required: true})}
+                  type="tel"
+                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
                 />
               </div>
 
@@ -94,24 +97,25 @@ const CheckoutPage: React.FC<IPageProps> = props => {
 
           <div className="flex flex-wrap md:flex-nowrap md:space-x-4">
             <div className="w-full md:w-1/3">
-
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Ciudad</label>
+              {errors.address?.city && <p className="text-green">Campo necesario</p>}
               <div className="mt-1">
                 <input
                   id="name"
                   {...register("address.city", { required: true })}
                   type="text"
-                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-400 border border-gray-300 focus:ring-2 focus:ring-green-500"
+                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
                 />
               </div>
             </div>
             <div className="w-full md:w-2/3">
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Direccion</label>
+              {errors.address?.address && <p className="text-green">Campo necesario</p>}
               <div className="mt-1">
                 <input
                   {...register("address.address", { required: true })}
                   type="text"
-                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-400 border border-gray-300 focus:ring-2 focus:ring-green-500"
+                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
                 />
               </div>
             </div>
@@ -123,7 +127,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
               {...register("address.comments", { required: false })}
               type="text"
               placeholder="*Torre, apartamento, piso"
-              className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green-400 border border-gray-300 focus:ring-2 focus:ring-green-500"
+              className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
             />
           </div>
 
@@ -131,9 +135,6 @@ const CheckoutPage: React.FC<IPageProps> = props => {
             <span className="text-4xl font-bold text-gray-800">Tipo de envio</span>
           </div>
 
-          <div>
-
-          </div>
           <div className="flex w-full md:w-2/3 space-x-4 mx-auto ">
             <div className="w-1/2 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg relative">
               <input className="absolute top-3 right-3" {...register("shipment", { required: true })} id="normal_input" name="shipment" type="radio" value="normal" checked/>
@@ -144,7 +145,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
                 <p className="text-xl text-gray-500">Entrega en 1 o 2 dias habiles</p>
               </label>
             </div>
-            <div className="w-1/2 p-4 flex items-center justify-center bg-gray-100 rounded-xl shadow-lg relative ring-2 ring-green-500 ring-opacity-50">
+            <div className="w-1/2 p-4 flex items-center justify-center bg-gray-100 rounded-xl shadow-lg relative ring ring-green ring-opacity-50">
               <input className="absolute top-3 right-3" {...register("shipment", { required: true })} id="eco_input" name="shipment" type="radio" value="eco " disabled/>
               <label htmlFor="eco_input">
                 <div className="flex items-center">
@@ -157,10 +158,10 @@ const CheckoutPage: React.FC<IPageProps> = props => {
             </div>
           </div>
 
-          <div className="text-center my-10">
+          <div className="text-center my-8">
             <span className="text-4xl font-bold text-gray-800">Metodo de Pago</span>
+            {errors.payment && <p className="text-green">Elige un metodo de pago</p>}
           </div>
-
           <div className="flex space-x-4 mb-10">
             <div className="w-1/3 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg relative">
               <input className="absolute top-3 right-3" {...register("payment", { required: true })} id="nequi_input" name="payment" type="radio" value="nequi" />
@@ -191,7 +192,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       <IonFooter>
         <div className="flex justify-center">
           <button type="submit" form="myform"
-            className="w-9/12 my-2 lg:w-4/12 p-4 bg-green rounded-xl text-white text-2xl font-semibold"
+            className="w-full m-1 lg:w-5/12 p-4 bg-green rounded-xl text-white text-2xl font-semibold"
           >
             {sendingRequest
               ?  <IonSpinner name="dots" />

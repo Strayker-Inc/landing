@@ -16,11 +16,11 @@ type Props = {
 const PopoverList: React.FC<{onHide: () => void}> = ({ onHide }) => (
   <div>
     <IonItem lines="none" detail={true} href="https://wa.me/573162452663">
-      Ayuda por WhatsApp
+      Asesor por WhatsApp
       <IonIcon className="ml-2 text-3xl" style={{color: '#00bb2d' }} icon={logoWhatsapp} />
     </IonItem>
-    <IonItem lines="none" detail={true} href="https://wa.me/573162452663">
-      Ayuda por Telegram
+    <IonItem lines="none" detail={true} href="https://t.me/slinqer">
+      Asesor por Telegram
       <IonIcon className="ml-2 text-3xl" style={{color: '#0088cc' }} icon={paperPlane} />
     </IonItem>
     <IonItem lines="none" detail={false} button onClick={onHide}>

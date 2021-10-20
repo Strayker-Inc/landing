@@ -4,11 +4,10 @@ import Footer from "../components/footer";
 import Header from "../components/searchBar";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { analytics, db, messaging } from '../config/firebase';
-import { IonPage } from '@ionic/react';
+import { db, messaging } from '../config/firebase';
+import { IonContent, IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
 import { isSupported, getToken } from "firebase/messaging";
-import { logEvent } from 'firebase/analytics';
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
@@ -17,7 +16,6 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   useEffect(() => {
     const subscribeFirebase = async() => {
       try {
-        logEvent(analytics, "mi_evento");
         const supported = await isSupported();
         if (supported) {
           const token = await getToken(messaging);
@@ -75,11 +73,14 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     <IonPage className="font-inter bg-gray-100">
       <Header showBack={false}/>
 
-      <main className="overflow-y-auto flex justify-center flex-wrap ">
-        {
-          categoriess && categoriess.map(item => (
+      <IonContent style={{'--ion-background-color':'#f5f7ff'}}>
+        <div className="text-center mt-10">
+          <span className="text-4xl font-bold text-gray-700">Categorias Ecológicas</span>
+        </div>
+        <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+          {categoriess && categoriess.map(item => (
             <div key={item.id} onClick={() => history.push(`/tienda/${item.code}`)}
-              className="mx-4 my-2 cursor-pointer flex justify-between md:justify-around items-center relative w-full  md:w-4/12 h-38 md:h-48 text-white shadow-lg rounded-xl"
+              className="w-full cursor-pointer flex justify-between md:justify-around items-center relative h-38 md:h-48 text-white shadow-lg rounded-xl"
               style={{backgroundColor: item.color}}
             >
               <div className="py-8 pl-8 md:py-8 md:pl-8">
@@ -90,9 +91,10 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
                 <span>{item.emoji}</span>
               </div>
             </div>
-          ))
-        }
-      </main>
+          ))}
+
+        </div>
+      </IonContent>
       <Footer />
     </IonPage>
   );

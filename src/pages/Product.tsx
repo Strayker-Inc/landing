@@ -145,7 +145,7 @@ const ProductPage: React.FC<IProps> = props => {
       </IonContent>
       <Footer />
       <IonFooter className="bg-gray">
-        <div className="md:w-2/5 md:mx-auto flex justify-around items-center mb-4 font-inter">
+        <div className="md:w-2/5 md:mx-auto flex justify-around items-center my-1 font-inter">
           <span className="flex">
             {presentationSelected &&
               <>
