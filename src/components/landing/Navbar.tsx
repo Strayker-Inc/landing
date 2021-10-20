@@ -1,6 +1,6 @@
 import { useEffect }  from "react";
 // import { useEffect, useState }  from "react";
-import '../pages/Home/Home.css';
+import '../../pages/Landing/Landing';
 // import Switch from "react-switch";
 // import {useTranslation} from "react-i18next";
 
@@ -125,6 +125,13 @@ const Navbar = (props: any) => {
           <ul className="list-reset lg:flex justify-end flex-1 items-center mr-60">
             {languageSwitchComponent()}
           </ul>
+        </div> */}
+        {/* <div id="nav-content"
+          className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+        >
+          <button className="w-5/6  md:w-1/2 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
+              {props.t('hero.buttons.join')}
+            </button>
         </div> */}
       </div>
 

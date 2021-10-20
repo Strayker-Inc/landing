@@ -1,6 +1,9 @@
+import { useHistory } from "react-router";
+
 const Fade = require('react-reveal/Fade');
 
 const Hero = (props: any) => {
+  const history = useHistory();
   return (
     <section className="flex h-screen justify-center items-center bg-gray-100" id="top">
       <video className="absolute w-full h-screen object-cover" autoPlay loop muted>
@@ -16,15 +19,14 @@ const Hero = (props: any) => {
           <p className="text-2xl md:text-3xl mb-8 text-white max-w-sm sm:max-w-xl mx-auto ">
             {props.t('hero.text')}
           </p>
-          <a href="#contactForm">
-            <button className="w-5/6  md:w-1/2 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
-              {props.t('hero.buttons.join')}
-            </button>
-          </a>
+
+          <button onClick={() => history.push('/slides')} className="w-5/6  md:w-1/2 p-4 text-xl bg-green text-white font-bold rounded-lg transform transition duration-500 hover:scale-150">
+            {props.t('hero.buttons.join')}
+          </button>
         </div>
 
       </Fade>
-      <img src="./assets/images/waves-inverted-gray.svg" className="absolute inset-x-0 bottom-0 w-full" alt="" />
+      <img src="./assets/images/waves-inverted-gray.svg" className="absolute inset-x-0 bottom-0 w-full" alt="Olas de decoracion" />
     </section>
   );
 };
