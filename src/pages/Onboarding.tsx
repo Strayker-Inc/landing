@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RouteComponentProps, useHistory, withRouter } from "react-router-dom";
 import { IonContent, IonFooter, IonPage} from "@ionic/react";
 import './Onboarding.css';
