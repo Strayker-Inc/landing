@@ -98,7 +98,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
 
       <IonContent style={{'--ion-background-color':'#f5f7ff'}}>
         <div className="text-center mt-10">
-          <span className="text-4xl font-bold text-gray-700">Categorias Ecológicas</span>
+          <span className="text-4xl font-bold text-gray-700">Categorías Ecológicas</span>
         </div>
         <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
           {categoriess && categoriess.map(item => (

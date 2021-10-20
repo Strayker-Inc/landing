@@ -30,7 +30,7 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
 
   return (
     <IonPage className="font-inter">
-      <IonContent>
+      <IonContent style={{'--ion-background-color':'#f5f7ff'}}>
 
           <Swiper pagination={true} allowTouchMove={false}
             className="flex justify-center h-full cursor-move"
@@ -42,10 +42,10 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
                   <img src="./assets/images/logo_full.svg" alt="Logo slinqer" />
                 </div>
                 <span className="block  mx-auto w-5/6 text-4xl font-bold text-gray-800">
-                  Bienvenida a Slinqer
+                  Una app pensada en el planeta
                 </span>
                 <p className="block mx-auto  w-4/6 md:w-2/6 text-2xl text-gray-600">
-                  Somos la primera app que conecta marcas ecologicas con una comunidad sotenible
+                  Conectamos marcas ecológicas con una comunidad sostenible.
                 </p>
               </div>
             </SwiperSlide>
@@ -56,10 +56,10 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
                   <img src="./assets/images/slide2.svg" alt="Manos sosteniendo una planta" />
                 </div>
                 <span className="block mx-auto text-center w-5/6 text-4xl font-bold text-gray-800">
-                  Productos 100% ecólogicos
+                  Productos 100% ecológicos
                 </span>
                 <p className="block mx-auto text-center w-4/6 md:w-2/6 text-2xl text-gray-600">
-                  Una tienda pensada en el planeta. Encuentra los mejores productos y servicios de nuestras marcas eco-aliadas
+                  Encuentra los mejores productos y servicios de nuestras marcas eco-aliadas.
                 </p>
               </div>
             </SwiperSlide>
@@ -70,10 +70,10 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
                   <img src="./assets/images/slide3.svg" alt="Mujer comprando online" />
                 </div>
                 <span className="block mx-auto text-center w-5/6 md:w-2/6 text-4xl font-bold text-gray-800">
-                  Ecologico no es igual a una sola opcion
+                  Ecológico no es igual a una sola opción
                 </span>
                 <p className="block mx-auto text-center w-4/6 md:w-2/6 text-2xl text-gray-600">
-                  Para cada necesidad tenemos muchas alternativas ecológicas. Solo entra, elige y listo!.
+                  Encuentra alternativas ecológicas a los productos que siempre usas. Solo entra, elige y listo!.
                 </p>
               </div>
             </SwiperSlide>
