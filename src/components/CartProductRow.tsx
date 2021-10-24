@@ -43,7 +43,10 @@ const CartProductRow: React.FC<IProps> = props => {
             <p className="text-xl md:text-2xl text-gray-700 font-bold">
               <NumberFormat value={props.item.presentationSelected.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
             </p>
-            <p className="md:self-end text-sm md:text-xl text-gray-600">{`x${props.item.presentationSelected.units}`}</p>
+            {
+              props.item.presentationSelected.units !== 1 &&
+              <p className="md:self-end text-sm md:text-xl text-gray-600">{`/${props.item.presentationSelected.units} ud`}</p>
+            }
           </div>
           <div className="flex items-center">
             <button className="text-gray-700"

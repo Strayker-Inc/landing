@@ -76,16 +76,18 @@ const ProductPage: React.FC<IProps> = props => {
   }
 
   const presentationItem = (presentation: IProductPresentation, index: number) =>
-
       <div className={`p-2 flex items-center justify-center bg-white rounded-xl shadow-lg relative
         ${selected === index && 'ring ring-green-400' }`}
         onClick={() => setSelected(index)} key={presentation.id}
       >
         <IonRadio className="md:mr-2" color="success" value={index} />
         <label>
-          <div className="">
-            <p className="block md:text-lg mx-auto font-bold text-gray-700">{presentation.presentation}</p>
-            <span className="block md:text-lg mx-auto text-gray-600">{presentation.units} unidades</span>
+          <div >
+            <p className="block md:text-lg mx-auto text-gray-700">{presentation.presentation}</p>
+            {
+              presentation.units !== 1 &&
+              <span className="block md:text-lg mx-auto text-gray-500">{presentation.units} unidades</span>
+            }
             <p className="block text-xl text-gray-900 font-bold">
               <NumberFormat value={presentation.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
             </p>
@@ -94,42 +96,42 @@ const ProductPage: React.FC<IProps> = props => {
       </div>
 
   return (
-    <IonPage className="">
+    <IonPage>
       <Header />
       <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
         {product &&
-          <div className="relaive h-screen md:mt-4">
+          <div className="h-screen lg:w-8/12 mx-auto lg:grid lg:grid-cols-2 lg:mt-4">
+
             <Swiper id="product_swipper" autoplay={{delay: 2500, disableOnInteraction: true}} navigation={true}
-              pagination={true} mousewheel={true} className="h-3/6 w-full md:w-2/5 cursor-move"
+              pagination={true} mousewheel={true} className="h-2/3 lg:w-11/12 cursor-move"
             >
               {product.images.map((img)=>
                 <SwiperSlide key={img}>
-                  <div className="w-full h-full bg-cover bg-center md:rounded-3xl"
+                  <div className="w-full h-full bg-cover bg-center lg:rounded-3xl"
                     style={{backgroundImage: `url(${img})`}}
                   ></div>
                 </SwiperSlide>
               )}
             </Swiper>
-            <div className="flex justify-evenly md:w-2/5 mx-auto my-4">
-              {product.vegan === true &&
-                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
-                  <img className="block w-10 mx-auto" src="./assets/images/vegan.svg" alt="Producto Vegano"/>
-                  <span className="block text-lg font-semibold text-gray-800">Vegano</span>
-                </div>
-              }
-              <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
-                <img className="block w-10 mx-auto" src="./assets/images/co2.svg" alt="Producto carbono neutro"/>
-                <span className="block text-lg font-semibold text-gray-800 mx-auto">Neutro</span>
-              </div>
-              <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
-                <img className="block w-10 mx-auto" src="./assets/images/nature.svg" alt="Producto natural"/>
-                <span className="block text-lg font-semibold text-gray-800">Natural</span>
-              </div>
-            </div>
 
-            <div className="px-8 mb-4 md:w-2/5 mx-auto">
+            <div className="px-8 mb-4">
+              <div className="flex justify-evenly mx-auto my-4 lg:my-6">
+                {product.vegan === true &&
+                  <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
+                    <img className="block w-10 mx-auto" src="./assets/images/vegan.svg" alt="Producto Vegano"/>
+                    <span className="block text-lg font-semibold text-gray-800">Vegano</span>
+                  </div>
+                }
+                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
+                  <img className="block w-10 mx-auto" src="./assets/images/co2.svg" alt="Producto carbono neutro"/>
+                  <span className="block text-lg font-semibold text-gray-800 mx-auto">Neutro</span>
+                </div>
+                <div className="p-3 text-center justify-center w-26 h-26 shadow-lg rounded-3xl bg-white cursor-pointer">
+                  <img className="block w-10 mx-auto" src="./assets/images/nature.svg" alt="Producto natural"/>
+                  <span className="block text-lg font-semibold text-gray-800">Natural</span>
+                </div>
+              </div>
               <span className="block text-3xl text-gray-800 mb-2 font-semibold">{product.name}</span>
-              {/* <span className="block text-sm text-gray-700 mb-2">Arreglar con las presentaciones</span> */}
               <p className="block text-lg text-gray-600 mb-2">{product.description}</p>
               <span className="block text-xl text-gray-800 font-semibold mb-4">Presentaciones</span>
               <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)} className="grid grid-cols-2 gap-2 mb-4">
@@ -152,7 +154,10 @@ const ProductPage: React.FC<IProps> = props => {
                 <p className="text-3xl text-gray-700 font-bold">
                   <NumberFormat value={presentationSelected.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
                 </p>
-                <p className="self-end text-xl text-gray-600">{`x${presentationSelected.units}`}</p>
+                {
+                  presentationSelected.units !== 1 &&
+                  <p className="self-end text-xl text-gray-600">{`/${presentationSelected.units} ud`}</p>
+                }
               </>
             }
           </span>
