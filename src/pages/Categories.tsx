@@ -67,7 +67,7 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
           })} */}
         </div>
 
-        <div className="w-11/12 lg:w-5/12 grid grid-cols-1 gap-4 mx-auto flex flex-wrap justify-center overflow-y-auto pt-4">
+        <div className="w-11/12 lg:w-5/12 grid grid-cols-1 gap-4 mx-auto flex flex-wrap justify-center pt-4">
           {products
           // TODO: we most sort the products by some sort of relevance, ex # of sales or starts etc. -> NOT AS RANDOM SORT
           ? products.sort(() => Math.random() - 0.5).map(product => <ProductRow key={product.id} product={product}/>)
