@@ -27,7 +27,7 @@ const SearchBar: React.FC<componentProperties & RouteComponentProps<any>> = prop
   }
 
   return (
-    <IonHeader className="h-14 md:h-20 flex justify-center items-center">
+    <IonHeader className="h-14 md:h-20 flex justify-center items-center bg-gray" >
       {showBack
         ? <IonIcon onClick={() => goBack()} className="ml-2 text-4xl cursor-pointer" icon={chevronBack} />
         : <img id="logo" className="ml-2 h-12 md:h-16" src="./assets/images/slinqer_logo.svg" alt="Logo Slinqer" />
