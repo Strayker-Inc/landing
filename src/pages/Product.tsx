@@ -76,16 +76,18 @@ const ProductPage: React.FC<IProps> = props => {
   }
 
   const presentationItem = (presentation: IProductPresentation, index: number) =>
-
       <div className={`p-2 flex items-center justify-center bg-white rounded-xl shadow-lg relative
         ${selected === index && 'ring ring-green-400' }`}
         onClick={() => setSelected(index)} key={presentation.id}
       >
         <IonRadio className="md:mr-2" color="success" value={index} />
         <label>
-          <div className="">
-            <p className="block md:text-lg mx-auto font-bold text-gray-700">{presentation.presentation}</p>
-            <span className="block md:text-lg mx-auto text-gray-600">{presentation.units} unidades</span>
+          <div >
+            <p className="block md:text-lg mx-auto text-gray-700">{presentation.presentation}</p>
+            {
+              presentation.units !== 1 &&
+              <span className="block md:text-lg mx-auto text-gray-500">{presentation.units} unidades</span>
+            }
             <p className="block text-xl text-gray-900 font-bold">
               <NumberFormat value={presentation.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
             </p>
@@ -152,7 +154,10 @@ const ProductPage: React.FC<IProps> = props => {
                 <p className="text-3xl text-gray-700 font-bold">
                   <NumberFormat value={presentationSelected.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
                 </p>
-                <p className="self-end text-xl text-gray-600">{`x${presentationSelected.units}`}</p>
+                {
+                  presentationSelected.units !== 1 &&
+                  <p className="self-end text-xl text-gray-600">{`/${presentationSelected.units} ud`}</p>
+                }
               </>
             }
           </span>
