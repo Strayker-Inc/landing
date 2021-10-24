@@ -42,7 +42,7 @@ const OnboardingPage: React.FC<RouteComponentProps<any>> = props => {
                   <img src="./assets/images/logo_full.svg" alt="Logo slinqer" />
                 </div>
                 <span className="block  mx-auto w-5/6 text-4xl font-bold text-gray-800">
-                  Una app pensada en el planeta
+                  Una tienda pensada en el planeta
                 </span>
                 <p className="block mx-auto  w-4/6 md:w-2/6 text-2xl text-gray-600">
                   Conectamos marcas ecológicas con una comunidad sostenible.

@@ -7,18 +7,18 @@
   "hero": {
     "title": "Vive más, usa ",
     "titleColored": "menos",
-    "text": "Slinqer conecta marcas ecológicas con una comunidad sostenible en la que solo faltas tú.",
+    "text": "Slinqer conecta marcas ecológicas con una comunidad sostenible. #ViveMásUsaMenos",
     "buttons": {
       "join": "¡Ingresa aquí!"
     }
   },
   "aboutUs": {
-    "title": "Una tienda pensada para el Planeta",
-    "text": "Marketplace ecológico con los mejores productos y servicios de nuestras eco-marcas aliadas."
+    "title": "Una tienda pensada en el Planeta",
+    "text": "Tienda ecológica con los mejores productos y servicios de nuestras eco-marcas aliadas."
   },
   "servicesCards": {
     "title": "Cuidar del planeta es cuidar de tí",
-    "text": "Creemos que ser ecológico más que una opción, es una responsabilidad. Es por eso que en Slinqer te ayudamos a cumplirla.",
+    "text": "Creemos que ser ecológica más que una opción, es una responsabilidad. Es por eso que en Slinqer te ayudamos a cumplirla.",
     "firstCard": {
       "label": "Consumo responsable",
       "title": "Ecológico no significa una sola opción",
