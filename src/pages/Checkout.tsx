@@ -134,6 +134,8 @@ const CheckoutPage: React.FC<IPageProps> = props => {
         orderData.address.city = "Cali/Jamundi";
       }
       await OrdersService.create(orderData);
+      // TODO: also remove cart from reducer
+      localStorage.removeItem("cart");
       history.push('/confirmacion');
     } catch (e) {
       console.error (e)
