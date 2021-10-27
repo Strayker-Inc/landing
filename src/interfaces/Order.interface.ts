@@ -11,6 +11,7 @@ export interface IOrder {
   payment: string,
   shipment: string,
   address: {
+    inCali: string,
     address: string,
     city: string,
     comments: string

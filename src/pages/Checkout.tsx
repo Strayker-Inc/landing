@@ -1,14 +1,16 @@
 import { IonContent, IonFooter, IonIcon, IonLoading, IonPage, IonSpinner } from '@ionic/react';
 import { leaf } from 'ionicons/icons';
 import { useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm, useWatch } from 'react-hook-form';
 import NumberFormat from 'react-number-format';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Header from "../components/BackButtonHeader";
 import { ICartProduct, IOrder } from '../interfaces/Order.interface';
 import OrdersService from "../services/order.service";
+import { whatsappButton } from './Cart';
 import './Checkout.css';
+import config from "../config/config";
 
 interface IPageProps {
   cart: ICartProduct[],
@@ -16,8 +18,108 @@ interface IPageProps {
 }
 const CheckoutPage: React.FC<IPageProps> = props => {
   const history = useHistory();
-  const { register, handleSubmit, formState: { errors } } = useForm<IOrder>();
+  const { register, control, handleSubmit, formState: { errors } } = useForm<IOrder>();
   const [sendingRequest, setSendingRequest] = useState(false);
+
+  const CityWatched = () => {
+    const inCali = useWatch({
+      control,
+      name: "address.inCali",
+    });
+    const city = useWatch({
+      control,
+      name: "address.city",
+    });
+
+    if (inCali === "true" || !inCali) {
+      return (
+        <div className="flex items-center justify-between border-b-4">
+          <p className="text-2xl text-gray-700 font-bold mr-2">Envío a Cali/Jamundi</p>
+          <p className="text-2xl text-gray-500">
+            <NumberFormat value={8000} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+          </p>
+        </div>
+      )
+    }
+    return (
+      <div className="flex items-center justify-between border-b-4">
+        <p className="text-2xl text-gray-700 font-bold mr-2">Envío a {city}</p>
+        <p className="text-xl text-gray-500">
+          *El valor depende del peso y tamaño de los productos
+        </p>
+      </div>
+    )
+
+  }
+
+  const CityInput = () => {
+    const inCali = useWatch({
+      control,
+      name: "address.inCali",
+    });
+    console.log (inCali)
+    return (
+      <div className="w-3/5">
+      {errors.address?.city && inCali === "false" && <p className="text-red-400">Campo necesario</p>}
+      <input
+        id="other_input"
+        placeholder={(!inCali || inCali === "true") ? "Cali o Jamundi" : "Ingresa tu Ciudad"}
+        {...register("address.city", { required: inCali === "true" ? false : true })}
+        type="text"
+        className={`${inCali === "true" ||!inCali ? "invisible" : ""} w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green`}
+        disabled={(inCali === "true" || !inCali) ? true : false}
+      />
+      </div>
+    )
+  }
+
+  const TotalComponent = () => {
+    const inCali = useWatch({
+      control,
+      name: "address.inCali",
+    });
+    if (inCali === "true" || !inCali) {
+      return (
+        <div className="flex justify-between">
+          <p className="text-2xl text-gray-700 font-bold mr-2">Total</p>
+          <p className="text-2xl text-gray-500">
+            <NumberFormat value={props.total + config.caliShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+          </p>
+        </div>
+      )
+    }
+    return (
+      <div className="flex justify-between">
+        <p className="text-2xl text-gray-700 font-bold mr-2">Total</p>
+        <div className="text-2xl text-gray-500">
+          <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+          <p>+ Envío</p>
+        </div>
+      </div>
+    )
+  }
+
+  const PaymentButton = () => {
+    const inCali = useWatch({
+      control,
+      name: "address.inCali",
+    });
+    if (inCali === "true" || !inCali) {
+      return (
+        <div className="flex justify-center space-x-2">
+          <p>Pagar ahora</p>
+          <NumberFormat value={props.total + config.caliShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+        </div>
+      )
+    }
+    return (
+      <div className="flex justify-center space-x-2">
+        <p>Pagar ahora</p>
+        <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+        <p>+ Envio</p>
+      </div>
+    )
+  }
 
   const onSubmit: SubmitHandler<IOrder> = async formData => {
     try {
@@ -27,6 +129,9 @@ const CheckoutPage: React.FC<IPageProps> = props => {
         phone: parseInt(formData.phone.toString()),
         total: props.total,
         products: props.cart,
+      }
+      if (orderData.address.inCali === "true") {
+        orderData.address.city = "Cali/Jamundi";
       }
       await OrdersService.create(orderData);
       history.push('/confirmacion');
@@ -41,37 +146,14 @@ const CheckoutPage: React.FC<IPageProps> = props => {
     <IonPage className="font-inter bg-gray">
       <Header />
       <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
-        <div className="text-center mt-10">
-          <span className="text-4xl font-bold text-gray-800">Resumen</span>
+        <div className="text-center mt-6">
+          <span className="text-4xl font-bold text-gray-800">Datos de Envío</span>
         </div>
-        <div className="w-11/12 md:w-5/12 mx-auto space-y-2 mt-4">
-          <div className="flex items-center">
-            <p className="text-2xl text-gray-700 font-bold mr-2">Valor productos:</p>
-            <p className="text-2xl text-gray-500">
-              <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="text-2xl text-gray-700 font-bold mr-2">Envio en Cali:</p>
-            <p className="text-2xl text-gray-500">
-              <NumberFormat value={8000} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-            </p>
-          </div>
-          <div className="flex items-center flex-wrap">
-            <p className="text-2xl text-gray-700 font-bold mr-2">Otras ciudades:</p>
-            <p className="text-xl text-gray-500">
-              *El valor de envío depende del peso y tamaño de los productos
-            </p>
-          </div>
-        </div>
-        <div className="text-center mt-10">
-          <span className="text-4xl font-bold text-gray-800">Datos de Envio</span>
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} id="myform" className="mt-10 w-11/12 md:w-5/12 mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} id="myform" className="mt-6 w-11/12 md:w-5/12 mx-auto">
           <div className="flex flex-wrap md:flex-nowrap md:space-x-4">
             <div className="w-full md:w-1/2">
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Nombre</label>
-              {errors.name && <p className="text-green">Campo necesario</p>}
+              {errors.name && <p className="text-red-400">Campo necesario</p>}
               <div className="mt-1">
                 <input
                   id="name"
@@ -82,8 +164,8 @@ const CheckoutPage: React.FC<IPageProps> = props => {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <label htmlFor="name" className="font-medium text-lg text-gray-700">Telefono</label>
-              {errors.phone && <p className="text-green">Campo necesario</p>}
+              <label htmlFor="name" className="font-medium text-lg text-gray-700">Teléfono</label>
+              {errors.phone && <p className="text-red-400">Campo necesario</p>}
               <div className="mt-1">
                 <input
                   {...register("phone", { required: true})}
@@ -95,29 +177,27 @@ const CheckoutPage: React.FC<IPageProps> = props => {
             </div>
           </div>
 
-          <div className="flex flex-wrap md:flex-nowrap md:space-x-4">
-            <div className="w-full md:w-1/3">
-              <label htmlFor="name" className="font-medium text-lg text-gray-700">Ciudad</label>
-              {errors.address?.city && <p className="text-green">Campo necesario</p>}
-              <div className="mt-1">
-                <input
-                  id="name"
-                  {...register("address.city", { required: true })}
-                  type="text"
-                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
-                />
-              </div>
+
+          <div>
+            <label className="font-medium text-lg text-gray-700">Ciudad</label>
+            <div className="flex md:space-x-4">
+              <select className="w-2/5 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green" {...register("address.inCali")}>
+                <option value="true">Cali o Jamundi</option>
+                <option value="false">Otra</option>
+              </select>
+              <CityInput />
             </div>
-            <div className="w-full md:w-2/3">
-              <label htmlFor="name" className="font-medium text-lg text-gray-700">Direccion</label>
-              {errors.address?.address && <p className="text-green">Campo necesario</p>}
-              <div className="mt-1">
-                <input
-                  {...register("address.address", { required: true })}
-                  type="text"
-                  className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
-                />
-              </div>
+          </div>
+
+          <div>
+            <label htmlFor="name" className="font-medium text-lg text-gray-700">Dirección</label>
+            {errors.address?.address && <p className="text-red-400">Campo necesario</p>}
+            <div className="mt-1">
+              <input
+                {...register("address.address", { required: true })}
+                type="text"
+                className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
+              />
             </div>
           </div>
 
@@ -130,9 +210,9 @@ const CheckoutPage: React.FC<IPageProps> = props => {
               className="w-full py-2 rounded-lg shadow-sm focus:outline-none focus:border-green border border-gray-300 focus:ring-2 focus:ring-green"
             />
           </div>
-
+          {whatsappButton()}
           <div className="text-center my-10">
-            <span className="text-4xl font-bold text-gray-800">Tipo de envio</span>
+            <span className="text-4xl font-bold text-gray-800">Tipo de envío</span>
           </div>
 
           <div className="flex w-full md:w-2/3 space-x-4 mx-auto ">
@@ -142,7 +222,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
                 <div>
                   <span className="text-2xl font-semibold text-gray-700">Normal</span>
                 </div>
-                <p className="text-xl text-gray-500">Entrega en 1 o 2 dias habiles</p>
+                <p className="text-xl text-gray-500">Entrega en 1 o 2 días hábiles</p>
               </label>
             </div>
             <div className="w-1/2 p-4 flex items-center justify-center bg-gray-100 rounded-xl shadow-lg relative ring ring-green ring-opacity-50">
@@ -159,9 +239,10 @@ const CheckoutPage: React.FC<IPageProps> = props => {
           </div>
 
           <div className="text-center my-8">
-            <span className="text-4xl font-bold text-gray-800">Metodo de Pago</span>
-            {errors.payment && <p className="text-green">Elige un metodo de pago</p>}
+            <span className="text-4xl font-bold text-gray-800">Método de Pago</span>
+            {errors.payment && <p className="text-red-400">Elige un método de pago</p>}
           </div>
+
           <div className="flex space-x-4 mb-10">
             <div className="w-1/3 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg relative">
               <input className="absolute top-3 right-3" {...register("payment", { required: true })} id="nequi_input" name="payment" type="radio" value="nequi" />
@@ -181,14 +262,36 @@ const CheckoutPage: React.FC<IPageProps> = props => {
                 <img className="h-12 md:h-20 " src="./assets/icons/daviplata.webp" alt="Logo Daviplata" />
               </label>
             </div>
+            <div className="w-1/3 p-4  flex items-center justify-center bg-white rounded-xl shadow-lg relative">
+              <input className="absolute top-3 right-3" {...register("payment", { required: true })} id="pse_input" name="payment" type="radio" value="pse"/>
+              <label htmlFor="pse_input">
+                <img className="h-12 md:h-20" src="./assets/icons/pse.png" alt="Logo PSE" />
+              </label>
+            </div>
 
           </div>
         </form>
+
+        <div className="text-center mt-10">
+          <span className="text-4xl font-bold text-gray-800">Resumen</span>
+        </div>
+        <div className="w-11/12 md:w-5/12 mx-auto space-y-2 mt-4">
+          <div className="flex items-center justify-between">
+            <p className="text-2xl text-gray-700 font-bold mr-2">Valor productos</p>
+            <p className="text-2xl text-gray-500">
+              <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            </p>
+          </div>
+          <CityWatched />
+          <TotalComponent />
+
+        </div>
         <IonLoading
           isOpen={sendingRequest}
           message={'Creando orden...'}
         />
       </IonContent>
+
       <IonFooter>
         <div className="flex justify-center">
           <button type="submit" form="myform"
@@ -196,7 +299,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
           >
             {sendingRequest
               ?  <IonSpinner name="dots" />
-              : `Pagar ahora`
+              : <PaymentButton />
             }
           </button>
         </div>
