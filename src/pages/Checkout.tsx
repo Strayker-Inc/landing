@@ -57,7 +57,6 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       control,
       name: "address.inCali",
     });
-    console.log (inCali)
     return (
       <div className="w-3/5">
       {errors.address?.city && inCali === "false" && <p className="text-red-400">Campo necesario</p>}
