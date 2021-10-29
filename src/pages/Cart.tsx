@@ -12,6 +12,16 @@ interface IProps {
   total: number,
 }
 
+export const whatsappButton = () =>
+  <a className="mt-4 mx-4 flex h-20 flex justify-around items-center bg-white shadow-lg rounded-lg overflow-hidden"
+  style={{background: '#00bb2d' }} href="https://wa.me/573162452663"
+  >
+    <span className="w-2/3 ml-4 text-center flex items-center text-xl md:text-2xl font-bold text-white">
+      ¿Necesitas ayuda con tu pedido? Escríbenos
+    </span>
+    <IonIcon className="text-5xl text-white" icon={logoWhatsapp} />
+  </a>
+
 const CartPage: React.FC<IProps> = props => {
   const [cart, setCart] = useState(props.cart)
   useEffect(() => {
@@ -27,14 +37,7 @@ const CartPage: React.FC<IProps> = props => {
         </div>
         <div className="w-full lg:w-5/12 mx-auto">
           {cart.map(item => <CartProductRow key={item.id} item={item}/>)}
-          <a className="mt-4 mx-4 flex h-20 flex justify-around items-center bg-white shadow-lg rounded-lg overflow-hidden"
-            style={{background: '#00bb2d' }} href="https://wa.me/573162452663"
-          >
-            <span className="w-2/3 ml-4 text-center flex items-center text-xl md:text-2xl font-bold text-white">
-              ¿Necesitas ayuda con tu pedido? Escribenos
-            </span>
-            <IonIcon className="text-5xl text-white" icon={logoWhatsapp} />
-          </a>
+          {whatsappButton()}
         </div>
       </IonContent>
       <IonFooter>
