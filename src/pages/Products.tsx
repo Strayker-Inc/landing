@@ -12,7 +12,7 @@ import { IProduct } from '../interfaces/Product.interface';
 interface IProps {
   products: IProduct[],
 }
-const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
+const ProductsPage: React.FC<IProps & RouteComponentProps<any>> = props => {
   // const history = useHistory();
   const { category } = useParams<Params>();
   const [products, setProducts] = useState<IProduct[]>();
@@ -86,4 +86,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps)(CategoriesPage);
+export default connect(mapStateToProps)(ProductsPage);

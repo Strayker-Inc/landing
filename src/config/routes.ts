@@ -1,6 +1,6 @@
 import Landing from '../pages/Landing/Landing';
 import Home from '../pages/Home';
-import Categories from '../pages/Categories';
+import Categories from '../pages/Products';
 import IRoute from '../interfaces/route';
 import Product from '../pages/Product';
 import Onboarding from '../pages/Onboarding';

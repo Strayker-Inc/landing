@@ -9,24 +9,60 @@ import { IonContent, IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
 import { isSupported, getToken } from "firebase/messaging";
 
+const arr = [
+  {
+    name: 'Cuidado diario',
+    img: './assets/icons/cuidado_personal.png',
+    code: 123
+  },
+  {
+    name: 'Belleza',
+    code: 123
+  },
+  {
+    name: 'Cocina',
+    img: './assets/icons/kitchen.png',
+    code: 123
+  },
+  {
+    name: 'Jabones',
+    img: './assets/icons/jabon.png',
+    code: 123
+  },
+  {
+    name: 'Recipientes ecologicos',
+    img: './assets/icons/caja.png',
+    code: 123
+  },
+  {
+    name: 'Jardin',
+    img: './assets/icons/plant.png',
+    code: 123
+  },
+  {
+    name: 'Alternativas a los desechables',
+    img: './assets/icons/desechables.png',
+    code: 123
+  }
+]
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
   const [categoriess, setCategories] = useState<ICategory[]>();
 
   useEffect(() => {
-    const subscribeFirebase = async() => {
-      try {
-        const supported = await isSupported();
-        if (supported) {
-          const token = await getToken(messaging);
-          localStorage.setItem('token', token)
-          // TODO: check if token is already on database, if not save as new user
-          console.log(token);
-        }
-      } catch (error) {
-        console.log (error)
-      }
-    }
+    // const subscribeFirebase = async() => {
+    //   try {
+    //     const supported = await isSupported();
+    //     if (supported) {
+    //       const token = await getToken(messaging);
+    //       localStorage.setItem('token', token)
+    //       // TODO: check if token is already on database, if not save as new user
+    //       console.log(token);
+    //     }
+    //   } catch (error) {
+    //     console.log (error)
+    //   }
+    // }
     const getCategories = async () => {
       try {
         const categoriesCol = collection(db, 'categories');
@@ -87,7 +123,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
       });
     }
     getCategories();
-    subscribeFirebase();
+    // subscribeFirebase();
     // nose();
   }, [])
 
@@ -96,22 +132,18 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     <IonPage className="font-inter">
       <Header showBack={false}/>
 
-      <IonContent style={{'--ion-background-color':'#f5f7ff'}}>
-        <div className="text-center mt-10">
-          <span className="text-4xl font-bold text-gray-700">Elige una categoría</span>
+      <IonContent style={{'--ion-background-color':'#f5f7ff'}} className="font-inter">
+        <div className="w-11/12 lg:w-9/12 mt-6 mx-auto">
+          <span className="text-xl font-bold text-gray-700">Categorías</span>
         </div>
-        <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {categoriess && categoriess.map(item => (
-            <div key={item.id} onClick={() => history.push(`/tienda/${item.code}`)}
-              className="w-full cursor-pointer flex justify-between md:justify-around items-center relative h-38 md:h-48 text-white shadow-lg rounded-xl"
-              style={{backgroundColor: item.color}}
+        <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-3 gap-1">
+          {categoriess && arr.map(item => (
+            <div onClick={() => history.push(`/tienda/${item.code}`)}
+              className="w-full cursor-pointer justify-center items-center relative   rounded-xl"
             >
-              <div className="py-8 pl-8 md:py-8 md:pl-8">
-                <p className="text-md md:text-lg font-semibold">{item.description}</p>
-                <span className="text-4xl md:text-5xl font-bold">{item.name}</span>
-              </div>
-              <div className="text-6xl pr-8 md:pr-4">
-                <span>{item.emoji}</span>
+              <img src={item.img} className="w-20 mx-auto" alt="" />
+              <div className="text-center">
+                <span className="text-gray-600">{item.name}</span>
               </div>
             </div>
           ))}
