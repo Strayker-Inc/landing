@@ -17,6 +17,7 @@ const arr = [
   },
   {
     name: 'Belleza',
+    img: './assets/icons/belleza.png',
     code: 123
   },
   {
@@ -30,7 +31,7 @@ const arr = [
     code: 123
   },
   {
-    name: 'Recipientes ecologicos',
+    name: 'Recipientes',
     img: './assets/icons/caja.png',
     code: 123
   },
@@ -40,8 +41,8 @@ const arr = [
     code: 123
   },
   {
-    name: 'Alternativas a los desechables',
-    img: './assets/icons/desechables.png',
+    name: 'Eco desechables',
+    img: './assets/icons/empaque.png',
     code: 123
   }
 ]
@@ -134,16 +135,18 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
 
       <IonContent style={{'--ion-background-color':'#f5f7ff'}} className="font-inter">
         <div className="w-11/12 lg:w-9/12 mt-6 mx-auto">
-          <span className="text-xl font-bold text-gray-700">Categorías</span>
+          <span className="text-xl font-bold text-gray-500">Categorías</span>
         </div>
-        <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-3 gap-1">
+        <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-3 gap-3">
           {categoriess && arr.map(item => (
             <div onClick={() => history.push(`/tienda/${item.code}`)}
-              className="w-full cursor-pointer justify-center items-center relative   rounded-xl"
+              className="w-full p-2 cursor-pointer bg-white items-center shadow-xl rounded-xl"
             >
-              <img src={item.img} className="w-20 mx-auto" alt="" />
-              <div className="text-center">
-                <span className="text-gray-600">{item.name}</span>
+              <div className="h-16 md:h-36 mb-3">
+                <img src={item.img} className="h-full mx-auto" alt="" />
+              </div>
+              <div className="text-center self-center">
+                <p className="text-gray-700 leading-none">{item.name}</p>
               </div>
             </div>
           ))}
