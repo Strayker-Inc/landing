@@ -101,7 +101,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
           <span className="text-4xl font-bold text-gray-700">Elige una categoría</span>
         </div>
         <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {categoriess && categoriess.map(item => (
+          {categoriess && categoriess.map(item => item.active && (
             <div key={item.id} onClick={() => history.push(`/tienda/${item.code}`)}
               className="w-full cursor-pointer flex justify-between md:justify-around items-center relative h-38 md:h-48 text-white shadow-lg rounded-xl"
               style={{backgroundColor: item.color}}
