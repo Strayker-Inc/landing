@@ -17,7 +17,7 @@ export const whatsappButton = () =>
   style={{background: '#00bb2d' }} href="https://wa.me/573162452663"
   >
     <span className="w-2/3 ml-4 text-center flex items-center text-xl md:text-2xl font-bold text-white">
-      ¿Necesitas ayuda con tu pedido? Escríbenos
+      ¿Necesitas ayuda con tu pedido? Dejanos ayudarte
     </span>
     <IonIcon className="text-5xl text-white" icon={logoWhatsapp} />
   </a>

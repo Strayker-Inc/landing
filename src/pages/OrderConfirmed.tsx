@@ -8,7 +8,7 @@ const OrderConfirmedPage: React.FC<{}> = props => {
     <IonPage className="font-inter">
       <IonContent className="font-inter">
         <div className="w-11/12 md:w-5/12 h-1/3 mt-6 mx-auto flex justify-center items-center bg-green rounded-2xl shadow-lg">
-          <div className="space-y-8">
+          <div >
             <IonIcon style={{fontSize: '150px'}} className="block text-white mx-auto" icon={checkmarkCircle} />
             <p className="block text-2xl font-bold text-white">Recibimos tu pedido</p>
           </div>

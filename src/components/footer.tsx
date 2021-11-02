@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonBadge, IonFooter, IonIcon, IonToast} from '@ionic/react';
+import { IonBadge, IonIcon, IonToast} from '@ionic/react';
 import { Link, useHistory } from "react-router-dom";
 import { logoWhatsapp, cartOutline, cartSharp, home } from 'ionicons/icons';
 import { connect } from "react-redux";
