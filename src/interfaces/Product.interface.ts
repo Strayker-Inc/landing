@@ -8,8 +8,11 @@ export interface IProductPresentation {
 
 export interface IProduct {
   id: string,
+  active: boolean,
   store_id: string,
   category_code: string,
+  views: number,
+  tags: string[]
   name: string,
   images: string[],
   description: string,

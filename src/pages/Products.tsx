@@ -12,17 +12,21 @@ import { IProduct } from '../interfaces/Product.interface';
 interface IProps {
   products: IProduct[],
 }
-const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
-  // const history = useHistory();
+const ProductsPage: React.FC<IProps & RouteComponentProps<any>> = props => {
   const { category } = useParams<Params>();
   const [products, setProducts] = useState<IProduct[]>();
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const q = query(collection(db, 'products'), where('category_code', '==', category ))
+        const q = query(collection(db, 'products'), where('tags','array-contains', category ))
         const productsSnapshot = await getDocs(q);
-        const data = productsSnapshot.docs.map(doc => doc.data());
+        const data = productsSnapshot.docs.map(doc => {
+          return {
+            ...doc.data(),
+            id: doc.id,
+          }
+        });
         setProducts(data as IProduct[]);
       } catch (error) {
         console.log (error)
@@ -52,21 +56,8 @@ const CategoriesPage: React.FC<IProps & RouteComponentProps<any>> = props => {
   return (
     <IonPage className="font-inter">
       <Header showBack={true}/>
-      <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
-        <div className="sticky w-full top-0 my-2 px-2 md:flex md:justify-center bg-white">
-          {/* {categories.map(item => {
-            const isTheSameCategory = (item.code === category.toLowerCase().replace(' ', '_'))
-            return (
-              <IonChip key={item.code}
-                onClick={() => history.push(`${item.code}`)}
-                className={`${isTheSameCategory && 'bg-green text-white font-bold' } text-lg`}>
-                <span>{item.emoji}</span>
-                <IonLabel>{item.name}</IonLabel>
-              </IonChip>
-            )
-          })} */}
-        </div>
 
+      <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
         <div className="w-11/12 lg:w-5/12 grid grid-cols-1 gap-4 mx-auto flex flex-wrap justify-center pt-4">
           {products
           // TODO: we most sort the products by some sort of relevance, ex # of sales or starts etc. -> NOT AS RANDOM SORT
@@ -86,4 +77,4 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-export default connect(mapStateToProps)(CategoriesPage);
+export default connect(mapStateToProps)(ProductsPage);

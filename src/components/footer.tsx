@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { IonBadge, IonFooter, IonIcon, IonToast} from '@ionic/react';
-import { useHistory } from "react-router-dom";
-import { logoWhatsapp, cartOutline, cartSharp } from 'ionicons/icons';
+import { IonBadge, IonIcon, IonToast} from '@ionic/react';
+import { Link, useHistory } from "react-router-dom";
+import { logoWhatsapp, cartOutline, cartSharp, homeSharp } from 'ionicons/icons';
 import { connect } from "react-redux";
 import { ICartProduct } from '../interfaces/Order.interface';
 
-const footerStyles: React.CSSProperties = {
-  backgroundColor: "#00bb2d",
-}
+
 
 type Props = {
   cart: ICartProduct[]
@@ -30,30 +28,37 @@ const FooterApp: React.FC<Props> = (props) => {
   }
 
   return (
-    <IonFooter style={{}}>
-      <a href="https://wa.me/573162452663" style={footerStyles}
-        className="p-3 w-16 h-16 md:w-20 md:h-20 md:mb-6 justify-center flex items-center shadow-lg rounded-full absolute bottom-20 md:bottom-24 right-2 md:right-6">
-          <IonIcon className="block text-4xl mx-auto text-white"icon={logoWhatsapp} />
-      </a>
-
-      <button onClick={() => goToCart()}
-        className="p-3 w-16 h-16 md:w-20 md:h-20 mb-2 md:mb-6 flex items-center inline-flex justify-center text-center shadow-lg rounded-full bg-white absolute bottom-0  right-2 md:right-6 ">
+    <div className="w-full rounded-xl absolute bottom-2">
+      <div className="w-11/12 p-1 md:w-3/12 shadow-lg rounded-xl flex justify-around bg-white mx-auto">
+        <Link to={'/home'} className={`${history.location.pathname === "/home" ? 'text-green font-bold' : 'text-gray-700'} text-center`}>
+          <IonIcon className={` text-2xl`} icon={homeSharp} />
+          <p>Inicio</p>
+        </Link>
+        <a href="https://wa.me/573162452663" className="text-center text-gray-700">
+          <IonIcon className="text-2xl"icon={logoWhatsapp} />
+          <p>Soporte</p>
+        </a>
+        <button onClick={() => goToCart()}>
           {cartCount === 0
-            ? <IonIcon className="text-4xl" icon={cartOutline} />
-            : <>
-                <IonIcon className="text-4xl relative" icon={cartSharp} />
-                <IonBadge color="danger" className="absolute mb-6 ml-6">{props.cart.length}</IonBadge>
-              </>
+            ? <div className="text-gray-700">
+                <IonIcon className="text-2xl" icon={cartOutline} />
+                <p>Carrito</p>
+              </div>
+            : <div className="text-gray-900">
+                <IonIcon className="text-2xl relative" icon={cartSharp} />
+                <IonBadge color="danger" className="absolute mb-6">{props.cart.length}</IonBadge>
+                <p>Carrito</p>
+              </div>
           }
-      </button>
-
+        </button>
+      </div>
       <IonToast
         isOpen={showToastEmpty}
         onDidDismiss={() => setShowToastEmpty(false)}
         message="Aún no tienes productos en el carrito"
         duration={800}
       />
-    </IonFooter>
+    </div>
   );
 };
 
