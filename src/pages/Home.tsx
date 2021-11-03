@@ -9,46 +9,9 @@ import { IonContent, IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
 import { isSupported, getToken } from "firebase/messaging";
 
-const arr = [
-  {
-    name: 'Cuidado diario',
-    img: './assets/icons/cuidado_personal.png',
-    code: 123
-  },
-  {
-    name: 'Belleza',
-    img: './assets/icons/belleza.png',
-    code: 123
-  },
-  {
-    name: 'Cocina',
-    img: './assets/icons/kitchen.png',
-    code: 123
-  },
-  {
-    name: 'Jabones',
-    img: './assets/icons/jabon.png',
-    code: 123
-  },
-  {
-    name: 'Recipientes',
-    img: './assets/icons/caja.png',
-    code: 123
-  },
-  {
-    name: 'Jardin',
-    img: './assets/icons/plant.png',
-    code: 123
-  },
-  {
-    name: 'Eco desechables',
-    img: './assets/icons/empaque.png',
-    code: 123
-  }
-]
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
-  const [categoriess, setCategories] = useState<ICategory[]>();
+  const [categories, setCategories] = useState<ICategory[]>();
 
   useEffect(() => {
     // const subscribeFirebase = async() => {
@@ -65,10 +28,16 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     //   }
     // }
     const getCategories = async () => {
+      // TODO: migrate this to backend
       try {
         const categoriesCol = collection(db, 'categories');
         const categoriesSnapshot = await getDocs(categoriesCol);
-        const categoriesDb = categoriesSnapshot.docs.map(doc => doc.data());
+        const categoriesDb = categoriesSnapshot.docs.map(doc => {
+          return {
+            ...doc.data(),
+            id: doc.id
+          }
+        });
         setCategories(categoriesDb as ICategory[]);
       } catch (error) {
         console.log (error)
@@ -76,8 +45,9 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     }
     const nose = async () => {
       await addDoc(collection(db, "products"), {
-        id: "prod_28",
         store_id: "store_1",
+        views: 0,
+        active: true,
         category_code: "hogar",
         name: "Vasos Eco-carton",
         description: 'Elaborados con Eco-carton 100% biodegradable y compostable.',
@@ -89,32 +59,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
             presentation: '4oz',
             cost: 7400,
             units: 50
-          },
-          {
-            id: 'pr_2',
-            presentation: '7oz',
-            cost: 9200,
-            units: 50
-          },
-          {
-            id: 'pr_3',
-            presentation: '9oz',
-            cost: 11400,
-            units: 50
-          },
-          {
-            id: 'pr_4',
-            presentation: '12oz',
-            cost: 10150,
-            units: 40
-          },
-          {
-            id: 'pr_5',
-            presentation: '16oz',
-            cost: 9650,
-            units: 28
-          },
-
+          }
         ],
         images: [
           'https://res.cloudinary.com/slinqer/image/upload/v1634747552/shops/lifepack/Lifepack_Vasos_4_a_9_onzas_uvw3jz.jpg',
@@ -138,8 +83,8 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
           <span className="text-xl font-bold text-gray-500">Categorías</span>
         </div>
         <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-3 gap-3">
-          {arr && arr.map(item => (
-            <div onClick={() => history.push(`/tienda/${item.code}`)}
+          {categories && categories.map(item => !item.active && (
+            <div key={item.id} onClick={() => history.push(`/tienda/${item.code}`)}
               className="w-full p-2 cursor-pointer bg-white items-center shadow-xl rounded-xl"
             >
               <div className="h-16 md:h-36 mb-3">
