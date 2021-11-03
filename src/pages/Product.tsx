@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import  Header from "../components/BackButtonHeader";
+import  CartButton from "../components/CartButtonHeader";
 import './Product.css'
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../config/firebase";
+import { getDocs, query, where, documentId } from "firebase/firestore";
+import { productsRef } from "../config/firebase";
 import Footer from "../components/footer";
 import { addToCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
@@ -38,7 +39,6 @@ interface IProps {
 
 const ProductPage: React.FC<IProps> = props => {
   const { productId } = useParams<IParams>();
-  // const history = useHistory();
   const [product, setProduct] = useState<IProduct>();
   const [selected, setSelected] = useState<number>(0);
   const [presentationSelected, setPresentationSelected] = useState<IProductPresentation>();
@@ -46,9 +46,14 @@ const ProductPage: React.FC<IProps> = props => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const q = query(collection(db, 'products'), where('id', '==', productId))
+        const q = query(productsRef, where(documentId(), '==', productId))
         const productsSnapshot = await getDocs(q);
-        const data = productsSnapshot.docs.map(doc => doc.data());
+        const data = productsSnapshot.docs.map(doc => {
+          return {
+            ...doc.data(),
+            id: doc.id
+          }
+        });
         const product = data[0] as IProduct;
         setProduct(product);
         setPresentationSelected(product.presentations[0])
@@ -98,6 +103,7 @@ const ProductPage: React.FC<IProps> = props => {
   return (
     <IonPage>
       <Header />
+      <CartButton />
       <IonContent className="font-inter" style={{'--ion-background-color':'#f5f7ff'}}>
         {product &&
           <div className="h-screen lg:w-8/12 mx-auto lg:grid lg:grid-cols-2 lg:mt-4">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IonBadge, IonIcon, IonToast} from '@ionic/react';
 import { Link, useHistory } from "react-router-dom";
-import { logoWhatsapp, cartOutline, cartSharp, home } from 'ionicons/icons';
+import { logoWhatsapp, cartOutline, cartSharp, homeSharp } from 'ionicons/icons';
 import { connect } from "react-redux";
 import { ICartProduct } from '../interfaces/Order.interface';
 
@@ -30,8 +30,8 @@ const FooterApp: React.FC<Props> = (props) => {
   return (
     <div className="w-full rounded-xl absolute bottom-2">
       <div className="w-11/12 p-1 md:w-3/12 shadow-lg rounded-xl flex justify-around bg-white mx-auto">
-        <Link to={'/home'} className={`${history.location.pathname === "/home" ? 'text-green' : 'text-gray-700'} font-bold text-center`}>
-          <IonIcon className={`${history.location.pathname === "/home" && 'text-green'} text-2xl`}icon={home} />
+        <Link to={'/home'} className={`${history.location.pathname === "/home" ? 'text-green font-bold' : 'text-gray-700'} text-center`}>
+          <IonIcon className={` text-2xl`} icon={homeSharp} />
           <p>Inicio</p>
         </Link>
         <a href="https://wa.me/573162452663" className="text-center text-gray-700">

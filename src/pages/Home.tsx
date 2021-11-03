@@ -4,10 +4,10 @@ import Footer from "../components/footer";
 import Header from "../components/searchBar";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { db, messaging } from '../config/firebase';
+import { categoriesRef, db } from '../config/firebase';
 import { IonContent, IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
-import { isSupported, getToken } from "firebase/messaging";
+// import { isSupported, getToken } from "firebase/messaging";
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
@@ -30,8 +30,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     const getCategories = async () => {
       // TODO: migrate this to backend
       try {
-        const categoriesCol = collection(db, 'categories');
-        const categoriesSnapshot = await getDocs(categoriesCol);
+        const categoriesSnapshot = await getDocs(categoriesRef);
         const categoriesDb = categoriesSnapshot.docs.map(doc => {
           return {
             ...doc.data(),
