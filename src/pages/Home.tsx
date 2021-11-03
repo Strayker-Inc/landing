@@ -82,7 +82,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
           <span className="text-xl font-bold text-gray-500">Categorías</span>
         </div>
         <div className="w-11/12 lg:w-9/12 mt-4 mx-auto grid grid-cols-3 gap-3">
-          {categories && categories.map(item => !item.active && (
+          {categories && categories.map(item => item.active && (
             <div key={item.id} onClick={() => history.push(`/tienda/${item.code}`)}
               className="w-full p-2 cursor-pointer bg-white items-center shadow-xl rounded-xl"
             >
