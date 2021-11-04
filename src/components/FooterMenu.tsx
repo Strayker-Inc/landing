@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { IonBadge, IonIcon, IonToast} from '@ionic/react';
 import { Link, useHistory } from "react-router-dom";
-import { logoWhatsapp, cartOutline, cartSharp, homeSharp, personOutline, person, home, homeOutline, heart, heartOutline } from 'ionicons/icons';
+import { logoWhatsapp, cartOutline, cartSharp, homeSharp, personOutline, person, homeOutline } from 'ionicons/icons';
 import { connect } from "react-redux";
 import { ICartProduct } from '../interfaces/Order.interface';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
 
 
@@ -15,9 +17,18 @@ const FooterMenu: React.FC<Props> = (props) => {
   const history = useHistory();
   const [showToastEmpty, setShowToastEmpty] = useState(false)
   const [cartCount, setCartCount] = useState(0);
+  const [user, setUser] = useState<User>();
+
 
   useEffect(() => {
     setCartCount(props.cart.length);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(undefined);
+      }
+    });
   }, [props.cart,  cartCount])
 
   const goToCart = () => {
@@ -56,8 +67,18 @@ const FooterMenu: React.FC<Props> = (props) => {
           <p>Favoritos</p>
         </Link> */}
         <Link to={'/perfil'} className={`${history.location.pathname === "/perfil" ? 'text-green font-bold' : 'text-gray-700'} text-center`}>
-          <IonIcon className="text-2xl" icon={`${history.location.pathname === "/perfil" ? person : personOutline}`} />
-          <p>Mi Perfil</p>
+          {user && user.photoURL
+            ?
+              <>
+                <img src={user.photoURL} className="w-8 ring-2 ring-green rounded-full" alt="" />
+                <p>Yo</p>
+              </>
+            :
+              <>
+                <IonIcon className="text-2xl" icon={`${history.location.pathname === "/perfil" ? person : personOutline}`} />
+                <p>Mi Perfil</p>
+              </>
+          }
         </Link>
       </div>
       <IonToast

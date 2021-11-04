@@ -4,16 +4,17 @@ import Footer from "../components/FooterMenu";
 import Header from "../components/searchBar";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { categoriesRef, db, loginProvider } from '../config/firebase';
+import { auth, categoriesRef, db } from '../config/firebase';
 import { IonContent, IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 // import { isSupported, getToken } from "firebase/messaging";
 
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
   const [categories, setCategories] = useState<ICategory[]>();
+  const [user, setUser] = useState<User>();
 
   useEffect(() => {
     // const subscribeFirebase = async() => {
@@ -29,6 +30,11 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     //     console.log (error)
     //   }
     // }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
     const getCategories = async () => {
       // TODO: migrate this to backend
       try {

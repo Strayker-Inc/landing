@@ -1,7 +1,7 @@
 import * as firebase from "firebase/app"
 import { collection, getFirestore } from "firebase/firestore"
 import { getMessaging } from "firebase/messaging"
-import { GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { initializeAnalytics } from 'firebase/analytics';
 import * as fireorm from 'fireorm';
 import config from "./config";
@@ -15,7 +15,7 @@ export const productsRef = collection(db, 'products');
 export const categoriesRef = collection(db, 'categories');
 export const orm = fireorm.initialize(db);
 export const loginProvider = new GoogleAuthProvider();
-
+export const auth = getAuth();
 
 // export const messaging = getMessaging(app);
 

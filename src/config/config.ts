@@ -3,7 +3,7 @@ const config = {
   caliShippingCost: 8000,
   firebaseConfig: {
     apiKey: "AIzaSyBAP73mLmqHTYojhQcEYcSujsPni0fy7Xw",
-    authDomain: "slinqer-landing.firebaseapp.com",
+    authDomain: "slinqer.com",
     databaseURL: "https://slinqer-landing.firebaseio.com",
     projectId: "slinqer-landing",
     storageBucket: "slinqer-landing.appspot.com",
