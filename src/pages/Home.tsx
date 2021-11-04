@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory, withRouter  } from "react-router-dom";
-import Footer from "../components/footer";
+import Footer from "../components/FooterMenu";
 import Header from "../components/searchBar";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { categoriesRef, db } from '../config/firebase';
+import { categoriesRef, db, loginProvider } from '../config/firebase';
 import { IonContent, IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 // import { isSupported, getToken } from "firebase/messaging";
+
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
   const history = useHistory();
@@ -68,6 +70,7 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
       });
     }
     getCategories();
+
     // subscribeFirebase();
     // nose();
   }, [])

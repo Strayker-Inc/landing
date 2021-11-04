@@ -7,6 +7,7 @@ import Onboarding from '../pages/Onboarding';
 import CartPage from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import OrderConfirmedPage from '../pages/OrderConfirmed';
+import Profile from '../pages/Profile';
 
 const routes: IRoute[] = [
   {
@@ -25,6 +26,12 @@ const routes: IRoute[] = [
 		path: '/home',
 		name: 'Home',
 		component: Home,
+		exact: true
+	},
+  {
+		path: '/perfil',
+		name: 'Profile',
+		component: Profile,
 		exact: true
 	},
   {
