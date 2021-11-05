@@ -7,8 +7,6 @@ import { ICartProduct } from '../interfaces/Order.interface';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../config/firebase';
 
-
-
 type Props = {
   cart: ICartProduct[]
 };
@@ -70,7 +68,9 @@ const FooterMenu: React.FC<Props> = (props) => {
           {user && user.photoURL
             ?
               <>
-                <img src={user.photoURL} className="w-8 ring-2 ring-green rounded-full" alt="" />
+                <img src={user.photoURL} alt="user"
+                  className={`${history.location.pathname === "/perfil" && 'ring-2 ring-green'} w-8 rounded-full`}
+                />
                 <p>Yo</p>
               </>
             :
