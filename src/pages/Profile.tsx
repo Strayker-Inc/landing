@@ -53,7 +53,7 @@ const ProfilePage: React.FC<{}> = props => {
         !user
         ?
           <div className="h-screen">
-            <div className="h-3/5 bg-red-200">
+            <div className="h-3/5 bg-green">
             </div>
             <div className="mt-3 space-y-3 mx-auto w-11/12 lg:w-5/12">
               <span className="text-2xl font-bold text-gray-700">Ingresa</span>
