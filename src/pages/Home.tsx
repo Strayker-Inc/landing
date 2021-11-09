@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useHistory, withRouter  } from "react-router-dom";
 import Footer from "../components/footer";
 import Header from "../components/searchBar";
-import { addDoc, collection, getDocs } from "firebase/firestore";
 import IPage from "../interfaces/page";
-import { categoriesRef, db } from '../config/firebase';
 import { IonContent, IonPage } from '@ionic/react';
 import { ICategory } from '../interfaces/Category.interface';
+import categoriesService from "../services/category.service";
 // import { isSupported, getToken } from "firebase/messaging";
 
 const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
@@ -28,48 +27,15 @@ const HomePage: React.FC<IPage & RouteComponentProps<any>> = props => {
     //   }
     // }
     const getCategories = async () => {
-      // TODO: migrate this to backend
       try {
-        const categoriesSnapshot = await getDocs(categoriesRef);
-        const categoriesDb = categoriesSnapshot.docs.map(doc => {
-          return {
-            ...doc.data(),
-            id: doc.id
-          }
-        });
-        setCategories(categoriesDb as ICategory[]);
+        const categories = await categoriesService.get()
+        setCategories(categories);
       } catch (error) {
-        console.log (error)
+        console.log (error);
       }
-    }
-    const nose = async () => {
-      await addDoc(collection(db, "products"), {
-        store_id: "store_1",
-        views: 0,
-        active: true,
-        category_code: "hogar",
-        name: "Vasos Eco-carton",
-        description: 'Elaborados con Eco-carton 100% biodegradable y compostable.',
-        benefit: 'Biodegradable y compostable 100%.',
-        vegan: true,
-        presentations: [
-          {
-            id: 'pr_1',
-            presentation: '4oz',
-            cost: 7400,
-            units: 50
-          }
-        ],
-        images: [
-          'https://res.cloudinary.com/slinqer/image/upload/v1634747552/shops/lifepack/Lifepack_Vasos_4_a_9_onzas_uvw3jz.jpg',
-          'https://res.cloudinary.com/slinqer/image/upload/v1634747553/shops/lifepack/Lifepack_Vaso_7_onzas_r27ftd.jpg',
-          'https://res.cloudinary.com/slinqer/image/upload/v1634747551/shops/lifepack/Lifepack_Vasos_12_y_16_onzas_ebfzme.jpg',
-        ],
-      });
     }
     getCategories();
     // subscribeFirebase();
-    // nose();
   }, [])
 
 
