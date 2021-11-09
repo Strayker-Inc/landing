@@ -81,24 +81,24 @@ const ProductPage: React.FC<IProps> = props => {
   }
 
   const presentationItem = (presentation: IProductPresentation, index: number) =>
-      <div className={`p-2 flex items-center justify-center bg-white rounded-xl shadow-lg relative
-        ${selected === index && 'ring ring-green-400' }`}
-        onClick={() => setSelected(index)} key={presentation.id}
-      >
-        <IonRadio className="md:mr-2" color="success" value={index} />
-        <label>
-          <div >
-            <p className="block md:text-lg mx-auto text-gray-700">{presentation.presentation}</p>
-            {
-              presentation.units !== 1 &&
-              <span className="block md:text-lg mx-auto text-gray-500">{presentation.units} unidades</span>
-            }
-            <p className="block text-xl text-gray-900 font-bold">
-              <NumberFormat value={presentation.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-            </p>
-          </div>
-        </label>
-      </div>
+    <div className={`p-2 flex items-center justify-center bg-white rounded-xl shadow-lg relative
+      ${selected === index && 'ring ring-green-400' }`}
+      onClick={() => setSelected(index)} key={presentation.id}
+    >
+      <IonRadio className="md:mr-2" color="success" value={index} />
+      <label>
+        <div >
+          <p className="block md:text-lg mx-auto text-gray-700">{presentation.presentation}</p>
+          {
+            presentation.units !== 1 &&
+            <span className="block md:text-lg mx-auto text-gray-500">{presentation.units} unidades</span>
+          }
+          <p className="block text-xl text-gray-900 font-bold">
+            <NumberFormat value={presentation.cost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+          </p>
+        </div>
+      </label>
+    </div>
 
   return (
     <IonPage>
