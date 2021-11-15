@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IonContent, IonPage, IonSkeletonText } from '@ionic/react';
 import { RouteComponentProps, useParams } from "react-router-dom";
-import Footer from "../components/footer";
+import Footer from "../components/FooterMenu";
 import Header from "../components/searchBar";
 import ProductRow, { Params } from "../components/ProductRow";
 import { connect } from 'react-redux';

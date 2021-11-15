@@ -7,7 +7,7 @@ import  CartButton from "../components/CartButtonHeader";
 import './Product.css'
 import { getDocs, query, where, documentId } from "firebase/firestore";
 import { productsRef } from "../config/firebase";
-import Footer from "../components/footer";
+import Footer from "../components/FooterMenu";
 import { addToCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react';
