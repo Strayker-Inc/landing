@@ -1,24 +1,53 @@
 import { IonFooter, IonPage, IonSpinner } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 import Header from "../components/BackButtonHeader";
-
+import { IOrder } from "../interfaces/Order.interface";
+import OrdersService from "../services/order.service";
 
 interface IPayment {
   phone: string,
 }
 const NequiPaymentPage: React.FC<{}> = props => {
-  const { register, control, handleSubmit, formState: { errors } } = useForm<IPayment>();
+  const history = useHistory();
+  const { register, handleSubmit, formState: { errors } } = useForm<IPayment>();
   const [ paymentSuccess, setPaymentSuccess] = useState(false);
   const [ checkingPayment, setCheckingPayment] = useState(false);
+  const [ orderData, setOrderData ] = useState<IOrder>();
+
+  useEffect(() => {
+    const order = history.location.state;
+    if (order) {
+      setOrderData(order as IOrder);
+    } else {
+      return history.push('/home');
+    }
+  }, [history]);
+
   const onSubmit: SubmitHandler<IPayment> = async data => {
     setCheckingPayment(true);
+    try {
+      if (orderData) {
+        const response = await OrdersService.create(orderData);
+        // const paymentResponse = await OrdersService.payOrderByNequi(data.phone, response.orderId, orderData);
+        // paymentStatus(payment.data.paymentId);
+      }
+    } catch (error) {
+      console.error (error)
+    };
+
+
+  };
+  const paymentStatus = (paymentId: string) => {
+    let maxRetries = 5;
     setInterval(async () => {
       try {
-        // const paymentStatus = await OrderService.checkPaymentStatus();
-
+        await OrdersService.paymentStatus(paymentId);
+        setPaymentSuccess(true);
+        history.push('/confirmacion');
       } catch (error) {
-
+        console.error (error)
       }
     }, 10000);
   }

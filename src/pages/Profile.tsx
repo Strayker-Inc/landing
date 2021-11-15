@@ -10,24 +10,26 @@ import { clipboardOutline, homeOutline, logOutOutline } from "ionicons/icons";
 const ProfilePage: React.FC<{}> = props => {
   const [user, setUser] = useState<User>();
 
-
   useEffect(() => {
     onAuthStateChanged(auth, user => user && setUser(user));
-  }, [])
+  }, []);
+
   const logout = () => {
     signOut(auth).then(() => {
       setUser(undefined);
     }).catch((error) => {
       console.error(error);
     });
-  }
+  };
+
   const loginWithGoogle = async () => {
     try {
       await signInWithPopup(auth, loginProvider);
     } catch (error) {
       console.error (error);
     }
-  }
+  };
+
   return (
     <IonPage className="font-inter bg-gray">
       <BackButtonHeader/>

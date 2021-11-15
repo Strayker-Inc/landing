@@ -100,7 +100,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
         orderData.address.city = "Cali/Jamundi";
       }
       if (orderData.payment === "nequi") {
-        history.push('/pago', orderData)
+        history.push('/pago/nequi', orderData)
       } else {
         await OrdersService.create(orderData);
         localStorage.removeItem("cart");
