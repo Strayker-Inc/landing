@@ -87,27 +87,6 @@ const CheckoutPage: React.FC<IPageProps> = props => {
     )
   }
 
-  const PaymentButton = () => {
-    const inCali = useWatch({
-      control,
-      name: "address.inCali",
-    });
-    if (inCali === "true" || !inCali) {
-      return (
-        <div className="flex justify-center space-x-2">
-          <p>Pagar ahora</p>
-          <NumberFormat value={props.total + config.caliShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-        </div>
-      )
-    }
-    return (
-      <div className="flex justify-center space-x-2">
-        <p>Pagar ahora</p>
-        <NumberFormat value={props.total + config.shippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-      </div>
-    )
-  }
-
   const onSubmit: SubmitHandler<IOrder> = async formData => {
     try {
       setSendingRequest(true);
@@ -120,10 +99,15 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       if (orderData.address.inCali === "true") {
         orderData.address.city = "Cali/Jamundi";
       }
-      await OrdersService.create(orderData);
-      // TODO: also remove cart from reducer
-      localStorage.removeItem("cart");
-      history.push('/confirmacion');
+      if (orderData.payment === "nequi") {
+        history.push('/pago', orderData)
+      } else {
+        await OrdersService.create(orderData);
+        localStorage.removeItem("cart");
+        // TODO: also remove cart from reducer
+        history.push('/confirmacion');
+      }
+
     } catch (e) {
       console.error (e)
     } finally {
@@ -138,7 +122,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
         <div className="text-center mt-6">
           <span className="text-4xl font-bold text-gray-800">Datos de Envío</span>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} id="myform" className="mt-6 w-11/12 md:w-5/12 mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} id="myform" className="mt-6 w-11/12 lg:w-5/12 mx-auto">
           <div className="flex flex-wrap md:flex-nowrap md:space-x-4">
             <div className="w-full md:w-1/2">
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Nombre</label>
@@ -264,7 +248,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
         <div className="text-center mt-10">
           <span className="text-4xl font-bold text-gray-800">Resumen</span>
         </div>
-        <div className="w-11/12 md:w-5/12 mx-auto space-y-2 mt-4">
+        <div className="w-11/12 lg:w-5/12 mx-auto space-y-2 mt-4">
           <div className="flex items-center justify-between">
             <p className="text-2xl text-gray-700 font-bold mr-2">Valor productos</p>
             <p className="text-2xl text-gray-500">
