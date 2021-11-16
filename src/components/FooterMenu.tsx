@@ -20,14 +20,8 @@ const FooterMenu: React.FC<Props> = (props) => {
 
   useEffect(() => {
     setCartCount(props.cart.length);
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(undefined);
-      }
-    });
-  }, [props.cart,  cartCount])
+    onAuthStateChanged(auth, user => user && setUser(user));
+  }, [props.cart, cartCount])
 
   const goToCart = () => {
     if (cartCount > 0) {

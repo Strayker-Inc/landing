@@ -1,27 +1,65 @@
-import { addDoc, collection } from 'firebase/firestore';
+import axios from 'axios';
 import api from '../config/api';
-import { db } from '../config/firebase';
 import { IOrder } from '../interfaces/Order.interface';
 
 const create = async (data: IOrder) => {
+  interface IResponse {
+    orderId: string,
+  }
   try {
-    console.log (data);
-    // Create info firestore DB
-    await addDoc(collection(db, "orders"), {...data});
-    // Notify order by email
-    const response = await api.post(`/orders/notification`, data);
-    console.log(response.data)
-    return response;
+    const response = await api.post<IResponse>(`/orders/new`, data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+const payOrderByNequi = async (phone: string, orderId: string, order: IOrder) => {
+  interface IResponse {
+    transactionId: string,
+    description: string,
+  }
+  const data = {
+    orderId,
+    amount: order.total + order.shipmentCost,
+    phone
+  };
+
+  try {
+    const response = await api.post<IResponse>(`/orders/payment`, data);
+    return response.data;
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error.message)
+      console.error(error.message)
     }
-    return error;
+    throw error;
+  }
+};
+
+const paymentStatus = async (paymentId: string, orderId: string) => {
+  interface IResponse {
+    description: string;
+  }
+  try {
+    const response = await api.get<IResponse>(`/orders/payment/status?paymentId=${paymentId}&orderId=${orderId}`);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log (error.response)
+      if (error.response?.status === 400) {
+        return error.response.data
+      }
+    } else {
+      throw new Error('Error in payment status');
+    }
   }
 };
 
 const exportedObject = {
   create,
+  payOrderByNequi,
+  paymentStatus,
 };
 
 export default exportedObject;

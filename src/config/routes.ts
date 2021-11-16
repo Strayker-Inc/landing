@@ -8,6 +8,7 @@ import CartPage from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import OrderConfirmedPage from '../pages/OrderConfirmed';
 import Profile from '../pages/Profile';
+import NequiPaymentPage from '../pages/NequiPayment';
 
 const routes: IRoute[] = [
   {
@@ -50,6 +51,12 @@ const routes: IRoute[] = [
 		path: '/confirmacion',
 		name: 'OrderConfirmation',
 		component: OrderConfirmedPage,
+		exact: true
+	},
+  {
+		path: '/pago/nequi',
+		name: 'NequiPayment',
+		component: NequiPaymentPage,
 		exact: true
 	},
   {

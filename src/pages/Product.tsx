@@ -7,7 +7,6 @@ import  CartButton from "../components/CartButtonHeader";
 import './Product.css'
 import { getDocs, query, where, documentId } from "firebase/firestore";
 import { productsRef } from "../config/firebase";
-import Footer from "../components/FooterMenu";
 import { addToCart } from "../redux/shopping/shoppingActions";
 import { connect } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -151,9 +150,8 @@ const ProductPage: React.FC<IProps> = props => {
         }
 
       </IonContent>
-      <Footer />
       <IonFooter className="bg-gray">
-        <div className="md:w-2/5 md:mx-auto flex justify-around items-center my-1 font-inter">
+        <div className="lg:w-8/12 lg:mx-auto flex justify-around items-center my-1 font-inter">
           <span className="flex">
             {presentationSelected &&
               <>

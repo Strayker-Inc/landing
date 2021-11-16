@@ -26,30 +26,20 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       control,
       name: "address.inCali",
     });
-    const city = useWatch({
-      control,
-      name: "address.city",
-    });
 
-    if (inCali === "true" || !inCali) {
-      return (
-        <div className="flex items-center justify-between border-b-4">
-          <p className="text-2xl text-gray-700 font-bold mr-2">Envío a Cali/Jamundi</p>
-          <p className="text-2xl text-gray-500">
-            <NumberFormat value={8000} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-          </p>
-        </div>
-      )
-    }
     return (
       <div className="flex items-center justify-between border-b-4">
-        <p className="text-2xl text-gray-700 font-bold mr-2">Envío a {city}</p>
-        <p className="text-xl text-gray-500">
-          *El valor depende del peso y tamaño de los productos
+        <p className="text-2xl text-gray-700 font-bold mr-2">Envío</p>
+        <p className="text-2xl text-gray-500">
+          {(inCali === "true" || !inCali)
+            ?
+              <NumberFormat value={config.caliShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+            :
+              <NumberFormat value={config.shippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
+          }
         </p>
       </div>
     )
-
   }
 
   const CityInput = () => {
@@ -91,31 +81,8 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       <div className="flex justify-between">
         <p className="text-2xl text-gray-700 font-bold mr-2">Total</p>
         <div className="text-2xl text-gray-500">
-          <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-          <p>+ Envío</p>
+          <NumberFormat value={props.total + config.shippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
         </div>
-      </div>
-    )
-  }
-
-  const PaymentButton = () => {
-    const inCali = useWatch({
-      control,
-      name: "address.inCali",
-    });
-    if (inCali === "true" || !inCali) {
-      return (
-        <div className="flex justify-center space-x-2">
-          <p>Pagar ahora</p>
-          <NumberFormat value={props.total + config.caliShippingCost} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-        </div>
-      )
-    }
-    return (
-      <div className="flex justify-center space-x-2">
-        <p>Pagar ahora</p>
-        <NumberFormat value={props.total} displayType={'text'} thousandSeparator={true} prefix={'$'}/>
-        <p>+ Envio</p>
       </div>
     )
   }
@@ -131,11 +98,19 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       }
       if (orderData.address.inCali === "true") {
         orderData.address.city = "Cali/Jamundi";
+        orderData.shipmentCost = config.caliShippingCost;
+      } else {
+        orderData.shipmentCost = config.shippingCost;
       }
-      await OrdersService.create(orderData);
-      // TODO: also remove cart from reducer
-      localStorage.removeItem("cart");
-      history.push('/confirmacion');
+      if (orderData.payment === "nequi") {
+        history.push('/pago/nequi', orderData)
+      } else {
+        await OrdersService.create(orderData);
+        localStorage.removeItem("cart");
+        // TODO: also remove cart from reducer
+        history.push('/confirmacion');
+      }
+
     } catch (e) {
       console.error (e)
     } finally {
@@ -150,7 +125,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
         <div className="text-center mt-6">
           <span className="text-4xl font-bold text-gray-800">Datos de Envío</span>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} id="myform" className="mt-6 w-11/12 md:w-5/12 mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} id="myform" className="mt-6 w-11/12 lg:w-5/12 mx-auto">
           <div className="flex flex-wrap md:flex-nowrap md:space-x-4">
             <div className="w-full md:w-1/2">
               <label htmlFor="name" className="font-medium text-lg text-gray-700">Nombre</label>
@@ -276,7 +251,7 @@ const CheckoutPage: React.FC<IPageProps> = props => {
         <div className="text-center mt-10">
           <span className="text-4xl font-bold text-gray-800">Resumen</span>
         </div>
-        <div className="w-11/12 md:w-5/12 mx-auto space-y-2 mt-4">
+        <div className="w-11/12 lg:w-5/12 mx-auto space-y-2 mt-4">
           <div className="flex items-center justify-between">
             <p className="text-2xl text-gray-700 font-bold mr-2">Valor productos</p>
             <p className="text-2xl text-gray-500">
@@ -300,7 +275,9 @@ const CheckoutPage: React.FC<IPageProps> = props => {
           >
             {sendingRequest
               ?  <IonSpinner name="dots" />
-              : <PaymentButton />
+              : <div className="flex justify-center space-x-2">
+                  <p>Pagar ahora</p>
+                </div>
             }
           </button>
         </div>
