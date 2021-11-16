@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import api from '../config/api';
 import { IOrder } from '../interfaces/Order.interface';
 
@@ -22,8 +22,7 @@ const payOrderByNequi = async (phone: string, orderId: string, order: IOrder) =>
   }
   const data = {
     orderId,
-    // TODO: change amount to shipment amount property
-    amount: order.total,
+    amount: order.total + order.shipmentCost,
     phone
   };
 

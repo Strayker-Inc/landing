@@ -10,6 +10,7 @@ export interface IOrder {
   phone: number,
   payment: string,
   shipment: string,
+  shipmentCost: number,
   address: {
     inCali: string,
     address: string,

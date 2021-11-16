@@ -98,6 +98,9 @@ const CheckoutPage: React.FC<IPageProps> = props => {
       }
       if (orderData.address.inCali === "true") {
         orderData.address.city = "Cali/Jamundi";
+        orderData.shipmentCost = config.caliShippingCost;
+      } else {
+        orderData.shipmentCost = config.shippingCost;
       }
       if (orderData.payment === "nequi") {
         history.push('/pago/nequi', orderData)

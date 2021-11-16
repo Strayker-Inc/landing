@@ -12,7 +12,6 @@ interface IPayment {
 const NequiPaymentPage: React.FC<{}> = props => {
   const history = useHistory();
   const { register, handleSubmit, formState: { errors } } = useForm<IPayment>();
-  const [ paymentSuccess, setPaymentSuccess] = useState(false);
   const [ checkingPayment, setCheckingPayment] = useState(false);
   const [ orderData, setOrderData ] = useState<IOrder>();
   const [ showToastPending, setShowToastPending] = useState(false)
@@ -47,20 +46,19 @@ const NequiPaymentPage: React.FC<{}> = props => {
       try {
         const response = await OrdersService.paymentStatus(paymentId, orderId)
         switch (response.description) {
-          case "Pago exitoso":
-            setPaymentSuccess(true);
+          case "success":
             clearInterval();
             history.push('/confirmacion');
             break;
-          case "El usuario aun no ha pagado":
+          case "pending":
             setShowToastPending(true);
             break;
-          case "Pago cancelado por el usuario":
+          case "cancelled":
             clearInterval();
             alert("Cancelaste el pago, debes volver a intentarlo");
             history.push('/home');
             break;
-          case "El pago expiro":
+          case "expired":
             clearInterval();
             alert("El pago ha expirado, debes volver a intentarlo");
             history.push('/home');
