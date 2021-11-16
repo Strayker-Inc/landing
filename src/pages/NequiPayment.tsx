@@ -1,4 +1,4 @@
-import { IonFooter, IonPage, IonSpinner } from "@ionic/react";
+import { IonFooter, IonPage, IonSpinner, IonToast } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useHistory } from "react-router";
@@ -15,6 +15,8 @@ const NequiPaymentPage: React.FC<{}> = props => {
   const [ paymentSuccess, setPaymentSuccess] = useState(false);
   const [ checkingPayment, setCheckingPayment] = useState(false);
   const [ orderData, setOrderData ] = useState<IOrder>();
+  const [ showToastPending, setShowToastPending] = useState(false)
+
 
   useEffect(() => {
     const order = history.location.state;
@@ -30,27 +32,49 @@ const NequiPaymentPage: React.FC<{}> = props => {
     try {
       if (orderData) {
         const response = await OrdersService.create(orderData);
-        // const paymentResponse = await OrdersService.payOrderByNequi(data.phone, response.orderId, orderData);
-        // paymentStatus(payment.data.paymentId);
+        console.log (response);
+        const paymentResponse = await OrdersService.payOrderByNequi(data.phone, response.orderId, orderData);
+        console.log (paymentResponse);
+        paymentStatus(paymentResponse.transactionId, response.orderId);
       }
     } catch (error) {
       console.error (error)
     };
-
-
   };
-  const paymentStatus = (paymentId: string) => {
-    let maxRetries = 5;
+
+  const paymentStatus = (paymentId: string, orderId: string) => {
     setInterval(async () => {
       try {
-        await OrdersService.paymentStatus(paymentId);
-        setPaymentSuccess(true);
-        history.push('/confirmacion');
+        const response = await OrdersService.paymentStatus(paymentId, orderId)
+        switch (response.description) {
+          case "Pago exitoso":
+            setPaymentSuccess(true);
+            clearInterval();
+            history.push('/confirmacion');
+            break;
+          case "El usuario aun no ha pagado":
+            setShowToastPending(true);
+            break;
+          case "Pago cancelado por el usuario":
+            clearInterval();
+            alert("Cancelaste el pago, debes volver a intentarlo");
+            history.push('/home');
+            break;
+          case "El pago expiro":
+            clearInterval();
+            alert("El pago ha expirado, debes volver a intentarlo");
+            history.push('/home');
+            break;
+          default:
+            break;
+        }
       } catch (error) {
-        console.error (error)
+        throw new Error("Error");
       }
+
     }, 10000);
-  }
+  };
+
   return (
     <IonPage className="bg-gray font-inter">
       <Header />
@@ -59,12 +83,14 @@ const NequiPaymentPage: React.FC<{}> = props => {
           <p className="text-2xl font-bold text-gray-800">¿Como funciona?</p>
           <p className="text-gray-600">Te llegara una alerta del pago a tu app de Nequi y solo debes aprobarla.</p>
         </div>
-        <div className="mt-2 space-x-4 flex justify-center">
-          <p className="">Verificando pago</p>
-          <div className="">
-            <IonSpinner/>
+        {checkingPayment &&
+          <div className="mt-2 space-x-4 flex justify-center">
+            <p className="">Verificando pago</p>
+            <div>
+              <IonSpinner/>
+            </div>
           </div>
-        </div>
+        }
         <div className={`${checkingPayment && 'hidden'} mt-4`}>
           <label htmlFor="name" className="font-medium text-lg text-gray-700">Celular Nequi</label>
           {errors.phone && <p className="text-red-400">Necesitamos tu celular para enviarte la notificacion</p>}
@@ -78,6 +104,13 @@ const NequiPaymentPage: React.FC<{}> = props => {
           </div>
         </div>
       </form>
+      <IonToast
+        isOpen={showToastPending}
+        onDidDismiss={() => setShowToastPending(false)}
+        message="Aún no haz aceptado el pago"
+        duration={800}
+        position="top"
+      />
       <IonFooter className={`${checkingPayment && 'hidden'}`}>
         <div className="flex justify-center">
           <button type="submit" form="paymentForm"

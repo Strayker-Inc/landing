@@ -1,42 +1,59 @@
+import axios, { AxiosError } from 'axios';
 import api from '../config/api';
 import { IOrder } from '../interfaces/Order.interface';
 
 const create = async (data: IOrder) => {
+  interface IResponse {
+    orderId: string,
+  }
   try {
-    await api.post(`/orders/new`, data);
+    const response = await api.post<IResponse>(`/orders/new`, data);
+    return response.data;
   } catch (error) {
-    if (error instanceof Error) {
-      console.log(error.message)
-    }
-    return error;
+    console.error(error);
+    throw error;
   }
 };
 
 const payOrderByNequi = async (phone: string, orderId: string, order: IOrder) => {
+  interface IResponse {
+    transactionId: string,
+    description: string,
+  }
   const data = {
     orderId,
-    order,
+    // TODO: change amount to shipment amount property
+    amount: order.total,
     phone
   };
 
   try {
-    await api.post(`/orders/payment`, data);
+    const response = await api.post<IResponse>(`/orders/payment`, data);
+    return response.data;
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error.message)
+      console.error(error.message)
     }
-    return error;
+    throw error;
   }
 };
 
-const paymentStatus = async (paymentId: string) => {
+const paymentStatus = async (paymentId: string, orderId: string) => {
+  interface IResponse {
+    description: string;
+  }
   try {
-    await api.get(`/orders/payment/status?paymentId=${paymentId}`);
+    const response = await api.get<IResponse>(`/orders/payment/status?paymentId=${paymentId}&orderId=${orderId}`);
+    return response.data;
   } catch (error) {
-    if (error instanceof Error) {
-      console.log(error.message)
+    if (axios.isAxiosError(error)) {
+      console.log (error.response)
+      if (error.response?.status === 400) {
+        return error.response.data
+      }
+    } else {
+      throw new Error('Error in payment status');
     }
-    return error;
   }
 };
 
